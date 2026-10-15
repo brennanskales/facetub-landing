@@ -1,0 +1,12 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "main": {
+      "type": "hypr-product",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

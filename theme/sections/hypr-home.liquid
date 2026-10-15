@@ -1,15 +1,3 @@
-{% layout none %}
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F7F6F2">
-<title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
-{%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
-<link rel="canonical" href="{{ canonical_url }}">
-{%- if settings.favicon %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}">{% endif %}
-{{ content_for_header }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&amp;family=Caveat:wght@700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
 <style>
@@ -472,8 +460,6 @@ section .script{font-size:30px !important}
 }
 </style>
 <style>:root{color-scheme:light}html{scroll-behavior:smooth}body{background:#F7F6F2;overflow-x:hidden}img{max-width:100%}button:focus-visible,a:focus-visible{outline:3px solid #B8912E;outline-offset:3px}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.ugc-track{transition:none!important}}</style>
-</head>
-<body style="margin: 0">
 <div style="width: 100%; min-height: 100%; background: #F7F6F2">
 
 <div class="marquee" aria-label="Offers">
@@ -486,69 +472,106 @@ section .script{font-size:30px !important}
 <nav class="nav" aria-label="Main">
 <div class="wrap nav-in">
 <div class="nav-left"><button type="button" class="icon-btn menu-btn" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button><a href="/" aria-label="HYPR home"><img loading="lazy" decoding="async" src="{{ 'hypr-logo-black.png' | asset_url }}" alt="HYPR" style="height: 28px; width: auto"></a></div>
-<div class="nav-links"><a href="/pages/shop">Shop</a><a href="/pages/the-science" class="on" aria-current="page">The Science</a><a href="/pages/our-story">Our Story</a><a href="/#reviews">Reviews</a><a href="/pages/questions">FAQ</a></div>
+<div class="nav-links"><a href="/pages/shop">Shop</a><a href="/pages/the-science">The Science</a><a href="/pages/our-story">Our Story</a><a href="/#reviews">Reviews</a><a href="/pages/questions">FAQ</a></div>
 <div class="nav-right"><a href="/search" class="icon-btn hide-m" aria-label="Search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></a><a href="/account" class="icon-btn hide-m" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a><a href="/cart" class="icon-btn" aria-label="Cart, {{ cart.item_count }} items">{% if cart.item_count > 0 %}<span class="cart-count">{{ cart.item_count }}</span>{% endif %}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"></path><path d="M9 8V6a3 3 0 016 0v2"></path></svg></a><a href="/products/vitamins-and-supplements-example-product-4" class="btn btn-dark nav-shop" style="min-height: 44px; padding: 10px 20px; font-size: 15px">Shop HYPR</a></div>
 </div>
 </nav>
 
 <header id="top" class="wrap hero-wrap" style="padding-top: 8px">
 <div class="hero">
-<div class="hero-media"><img fetchpriority="high" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt="Pink HYPR powder dissolving in a glass of water" style="--pos: 50% 50%; --mpos: 50% 50%"></div>
+<div class="hero-media"><img fetchpriority="high" src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" alt="An athlete pours a scoop of HYPR into a shaker in the weight room" style="--pos: 40% 50%; --mpos: 38% 50%"></div>
 <div class="hero-copy">
-<h1 class="disp hero-h1"><span class="script">The science,</span>Three essentials. Real research.</h1>
+<h1 class="disp hero-h1"><span class="script">Your entire routine,</span>One scoop.</h1>
 <div style="display: flex; flex-direction: column; gap: 20px">
-<p class="hero-sub">No secret blends. No big promises. Three ingredients with real research behind them, at doses you can see on the label.</p>
-<div class="hero-cta"><a href="#buy" class="btn btn-gold">Shop HYPR · $49.99</a><a href="#research" class="hero-link">Read the research</a></div>
+<p class="hero-sub">Electrolytes, creatine and collagen in one watermelon scoop. Three tubs’ worth in one. Zero sugar. No fake dyes.</p>
+<div class="hero-cta"><a href="#buy" class="btn btn-gold">Shop HYPR · $49.99</a><a href="#inside" class="hero-link">See what’s inside</a></div>
 <div class="offer-pill"><img loading="lazy" decoding="async" src="{{ 'hypr-bottle.jpg' | asset_url }}" alt=""><span><b>Buy one, get a HYPR bottle free.</b> $14.99 value</span></div>
 <div class="hero-proof"><span class="stars">★★★★★</span><span>Five-star reviews · Made in the USA</span></div>
 </div>
 </div>
-
-<div class="hero-stats" aria-label="Per scoop"><div class="stat-chip">Creatine<b>5 g</b></div><div class="stat-chip">Collagen<b>5 g</b></div><div class="stat-chip">Sugar<b>0 g</b></div></div>
+<a href="#buy" class="hero-card"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""><span style="margin: 0"><small>Watermelon · 30 scoops</small><b>HYPR All-in-One</b><span>$49.99 + free bottle</span></span></a>
+<div class="hero-stats" aria-label="Per scoop"><div class="stat-chip">Sodium<b>810 mg</b></div><div class="stat-chip">Creatine<b>5 g</b></div><div class="stat-chip">Collagen<b>5 g</b></div></div>
 </div>
 </header>
 
 <section class="wrap sec">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">Made for you</span><h2 class="disp h2">Who HYPR is for.</h2></div>
+<div class="who">
+<a href="/pages/sports-moms" class="who-card"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-bleachers.jpg' | asset_url }}" alt="A mom cheers from the bleachers with a pink HYPR shaker" style="object-position: 70% 50%"><div class="who-copy"><span class="script">Sports parents</span><h3 class="disp">Ditch the sugary sports drink.</h3><span>For your athlete →</span></div></a>
+<a href="/pages/athletes" class="who-card"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-basketball.jpg' | asset_url }}" alt="A basketball player drinks HYPR on the bench" style="object-position: 40% 40%"><div class="who-copy"><span class="script">Athletes</span><h3 class="disp">Finish as strong as you start.</h3><span>For every sport →</span></div></a>
+<a href="/pages/the-science" class="who-card"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt="Pink HYPR powder dissolving in water" style="object-position: 45% 50%"><div class="who-copy"><span class="script">Label readers</span><h3 class="disp">All of the HYPR. None of the hype.</h3><span>See the science →</span></div></a>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 96px">
 <div class="intro">
 <div style="display: flex; flex-direction: column; gap: 6px">
-<span class="script" style="font-size: 40px">Read the label</span>
-<h2 class="disp h2">Nothing hidden. Nothing extra.</h2>
+<span class="script" style="font-size: 40px">Less to manage</span>
+<h2 class="disp h2">Three tubs became one.</h2>
+<p class="lede" style="margin-top: 20px; max-width: 420px">Separate electrolytes, creatine and collagen means three scoops, three reorders and three things to forget. HYPR puts all three in one.</p>
 </div>
-<div style="display: flex; flex-direction: column; gap: 28px">
-<p class="intro-text">Most powders hide their doses in a “blend.” HYPR lists every gram. <span class="muted">Salt for hydration. Creatine for power. Collagen for joints.</span> That’s it.</p>
+
+<div class="math">
+<p class="eyebrow" style="color: #D4AF4A">Three separate tubs</p>
+<div class="math-row"><span>Electrolytes</span><b>$45</b></div>
+<div class="math-row"><span>Creatine</span><b>$30</b></div>
+<div class="math-row"><span>Collagen</span><b>$40</b></div>
+<div class="math-total"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; color: #D9D6CE">One tub of HYPR</span><s>$115</s></span><b>$49.99</b></div>
+<p style="margin: 0; font-size: 12px; color: #9A978E">Typical separate prices supplied by HYPR. $42.49 with subscribe &amp; save.</p>
 </div>
 </div>
 </section>
 
-<section id="formula" class="wrap" style="padding-bottom: 96px">
-<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">The formula</span><h2 class="disp h2">What each one does.</h2></div>
-<div class="formula">
-<div class="facts">
-<h3>Supplement Facts</h3>
-<div class="row" style="border-bottom: 8px solid #0E0E0C"><span>Serving size 16.7 g (1 scoop)</span><span>30 servings</span></div>
+<section id="buy" class="wrap" style="padding-bottom: 96px">
 
-<div class="row"><span><b>Calories</b> </span><span class="mono">25</span></div>
-
-<div class="row"><span><b>Total Carbohydrate</b> </span><span class="mono">2 g · 1%</span></div>
-
-<div class="row"><span><b>Protein</b> </span><span class="mono">5 g</span></div>
-
-<div class="row"><span><b>Magnesium</b> (as glycinate)</span><span class="mono">80 mg · 19%</span></div>
-
-<div class="row"><span><b>Sodium</b> </span><span class="mono">810 mg · 35%</span></div>
-
-<div class="row"><span><b>Potassium</b> (as citrate)</span><span class="mono">200 mg · 4%</span></div>
-
-<div class="row"><span><b>Bovine Collagen Peptides</b> </span><span class="mono">5 g · **</span></div>
-
-<div class="row"><span><b>Creatine Monohydrate</b> </span><span class="mono">5 g · **</span></div>
-
-<p style="margin: 10px 0 0; font-size: 12px; color: #5E5C55; line-height: 1.5">**Daily Value not established. Percent Daily Values are based on a 2,000 calorie diet.</p>
+<div class="pdp">
+<div>
+<div class="pdp-main">
+<img loading="lazy" decoding="async" id="galMain" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt="HYPR Watermelon tub with pink Himalayan salt, a scoop and watermelon">
+<span class="pdp-badge"><b>Free bottle</b> with every tub</span>
 </div>
-<div class="works">
-<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-salt.jpg' | asset_url }}" alt="Pink Himalayan salt"><div><p class="eyebrow">01 · Hydrate</p><h3>Electrolytes</h3><p>Sweat takes out water and salt, mostly sodium. HYPR puts back 810 mg of sodium with potassium and magnesium. Replacing them matters most in long or very sweaty sessions.</p><span class="ref mono">[3] Sawka et al., Med Sci Sports Exerc, 2007</span></div></div>
-<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of creatine powder"><div><p class="eyebrow">02 · Perform</p><h3>Creatine monohydrate</h3><p>Creatine refills the fast fuel your muscles use for sprints, jumps and lifts. 5 g a day is right in the 3–5 g range sports nutrition experts (ISSN) describe. Loading is optional.*</p><span class="ref mono">[1] Kreider et al., J Int Soc Sports Nutr, 2017</span></div></div>
-<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-swirl.jpg' | asset_url }}" alt="Collagen dissolving in water"><div><p class="eyebrow">03 · Support</p><h3>Collagen peptides</h3><p>Collagen gives you the amino acids found in tendons and ligaments. The research is promising but mixed, so we keep the claim simple. It is not a full protein.*</p><span class="ref mono">[4] Khatri et al., Amino Acids, 2021</span></div></div>
+<div class="pdp-thumbs" role="group" aria-label="Product photos">
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-studio.jpg' | asset_url }}" data-alt="HYPR Watermelon tub with pink Himalayan salt, a scoop and watermelon" aria-label="Product" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid #0E0E0C; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" data-alt="Pink powder dissolving cleanly in water" aria-label="Mixes clean" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" data-alt="An athlete scoops HYPR into a shaker in the weight room" aria-label="In the gym" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-pantry.jpg' | asset_url }}" data-alt="One HYPR tub on a pantry shelf" aria-label="In the pantry" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-pantry.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-label-story.jpg' | asset_url }}" data-alt="The back of the tub: our story from the two D1 founders" aria-label="Our story" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-label-story.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-bottle.jpg' | asset_url }}" data-alt="The free HYPR water bottle" aria-label="Free bottle" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-bottle.jpg' | asset_url }}" alt=""></button>
+
+</div>
+<div class="acc">
+<details><summary>What's in one scoop<span class="plus">+</span></summary><ul><li>Sodium 810 mg (pink Himalayan salt)</li><li>Potassium 200 mg (potassium citrate)</li><li>Magnesium 80 mg (magnesium glycinate)</li><li>Creatine monohydrate 5 g</li><li>Bovine collagen peptides 5 g</li><li>25 calories · 0 g sugar · stevia · beet root color</li></ul></details>
+<details><summary>How to use<span class="plus">+</span></summary><p>Mix one scoop with 16–24 oz of cold water. Shake and drink once a day, rest days too. Creatine builds up over time, so every day beats perfect timing.</p></details>
+<details><summary>Shipping &amp; returns<span class="plus">+</span></summary><p>[CONFIRM SHIPPING TIMES AND RETURN WINDOW] See our <a href="/policies/refund-policy">refund policy</a>.</p></details>
+</div>
+</div>
+<div class="pdp-info">
+<p class="eyebrow">Watermelon · 30 servings</p>
+<h2 class="disp pdp-title">HYPR All-in-One Hydration</h2>
+<div class="rating"><span class="stars">★★★★★</span><a href="#reviews" style="color: #5E5C55">Five-star reviews</a><span>·</span><span>Made in the USA</span></div>
+<p class="lede" style="font-size: 17px">Electrolytes, 5 g creatine and 5 g collagen in one watermelon scoop. Your whole routine in one tub. Zero sugar.</p>
+<ul class="bens">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>810 mg sodium for sweat</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>5 g creatine for power*</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>5 g collagen for joints*</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Zero sugar, no fake dyes</li>
+</ul>
+<button type="button" data-plan="sub" style="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 2px solid #C9A13B; box-shadow: 0 10px 30px rgba(201,161,59,0.18);">
+<span class="plan-top"><span><b>Subscribe &amp; save 15% <span class="plan-badge">Best value</span></b><small>Ships every month · skip or cancel anytime</small></span><span class="plan-price"><b>$42.49</b><s>$49.99</s></span></span>
+<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>Free HYPR bottle ($14.99 value)</span>
+</button>
+<button type="button" data-plan="one" style="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 1.5px solid #E6E3DB;">
+<span class="plan-top"><span><b>One-time purchase</b><small>One tub, 30 scoops</small></span><span class="plan-price"><b>$49.99</b></span></span>
+<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>Free HYPR bottle ($14.99 value)</span>
+</button>
+<form method="post" action="/cart/add" style="margin: 0; width: 100%"><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="47081531310255"><input type="hidden" name="quantity" value="1"><input type="hidden" name="selling_plan" value="3294625967" class="js-sp"><input type="hidden" name="return_to" value="/cart"><button type="submit" class="btn" style="background: #C9A13B; color: #0E0E0C; width: 100%; min-height: 58px; font-size: 18px">Add to cart · <span class="js-price">$42.49/mo</span></button></form>
+<div class="trust"><span>✓ Zero sugar</span><span>✓ No artificial dyes</span><span>✓ Made in the USA</span><span>✓ $1.42 a scoop subscribed</span></div>
 </div>
 </div>
 </section>
@@ -572,20 +595,161 @@ section .script{font-size:30px !important}
 </section>
 
 <section class="wrap sec">
-<div class="honest">
-<div style="display: flex; flex-direction: column; gap: 6px">
-<span class="script" style="font-size: 44px">Straight talk,</span>
-<h2 class="disp h2" style="color: #FFFFFF">Is the blend better?</h2>
+<div class="feel">
+<div class="feel-media">
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-dugout.jpg' | asset_url }}" alt="A ballplayer drinks HYPR in the dugout under the lights, the tub at his feet" style="object-position: 50% 40%">
+<span class="pin" style="left: 8%; top: 14%"><i></i>Electrolytes</span>
+<span class="pin" style="right: 8%; top: 42%"><i></i>Creatine</span>
+<span class="pin" style="left: 10%; bottom: 14%"><i></i>Collagen</span>
 </div>
-<div style="display: flex; flex-direction: column; gap: 16px">
-<p>No study shows that mixing these three works better than taking them apart. And no one has run a trial on HYPR as a finished product.</p>
-<p>The win is simple: one tub, one scoop and a habit that’s easy to keep. With creatine, every day matters more than timing.</p>
+<div class="feel-copy">
+<span class="script" style="font-size: 44px">For your daily grind,</span>
+<h2 class="disp h2">Lift. Play. Repeat.</h2>
+<p class="lede">The early lift. The rec league. The double-header. One scoop covers it, so you can keep the habit.</p>
+<ul class="checks"><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Puts back the salt you sweat out</li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>5 g creatine for sprints, jumps and lifts*</li><li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>5 g collagen for joints that take a pounding*</li></ul>
+<a href="#buy" class="btn btn-dark" style="align-self: flex-start">Shop HYPR</a>
 </div>
 </div>
 </section>
 
+<section class="sec" style="padding-bottom: 72px">
+<div class="wrap social-head">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">Real people</span>
+<h2 class="disp h2">Follow @tryhypr</h2>
+</div>
+<a href="https://www.instagram.com/tryhypr" class="btn btn-line">Instagram ↗</a>
+</div>
+<div class="strip">
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-1.mp4' | file_url }}" poster="{{ 'hypr-ugc-1-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-basketball.jpg' | asset_url }}" alt="A basketball player drinks HYPR on the bench">
+</figure>
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-2.mp4' | file_url }}" poster="{{ 'hypr-ugc-2-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-track.jpg' | asset_url }}" alt="A runner drinks HYPR at the track">
+</figure>
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-3.mp4' | file_url }}" poster="{{ 'hypr-ugc-3-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-mom-kitchen.jpg' | asset_url }}" alt="A mom hands her son HYPR before practice">
+</figure>
+
+</div>
+</section>
+
 <section class="wrap" style="padding-bottom: 96px">
-<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">Make it a habit</span><h2 class="disp h2">Scoop. Mix. Repeat.</h2></div>
+<div class="stats">
+<div class="stat"><b>3 → 1</b><span>Tubs in your cabinet</span></div>
+<div class="stat"><b>0 g</b><span>Sugar in every scoop</span></div>
+<div class="stat"><b>$1.42</b><span>A scoop with subscribe &amp; save</span></div>
+</div>
+</section>
+
+<section id="reviews" class="sec" style="background: #FFFFFF">
+<div class="wrap rev-head">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">Reviews</span>
+<h2 class="disp h2">Good routines. Great reviews.</h2>
+</div>
+<a href="/products/vitamins-and-supplements-example-product-4" class="btn btn-dark">Shop HYPR</a>
+</div>
+<div class="strip">
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Caleb N.</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“My daily routine is much more consistent now. One scoop is easier than remembering multiple products at different times.”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Brynn Garrett</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“AMAZING taste and im so excited that im getting more than one benefit in one drink”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Michael Smith</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“It mixes well with water and is not grainy. Overall a great product!”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Jordan T.</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“I have been drinking it daily for weeks and the flavor still has not gotten old.”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Nico Ferroni</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“Tastes really good and good price”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+</div>
+<div class="wrap" style="margin-top: 64px">
+<div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px">
+<p class="eyebrow">Unedited texts from HYPR customers</p>
+<h3 class="disp" style="font-size: clamp(32px, 3.6vw, 48px)">Straight from their phones.</h3>
+</div>
+<div class="wall">
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #000000"><img loading="lazy" decoding="async" src="{{ 'hypr-t-cb148868.jpg' | asset_url }}" alt="HYPR combines hydration, creatine, and collagen in one easy scoop, tastes great, and saves me from buying multiple supplements." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #FFFFFF"><img loading="lazy" decoding="async" src="{{ 'hypr-t-0820bf67.jpg' | asset_url }}" alt="I got the HYPR and it taste great and it's so good to know the right stuff is in it" style="display: block; width: 100%; max-width: 406px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-b73f5cca.jpg' | asset_url }}" alt="HYPR actually mixes insanely well. And it's not too strong or sweet of a flavor." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-232d6089.jpg' | asset_url }}" alt="Just got my order and it tastes amazing! If you guys are ever looking for people to test different flavors I would love to!" style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #131315"><img loading="lazy" decoding="async" src="{{ 'hypr-t-89d1584b.jpg' | asset_url }}" alt="Not just a great product for athletes, but people with active lifestyles. Plus it tastes better than any other supplements I have tried!!" style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-0d130c1d.jpg' | asset_url }}" alt="An everyday essential from here on out" style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #131315"><img loading="lazy" decoding="async" src="{{ 'hypr-t-fcf4c361.jpg' | asset_url }}" alt="Great way to start the day. Will be a part of the every morning routine from here on out." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-0384b28c.jpg' | asset_url }}" alt="wow this stuff is legit" style="display: block; width: 100%; max-width: 331px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #131315"><img loading="lazy" decoding="async" src="{{ 'hypr-t-76fb4a1c.jpg' | asset_url }}" alt="The flavor is great. It mixes well with water and is not grainy." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+</div>
+</div>
+</section>
+
+<section class="wrap sec">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">A little ritual</span><h2 class="disp h2">Scoop. Mix. Repeat.</h2></div>
 
 <div class="steps">
 <div class="step"><div class="step-img"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of pink HYPR powder"></div><div class="step-body"><span class="step-n">01</span><h3>Scoop</h3><p>One level scoop. That's your whole routine.</p></div></div>
@@ -594,31 +758,25 @@ section .script{font-size:30px !important}
 </div>
 </section>
 
-<section id="research" class="wrap sec" style="max-width: 1000px">
-<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">Read it yourself</span><h2 class="disp h2">The research.</h2></div>
-<ol class="refs">
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[1]</span><div><b>ISSN position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine</b><span>Kreider RB, et al. J Int Soc Sports Nutr. 2017;14:18.</span><em>Creatine benefits, safety and the 3 to 5 g daily dose</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[2]</span><div><b>Common questions and misconceptions about creatine supplementation</b><span>Antonio J, et al. J Int Soc Sports Nutr. 2021;18:13.</span><em>Kidneys, hair, water weight and other myths</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[3]</span><div><b>American College of Sports Medicine position stand: Exercise and fluid replacement</b><span>Sawka MN, et al. Med Sci Sports Exerc. 2007;39(2):377-390.</span><em>Sweat loss and sodium replacement</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[4]</span><div><b>The effects of collagen peptide supplementation on body composition, collagen synthesis, and recovery from joint injury and exercise: a systematic review</b><span>Khatri M, et al. Amino Acids. 2021;53(10):1493-1506.</span><em>Collagen dosing and connective tissue</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[5]</span><div><b>Impact of collagen peptide supplementation in combination with long-term physical training: a systematic review with meta-analysis</b><span>Bischof K, et al. Sports Med. 2024;54(11):2865-2888.</span><em>Where collagen research is still uncertain</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[6]</span><div><b>Magnesium: Fact Sheet for Health Professionals</b><span>NIH Office of Dietary Supplements.</span><em>Magnesium and muscle function</em></div></li>
-
-<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[7]</span><div><b>Potassium: Fact Sheet for Health Professionals</b><span>NIH Office of Dietary Supplements.</span><em>Potassium and fluid balance</em></div></li>
-
-</ol>
-<p style="margin: 18px 0 0; font-size: 13px; color: #9A978E">These sources look at the ingredients, not at HYPR as a finished product.</p>
+<section class="wrap" style="padding-bottom: 96px">
+<div class="feel">
+<div class="feel-media" style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr)">
+<img loading="lazy" decoding="async" src="{{ 'hypr-founder.jpg' | asset_url }}" alt="HYPR co-founder jogging off the field in his college baseball uniform" style="position: static; object-position: 55% 40%">
+<img loading="lazy" decoding="async" src="{{ 'hypr-label-story.jpg' | asset_url }}" alt="The back of the HYPR tub: our story from TJ and Caleb" style="position: static; background: #000000">
+</div>
+<div class="feel-copy">
+<span class="script" style="font-size: 44px">We wanted simple, too.</span>
+<h2 class="disp h2">Built by two D1 ballplayers.</h2>
+<p class="lede">TJ Werner and Caleb Walker played Division I baseball. They were tired of three tubs, three scoops and three reorders. So they built the one they wished they had.</p>
+<a href="/pages/our-story" class="btn btn-dark" style="align-self: flex-start">Read our story</a>
+</div>
+</div>
 </section>
 
 <section id="faq" class="wrap" style="padding-bottom: 96px">
-<div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 36px"><span class="script" style="font-size: 40px; transform-origin: center">Myths and facts</span><h2 class="disp h2">Good questions.</h2></div>
-<div class="faq"><details><summary>Does combining them work better than taking them apart?<span class="plus">+</span></summary><p>No study shows that. The win is simple: one tub, one scoop, one habit that’s easier to keep.</p></details><details><summary>Is collagen the same as protein powder?<span class="plus">+</span></summary><p>No. Collagen isn’t a complete protein. HYPR adds to your routine. It doesn’t replace meals or your protein.</p></details><details><summary>Is creatine safe for teens?<span class="plus">+</span></summary><p>Creatine is one of the most studied sports supplements. A 2026 guide for pediatricians says 3–5 g a day can be reasonable for teens who train hard and eat enough. Talk with your doctor first. HYPR is labeled for [AGE GUIDANCE FROM LABEL].</p></details><details><summary>When should I take it?<span class="plus">+</span></summary><p>Any time that’s easy to remember. Creatine works by building up, so every day matters more than timing.</p></details><details><summary>Do I need electrolytes every day?<span class="plus">+</span></summary><p>Not always. For short, easy workouts, water and food may be enough. They matter most when it’s hot, sessions run long or you sweat a lot.</p></details></div>
+<div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 36px"><span class="script" style="font-size: 40px; transform-origin: center">Clarity. Included.</span><h2 class="disp h2">Good questions.</h2></div>
+<div class="faq"><details><summary>What is HYPR?<span class="plus">+</span></summary><p>One watermelon scoop with electrolytes, 5 g creatine and 5 g collagen. It replaces three separate tubs with one.</p></details><details><summary>Who is it for?<span class="plus">+</span></summary><p>Athletes, sports families and anyone with an active routine. You don’t need to be a pro. Electrolyte needs depend on how much you sweat, eat and drink.</p></details><details><summary>How do I use it?<span class="plus">+</span></summary><p>Mix one scoop with 16–24 oz of cold water once a day, rest days too. Follow the label on your tub.</p></details><details><summary>Is there sugar or anything artificial?<span class="plus">+</span></summary><p>No sugar. No artificial flavors or dyes. HYPR is sweetened with stevia and colored with beet root.</p></details><details><summary>How does subscribe &amp; save work?<span class="plus">+</span></summary><p>Your tub ships every month at 15% off ($42.49). Skip, pause or cancel anytime from your account. [CONFIRM SUBSCRIPTION TERMS]</p></details><details><summary>How do I get the free bottle?<span class="plus">+</span></summary><p>Add any tub to your cart and the HYPR bottle ($14.99 value) is added free. One bottle per order.</p></details></div>
+<div style="text-align: center; margin-top: 32px"><a href="/pages/questions" class="btn btn-line">See all FAQs</a></div>
 </section>
 
 <section class="wrap" style="padding-bottom: 72px">
@@ -627,7 +785,7 @@ section .script{font-size:30px !important}
 <span class="script" style="font-size: 48px">Ready?</span>
 <h2 class="disp" style="font-size: clamp(44px, 6vw, 88px); color: #FFFFFF">Make your routine simpler.</h2>
 <p style="margin: 0; color: #D9D6CE; font-size: 18px; line-height: 1.6; max-width: 460px">Three essentials. One scoop. A free HYPR bottle with your tub.</p>
-<a href="/products/vitamins-and-supplements-example-product-4" class="btn btn-gold" style="align-self: flex-start">Shop HYPR · $49.99</a>
+<a href="#buy" class="btn btn-gold" style="align-self: flex-start">Shop HYPR · $49.99</a>
 </div>
 <img loading="lazy" decoding="async" class="final-tub" src="{{ 'hypr-tub.png' | asset_url }}" alt="HYPR Watermelon tub">
 </div>
@@ -650,6 +808,11 @@ section .script{font-size:30px !important}
 <div><a href="/policies/privacy-policy">Privacy</a><a href="/policies/terms-of-service">Terms</a><a href="/policies/refund-policy">Refunds</a><a href="/policies/subscription-policy">Cancellation</a><a href="/policies/contact-information">Contact info</a></div>
 </div>
 </footer>
+
+<div class="mbar">
+<div style="display: flex; flex-direction: column; min-width: 0"><b style="font-size: 15px">HYPR · Watermelon</b><span style="font-size: 12px; color: #D9D6CE">+ free bottle · <span class="js-price">$42.49/mo</span></span></div>
+<a href="#buy" class="btn btn-gold">Add to cart</a>
+</div>
 
 </div>
 <script>
@@ -694,5 +857,7 @@ section .script{font-size:30px !important}
   sync();
 })();
 </script>
-</body>
-</html>
+
+{% schema %}
+{"name": "HYPR Home", "settings": []}
+{% endschema %}

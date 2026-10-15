@@ -1,0 +1,12 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "main": {
+      "type": "hypr-lp-athletes",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
