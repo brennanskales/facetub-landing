@@ -15,7 +15,7 @@
         "link_label": "See what’s inside",
         "link_link": "#inside",
         "offer_image": "shopify://shop_images/hypr-bottle.jpg",
-        "offer_text": "<b>Subscribe & get a HYPR bottle free.</b> $14.99 value",
+        "offer_text": "<strong>Subscribe & get a HYPR bottle free.</strong> $14.99 value",
         "proof": "Five-star reviews · Made in the USA",
         "stats_top": false,
         "anchor": "top",
@@ -75,7 +75,7 @@
         "card_8": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/hypr-ls-basketball.jpg",
+            "image": "shopify://shop_images/IMG_4589.jpg",
             "position": "40% 40%",
             "script": "Athletes",
             "heading": "Finish as strong as you start.",
@@ -154,7 +154,7 @@
         "heading_tag": "h2",
         "rating": "Five-star reviews · Made in the USA",
         "lede": "Electrolytes, 5 g creatine and 5 g collagen in one watermelon scoop. Your whole routine in one tub. Zero sugar.",
-        "badge": "<b>Free bottle</b> when you subscribe",
+        "badge": "",
         "sub_title": "Subscribe & save 15%",
         "sub_badge": "Best value",
         "sub_note": "Ships every month · skip or cancel anytime",
@@ -353,7 +353,7 @@
     "feature_5": {
       "type": "hypr-feature",
       "settings": {
-        "image": "shopify://shop_images/hypr-ls-dugout.jpg",
+        "image": "shopify://shop_images/shopify_image_3.jpg",
         "position": "50% 40%",
         "fit": "cover",
         "script": "For your daily grind,",
@@ -446,7 +446,7 @@
         "photo_40": {
           "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/hypr-ls-dugout.jpg",
+            "image": "shopify://shop_images/shopify_image.jpg",
             "tag": "Under the lights",
             "caption": "Between innings, not after."
           }
@@ -463,7 +463,7 @@
         "photo_42": {
           "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/hypr-ls-track.jpg",
+            "image": "shopify://shop_images/shopify_image_2.jpg",
             "tag": "Track day",
             "caption": "One scoop before the workout."
           }
@@ -695,7 +695,7 @@
     "feature_10": {
       "type": "hypr-feature",
       "settings": {
-        "image": "shopify://shop_images/hypr-founder.jpg",
+        "image": "shopify://shop_images/hypr-founders.png",
         "position": "55% 40%",
         "fit": "cover",
         "script": "We wanted simple, too.",
