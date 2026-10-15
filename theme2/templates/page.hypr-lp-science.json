@@ -8,7 +8,7 @@
         "message_424": {
           "type": "message",
           "settings": {
-            "text": "Buy a tub, get a HYPR bottle free"
+            "text": "First order? Get a free HYPR bottle"
           }
         },
         "message_425": {
@@ -113,7 +113,7 @@
         "link_label": "See the research",
         "link_link": "#research",
         "offer_image": "shopify://shop_images/hypr-bottle.jpg",
-        "offer_text": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value",
+        "offer_text": "<b>First order? Get a HYPR bottle free.</b> $14.99 value",
         "proof": "Five-star reviews · Made in the USA",
         "stats_top": false,
         "anchor": "top"
@@ -169,21 +169,21 @@
         "heading_tag": "h2",
         "rating": "Five-star reviews · Made in the USA",
         "lede": "Three essentials at full, listed doses. Mix with water. Drink once a day.",
-        "badge": "<b>Free bottle</b> with every tub",
+        "badge": "<b>Free bottle</b> on your first order",
         "sub_title": "Subscribe & save 15%",
         "sub_badge": "Best value",
         "sub_note": "Keeps creatine topped up daily · cancel anytime",
         "per_month": "/mo",
         "one_title": "One-time purchase",
         "one_note": "One tub, 30 scoops",
-        "gift": "Free HYPR bottle ($14.99 value)",
+        "gift": "Free HYPR bottle on your first order ($14.99 value)",
         "button_label": "Add to cart",
         "trust": "Every dose listed | Zero sugar | Made in the USA | $1.42 a scoop subscribed",
         "crumbs": false,
         "crumb_label": "",
         "show_mbar": true,
         "mbar_title": "HYPR · Watermelon",
-        "mbar_text": "+ free bottle",
+        "mbar_text": "+ free bottle on first order",
         "anchor": "buy"
       },
       "blocks": {
@@ -826,7 +826,7 @@
       "settings": {
         "script": "Convinced?",
         "heading": "The science, in one scoop.",
-        "text": "Electrolytes + 5 g creatine + 5 g collagen. A free HYPR bottle with your tub.",
+        "text": "Electrolytes + 5 g creatine + 5 g collagen. First order? Get a free HYPR bottle.",
         "button_label": "Shop HYPR · $49.99",
         "button_link": "#buy",
         "image": "shopify://shop_images/hypr-tub.png"

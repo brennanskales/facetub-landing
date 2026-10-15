@@ -9,7 +9,7 @@
         "message_500": {
           "type": "message",
           "settings": {
-            "text": "Buy a tub, get a HYPR bottle free"
+            "text": "First order? Get a free HYPR bottle"
           }
         },
         "message_501": {

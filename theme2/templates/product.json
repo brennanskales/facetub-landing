@@ -10,21 +10,21 @@
         "heading_tag": "h1",
         "rating": "Five-star reviews · Made in the USA",
         "lede": "Electrolytes, 5 g creatine and 5 g collagen in one watermelon scoop. Your whole routine in one tub. Zero sugar.",
-        "badge": "<b>Free bottle</b> with every tub",
+        "badge": "<b>Free bottle</b> on your first order",
         "sub_title": "Subscribe & save 15%",
         "sub_badge": "Best value",
         "sub_note": "Ships every month · skip or cancel anytime",
         "per_month": "/mo",
         "one_title": "One-time purchase",
         "one_note": "One tub, 30 scoops",
-        "gift": "Free HYPR bottle ($14.99 value)",
+        "gift": "Free HYPR bottle on your first order ($14.99 value)",
         "button_label": "Add to cart",
         "trust": "Zero sugar | No artificial dyes | Made in the USA | $1.42 a scoop subscribed",
         "crumbs": true,
         "crumb_label": "HYPR Watermelon",
         "show_mbar": true,
         "mbar_title": "HYPR · Watermelon",
-        "mbar_text": "+ free bottle",
+        "mbar_text": "+ free bottle on first order",
         "anchor": "buy"
       },
       "blocks": {
@@ -766,8 +766,8 @@
         "question_130": {
           "type": "question",
           "settings": {
-            "question": "How do I get the free bottle?",
-            "answer": "<p>Add any tub to your cart and the HYPR bottle ($14.99 value) is added free. One bottle per order.</p>"
+            "question": "Who gets the free bottle?",
+            "answer": "<p>The free HYPR bottle ($14.99 value) is for first-time customers. Add a tub on your first order and the bottle is added free. One per customer.</p>"
           }
         },
         "question_131": {
@@ -807,7 +807,7 @@
       "settings": {
         "script": "Ready?",
         "heading": "Make your routine simpler.",
-        "text": "Three essentials. One scoop. A free HYPR bottle with your tub.",
+        "text": "Three essentials. One scoop. First order? Get a free HYPR bottle.",
         "button_label": "Shop HYPR · $49.99",
         "button_link": "#buy",
         "image": "shopify://shop_images/hypr-tub.png"

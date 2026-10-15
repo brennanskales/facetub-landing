@@ -8,7 +8,7 @@
         "message_336": {
           "type": "message",
           "settings": {
-            "text": "Buy a tub, get a HYPR bottle free"
+            "text": "First order? Get a free HYPR bottle"
           }
         },
         "message_337": {
@@ -113,14 +113,14 @@
         "link_label": "Why you fade",
         "link_link": "#fade",
         "offer_image": "shopify://shop_images/hypr-bottle.jpg",
-        "offer_text": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value",
+        "offer_text": "<b>First order? Get a HYPR bottle free.</b> $14.99 value",
         "proof": "Five-star reviews · Built by former D1 athletes",
         "stats_top": true,
         "anchor": "top",
         "card_image": "shopify://shop_images/hypr-tub.png",
         "card_eyebrow": "Watermelon · 30 scoops",
         "card_title": "HYPR All-in-One",
-        "card_text": "$49.99 + free bottle",
+        "card_text": "$49.99 · free bottle, first order",
         "card_link": "#buy"
       },
       "blocks": {
@@ -174,21 +174,21 @@
         "heading_tag": "h2",
         "rating": "Five-star reviews · Made in the USA",
         "lede": "Hydration, creatine and collagen in one scoop. No more three tubs in your bag.",
-        "badge": "<b>Free bottle</b> with every tub",
+        "badge": "<b>Free bottle</b> on your first order",
         "sub_title": "Subscribe & save 15%",
         "sub_badge": "Best value",
         "sub_note": "Never run out mid-season · cancel anytime",
         "per_month": "/mo",
         "one_title": "One-time purchase",
         "one_note": "One tub, 30 scoops",
-        "gift": "Free HYPR bottle ($14.99 value)",
+        "gift": "Free HYPR bottle on your first order ($14.99 value)",
         "button_label": "Add to cart",
         "trust": "Zero sugar | Mixes smooth | Made in the USA | $1.42 a scoop subscribed",
         "crumbs": false,
         "crumb_label": "",
         "show_mbar": true,
         "mbar_title": "HYPR · Watermelon",
-        "mbar_text": "+ free bottle",
+        "mbar_text": "+ free bottle on first order",
         "anchor": "buy"
       },
       "blocks": {
@@ -942,7 +942,7 @@
       "settings": {
         "script": "Next game?",
         "heading": "Stop playing on empty.",
-        "text": "Hydration, creatine and collagen in one scoop. A free HYPR bottle with your tub.",
+        "text": "Hydration, creatine and collagen in one scoop. First order? Get a free HYPR bottle.",
         "button_label": "Shop HYPR · $49.99",
         "button_link": "#buy",
         "image": "shopify://shop_images/hypr-tub.png"

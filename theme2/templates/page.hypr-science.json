@@ -15,7 +15,7 @@
         "link_label": "Read the research",
         "link_link": "#research",
         "offer_image": "shopify://shop_images/hypr-bottle.jpg",
-        "offer_text": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value",
+        "offer_text": "<b>First order? Get a HYPR bottle free.</b> $14.99 value",
         "proof": "Five-star reviews · Made in the USA",
         "stats_top": false,
         "anchor": "top"
@@ -445,7 +445,7 @@
       "settings": {
         "script": "Ready?",
         "heading": "Make your routine simpler.",
-        "text": "Three essentials. One scoop. A free HYPR bottle with your tub.",
+        "text": "Three essentials. One scoop. First order? Get a free HYPR bottle.",
         "button_label": "Shop HYPR · $49.99",
         "button_link": "/products/vitamins-and-supplements-example-product-4",
         "image": "shopify://shop_images/hypr-tub.png"
