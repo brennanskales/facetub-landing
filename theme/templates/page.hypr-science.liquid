@@ -1,0 +1,698 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F7F6F2">
+<title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
+{%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if settings.favicon %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}">{% endif %}
+{{ content_for_header }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&amp;family=Caveat:wght@700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F7F6F2;color:#0E0E0C;font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0E0E0C}a:hover{color:#8C6614}
+img{max-width:100%;display:block}
+.wrap{max-width:1320px;margin:0 auto;padding-left:20px;padding-right:20px}
+.sec{padding-top:96px;padding-bottom:96px}
+.disp{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;letter-spacing:-0.015em;line-height:0.92;margin:0;text-wrap:balance}
+.h2{font-size:clamp(40px,5.2vw,72px)}
+.script{font-family:'Caveat','Brush Script MT',cursive;font-weight:700;color:#C9A13B;text-transform:none;letter-spacing:0;display:block;transform:rotate(-5deg);transform-origin:left bottom;line-height:1}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C6614;margin:0}
+.lede{font-size:18px;line-height:1.6;color:#5E5C55;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:#C9A13B;color:#0E0E0C}.btn-gold:hover{color:#0E0E0C}
+.btn-dark{background:#0E0E0C;color:#FFFFFF}.btn-dark:hover{color:#FFFFFF}
+.btn-line{background:transparent;color:#0E0E0C;border:1.5px solid #0E0E0C}
+.stars{color:#C9A13B;letter-spacing:2px}
+.marquee{background:#0E0E0C;color:#FFFFFF;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600}
+.marquee-track{display:inline-flex;gap:44px;padding:10px 22px;animation:mq 36s linear infinite}
+.marquee-track span::before{content:"✦";color:#C9A13B;margin-right:12px}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.nav{position:sticky;top:0;z-index:40;background:rgba(247,246,242,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
+.nav-links{display:flex;gap:28px;font-size:15px;font-weight:600}
+.nav-links a{text-decoration:none;color:#5E5C55}
+.hero{position:relative;border-radius:28px;overflow:hidden;background:#0E0E0C;color:#FFFFFF;min-height:700px;display:flex}
+.hero-media{position:absolute;top:0;right:0;bottom:0;width:64%}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
+.hero-copy{position:relative;z-index:2;width:min(620px,56%);padding:56px 0 48px 56px;display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+.hero-h1{font-size:clamp(56px,6.6vw,100px);color:#FFFFFF}
+.hero-h1 .script{font-size:0.6em;color:#D4AF4A;margin-bottom:0.08em}
+.hero-sub{font-size:18px;line-height:1.55;color:#D9D6CE;max-width:460px;margin:0}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-link{color:#FFFFFF;font-weight:700;text-underline-offset:4px}
+.hero-link:hover{color:#D4AF4A}
+.hero-proof{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:#D9D6CE}
+.offer-pill{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;max-width:100%;border:1.5px solid #C9A13B;border-radius:999px;padding:6px 18px 6px 6px;font-size:15px;color:#FFFFFF}
+.offer-pill img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 45%;flex:none}
+.offer-pill b{color:#D4AF4A}
+.hero-card{position:absolute;z-index:3;top:24px;right:24px;width:236px;background:#FFFFFF;color:#0E0E0C;border-radius:20px;padding:12px 16px 12px 12px;display:flex;gap:12px;align-items:center;text-decoration:none;box-shadow:0 18px 40px rgba(0,0,0,0.25)}
+.hero-card img{width:58px;height:auto;flex:none}
+.hero-card small{display:block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C6614}
+.hero-card b{display:block;font-size:15px;line-height:1.25}
+.hero-card span{display:block;font-size:13px;color:#5E5C55;margin-top:2px}
+.hero-stats{position:absolute;z-index:3;right:24px;bottom:24px;display:flex;flex-direction:column;gap:8px}
+.stat-chip{background:rgba(14,14,12,0.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:10px 14px;min-width:168px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#D9D6CE}
+.stat-chip b{font-size:20px;letter-spacing:0;color:#FFFFFF;text-transform:none}
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.intro-text{font-size:clamp(22px,2.3vw,32px);line-height:1.45;font-weight:500;margin:0;color:#0E0E0C}
+.intro-text .muted{color:#9A978E}
+.pill-img{display:inline-block;width:84px;height:40px;border-radius:999px;object-fit:cover;vertical-align:middle;margin:0 4px}
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start}
+.pdp-main{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:24px;overflow:hidden;background:#EDEAE2}
+.pdp-main img{width:100%;height:100%;object-fit:cover}
+.pdp-badge{position:absolute;left:16px;top:16px;background:#0E0E0C;color:#FFFFFF;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700}
+.pdp-badge b{color:#D4AF4A}
+.pdp-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.pdp-thumbs button img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.acc{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.acc details{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:16px;padding:0 18px}
+.acc summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;font-weight:700;cursor:pointer;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc .plus{font-size:22px;transition:transform .2s}
+.acc details[open] .plus{transform:rotate(45deg)}
+.acc p,.acc ul{margin:0 0 18px;color:#5E5C55;line-height:1.6;font-size:15px}
+.pdp-info{display:flex;flex-direction:column;gap:18px;position:sticky;top:86px}
+.pdp-title{font-size:clamp(36px,3.6vw,52px)}
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:14px;color:#5E5C55}
+.bens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;margin:0;padding:0;list-style:none;font-size:15px;font-weight:600}
+.bens li{display:flex;gap:10px;align-items:flex-start}
+.bens svg{flex:none;margin-top:1px}
+.plan-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px 12px;width:100%;text-align:left}
+.plan-top b{font-size:17px;display:block}
+.plan-top small{display:block;font-size:13px;color:#5E5C55;margin-top:4px}
+.plan-price{text-align:right;flex:none}
+.plan-price b{font-size:22px}
+.plan-price s{display:block;font-size:13px;color:#9A978E}
+.plan-gift{display:flex;align-items:center;gap:8px;width:100%;padding:10px 18px;background:#F3EBD6;font-size:14px;font-weight:600;color:#0E0E0C;text-align:left}
+.plan-badge{display:inline-block;vertical-align:2px;margin-left:6px;background:#C9A13B;color:#0E0E0C;border-radius:999px;padding:3px 9px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:13px;color:#5E5C55}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.feel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#FFFFFF;border-radius:28px;overflow:hidden}
+.feel-media{position:relative;min-height:560px}
+.feel-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pin{position:absolute;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.94);color:#0E0E0C;border-radius:999px;padding:7px 14px 7px 8px;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.pin i{width:12px;height:12px;border-radius:50%;background:#C9A13B;box-shadow:0 0 0 4px rgba(201,161,59,0.3)}
+.feel-copy{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font-size:16px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:none;margin-top:2px}
+.swap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.swap-card{border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.swap-row{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;font-size:17px}
+.ingr-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:720px;margin:0 auto 48px}
+.ingr-head .script{transform-origin:center;font-size:44px}
+.ingr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #E6E3DB;border-left:1px solid #E6E3DB}
+.ing{border-right:1px solid #E6E3DB;border-bottom:1px solid #E6E3DB;padding:36px 28px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.ing img,.ing .sym{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.ing .sym{background:#0E0E0C;color:#D4AF4A;display:flex;align-items:center;justify-content:center;font-family:'Archivo',Arial,sans-serif;font-weight:800;font-size:44px}
+.ing h3{margin:6px 0 0;font-size:20px}
+.ing .dose{font-weight:700;color:#8C6614;font-size:14px}
+.ing p{margin:0;color:#5E5C55;font-size:15px;line-height:1.5;max-width:280px}
+.social-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px}
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:max(20px,calc((100% - 1280px)/2));padding-right:20px}
+.strip::-webkit-scrollbar{display:none}
+.tile{flex:none;width:260px;aspect-ratio:4/5;border-radius:20px;overflow:hidden;position:relative;background:#0E0E0C;scroll-snap-align:start;margin:0}
+.tile img,.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
+.stat{padding:12px 24px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.stat + .stat{border-left:1px solid #E6E3DB}
+.stat b{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:clamp(64px,8vw,120px);line-height:0.9;letter-spacing:-0.02em}
+.stat span{font-size:15px;color:#5E5C55;max-width:240px}
+.rev-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px}
+.rev{flex:none;width:320px;background:#FFFFFF;border:1px solid #E6E3DB;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;scroll-snap-align:start;margin:0}
+.rev-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.rev-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.rev blockquote{margin:0;font-size:16px;line-height:1.5}
+.rev-prod{background:#F1EEE7;height:150px;display:flex;align-items:center;justify-content:center}
+.rev-prod img{height:120px;width:auto}
+.wall{columns:3 280px;column-gap:14px}
+.faq{max-width:880px;margin:0 auto}
+.faq details{border-bottom:1px solid #DCD8CE}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:72px;font-size:19px;font-weight:700;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq .plus{font-size:26px;transition:transform .2s;flex:none}
+.faq details[open] .plus{transform:rotate(45deg)}
+.faq p{margin:0 0 22px;color:#5E5C55;line-height:1.65;font-size:16px}
+.final{background:#0E0E0C;color:#FFFFFF;border-radius:28px;padding:72px 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center;overflow:hidden;position:relative}
+.final img.final-tub{width:min(300px,100%);justify-self:center;filter:drop-shadow(0 30px 40px rgba(201,161,59,0.25))}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;padding-top:48px;padding-bottom:120px;font-size:14px;color:#5E5C55}
+.foot a{color:#5E5C55;text-decoration:none}
+.foot-links{display:flex;flex-wrap:wrap;gap:12px 28px}
+.mbar{display:none}
+@media (max-width:900px){
+.nav-links{display:none}
+.intro,.pdp,.feel,.final{grid-template-columns:minmax(0,1fr)}
+.pdp-info{position:static}
+.feel-media{min-height:420px}
+.feel-copy{padding:36px 24px}
+.ingr{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+.sec{padding-top:56px;padding-bottom:56px}
+.marquee{font-size:12px}
+.hero-wrap{padding-left:10px;padding-right:10px}
+.hero{flex-direction:column;min-height:0;border-radius:22px}
+.hero-media{position:relative;width:100%;aspect-ratio:4/5;max-width:100%}
+.hero-media img{object-position:var(--mpos,50% 50%);-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+.hero-copy{width:100%;padding:0 18px 26px;margin-top:-84px;gap:20px}
+.hero-h1{font-size:clamp(40px,11.4vw,58px)}
+.hero-sub{font-size:16px}
+.hero-cta .btn{width:100%}
+.hero-link{display:none}
+.hero-card{display:none}
+.hero-stats{top:12px;right:12px;bottom:auto;gap:6px}
+.stat-chip{min-width:0;padding:7px 10px;font-size:10px;gap:10px}
+.stat-chip b{font-size:14px}
+.intro-text{font-size:21px}
+.pill-img{width:60px;height:30px}
+.bens{grid-template-columns:minmax(0,1fr)}
+.swap{grid-template-columns:minmax(0,1fr)}
+.swap-card{padding:24px}
+.ingr{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ing{padding:24px 12px}
+.ing img,.ing .sym{width:88px;height:88px}
+.ing .sym{font-size:32px}
+.ing p{font-size:13px}
+.tile{width:68vw}
+.rev{width:82vw}
+.stats{grid-template-columns:minmax(0,1fr)}
+.stat + .stat{border-left:0;border-top:1px solid #E6E3DB;padding-top:24px}
+.wall{columns:1}
+.wall figure:nth-child(n+7){display:none}
+.faq summary{font-size:17px}
+.final{padding:44px 22px;border-radius:22px}
+.mbar{display:flex;position:sticky;bottom:0;z-index:50;background:rgba(14,14,12,0.96);color:#FFFFFF;padding:10px 14px;align-items:center;justify-content:space-between;gap:12px}
+.mbar .btn{white-space:nowrap;flex:none;min-height:48px;padding:10px 22px}
+}
+@media (max-width:760px){
+.sec{padding-top:44px;padding-bottom:44px}
+.h2{font-size:clamp(32px,9vw,40px)}
+section .script{font-size:30px !important}
+.hero-media{aspect-ratio:1/1}
+.hero-copy{margin-top:-64px;gap:16px}
+.hero-copy > div{gap:14px !important}
+.hero-cta{order:-1}
+.hero-sub{font-size:15px}
+.hero-proof{font-size:13px}
+.offer-pill{font-size:13px;padding:4px 14px 4px 4px}
+.offer-pill img{width:32px;height:32px}
+.intro{gap:18px}
+.intro-text{font-size:19px}
+.pdp{display:flex;flex-direction:column;gap:16px}
+.pdp > div:first-child{display:contents}
+.pdp-main{order:1}
+.pdp-thumbs{order:2;margin-top:-4px}
+.pdp-info{order:3;gap:14px}
+.acc{order:4;margin-top:0;width:100%;align-self:stretch}
+.pdp-thumbs button{width:60px !important;height:60px !important}
+.pdp-title{font-size:34px}
+.bens{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;font-size:13px}
+.plan-top{padding:14px 14px 10px}
+.plan-top b{font-size:16px}
+.plan-gift{padding:8px 14px;font-size:13px}
+.feel-media{min-height:320px}
+.feel-copy{gap:16px}
+.swap-card{padding:20px;gap:8px}
+.swap-row{font-size:15px;padding-bottom:8px}
+.ingr-head{margin-bottom:24px}
+.ingr{grid-template-columns:minmax(0,1fr);border-left:0}
+.ing{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:14px;row-gap:2px;text-align:left;align-items:start;padding:14px 0;border-right:0}
+.ing img,.ing .sym{grid-row:1 / span 3;width:64px;height:64px;align-self:center}
+.ing .sym{font-size:24px}
+.ing h3{margin:0;font-size:16px}
+.ing p{font-size:13px;max-width:none}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat{padding:4px 6px;gap:6px}
+.stat + .stat{border-left:1px solid #E6E3DB;border-top:0;padding-top:4px}
+.stat b{font-size:clamp(28px,8.6vw,38px)}
+.stat span{font-size:12px}
+.rev-head .btn{display:none}
+.rev-prod{height:90px}
+.rev-prod img{height:72px}
+.final{gap:20px}
+.final img.final-tub{width:150px}
+}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-left{display:flex;align-items:center;gap:6px}
+.nav-links a.on{color:#0E0E0C;text-decoration:underline;text-decoration-color:#C9A13B;text-decoration-thickness:2px;text-underline-offset:9px}
+.nav-right{display:flex;align-items:center;gap:4px}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#0E0E0C;position:relative;background:transparent;border:0;cursor:pointer;text-decoration:none}
+.icon-btn:hover{background:#EDEAE2;color:#0E0E0C}
+.cart-count{position:absolute;top:3px;right:1px;min-width:18px;height:18px;border-radius:9px;background:#C9A13B;color:#0E0E0C;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.menu-btn{display:none}
+.nav-shop{margin-left:8px}
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:#9A978E;margin:0 0 20px}
+.crumbs a{color:#5E5C55;text-decoration:none}
+.page-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:40px;padding-bottom:72px}
+.page-head.solo{grid-template-columns:minmax(0,1fr);padding-bottom:48px;text-align:center;justify-items:center}
+.page-head.solo .crumbs{justify-content:center}
+.page-head.solo .script{transform-origin:center}
+.page-head.solo .lede{margin-left:auto;margin-right:auto}
+.page-head h1{font-size:clamp(52px,5.8vw,84px)}
+.page-head .script{font-size:48px;margin-bottom:4px}
+.page-head .lede{margin-top:22px;max-width:520px}
+.ph-media{border-radius:28px;overflow:hidden;aspect-ratio:5/4;background:#EDEAE2}
+.ph-media img{width:100%;height:100%;object-fit:cover}
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.who-card{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:4/5;color:#FFFFFF;text-decoration:none;background:#0E0E0C}
+.who-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.who-card:hover img{transform:scale(1.04)}
+.who-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,12,0) 38%,rgba(14,14,12,0.88) 100%)}
+.who-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px;display:flex;flex-direction:column;gap:8px}
+.who-copy .script{font-size:30px;color:#D4AF4A}
+.who-copy h3{font-size:clamp(28px,2.6vw,38px);color:#FFFFFF}
+.who-copy span{font-weight:700;font-size:15px;color:#FFFFFF}
+.who-card:hover span{color:#D4AF4A}
+.math{background:#0E0E0C;color:#FFFFFF;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px}
+.math-row{display:flex;justify-content:space-between;gap:12px;font-size:17px;padding-bottom:12px;border-bottom:1px solid #2A2A26;color:#D9D6CE}
+.math-row b{color:#FFFFFF}
+.math-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:6px}
+.math-total s{color:#9A978E;font-size:22px}
+.math-total b{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:48px;color:#D4AF4A;line-height:1}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.step-img{aspect-ratio:4/3;overflow:hidden;background:#EDEAE2}
+.step-img img{width:100%;height:100%;object-fit:cover}
+.step-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px}
+.step-n{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:40px;line-height:1;color:#C9A13B}
+.step h3{margin:0;font-size:22px}
+.step p{margin:0;color:#5E5C55;line-height:1.55;font-size:15px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pillar{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.pillar b{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:64px;line-height:0.9;letter-spacing:-0.02em}
+.pillar h3{margin:0;font-size:20px}
+.pillar p{margin:0;color:#5E5C55;line-height:1.55;font-size:15px}
+.formula{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+.facts{background:#FFFFFF;border:3px solid #0E0E0C;padding:22px 24px;font-family:'Helvetica Neue',Arial,sans-serif}
+.facts h3{margin:0;font-size:34px;font-weight:900;line-height:1;border-bottom:1px solid #0E0E0C;padding-bottom:8px}
+.facts .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:8px 0;border-bottom:1px solid #0E0E0C}
+.facts .row span:last-child{white-space:nowrap}
+.works{display:flex;flex-direction:column;gap:14px}
+.work{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:22px;padding:26px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;align-items:start}
+.work img{width:120px;height:120px;border-radius:18px;object-fit:cover}
+.work h3{margin:4px 0 8px;font-size:24px}
+.work p{margin:0 0 10px;color:#5E5C55;line-height:1.55;font-size:15px}
+.work .ref{font-size:12px;color:#8C6614}
+.refs{list-style:none;margin:0;padding:0;border-top:1px solid #DCD8CE}
+.refs li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid #DCD8CE}
+.refs b{display:block;font-size:17px;line-height:1.4}
+.refs span{display:block;color:#5E5C55;font-size:15px;margin-top:4px}
+.refs em{display:block;font-style:normal;color:#8C6614;font-size:14px;margin-top:4px}
+.honest{background:#0E0E0C;color:#FFFFFF;border-radius:28px;padding:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.honest p{margin:0;color:#D9D6CE;font-size:18px;line-height:1.6}
+.goals{list-style:none;margin:0;padding:0;border-top:1px solid #DCD8CE;counter-reset:g}
+.goals li{display:grid;grid-template-columns:80px minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid #DCD8CE}
+.goals li::before{counter-increment:g;content:"0" counter(g);font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:40px;color:#C9A13B;line-height:1}
+.goals b{font-size:22px;line-height:1.25}
+.goals span{color:#5E5C55;font-size:16px;line-height:1.55}
+.vs{width:100%;border-collapse:collapse;background:#FFFFFF;border-radius:24px;overflow:hidden;font-size:16px}
+.vs th,.vs td{padding:18px 22px;text-align:left;border-bottom:1px solid #EFEBE3}
+.vs thead th{font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5E5C55}
+.vs .hy{background:#0E0E0C;color:#FFFFFF;font-weight:700}
+.vs thead .hy{color:#D4AF4A}
+.uses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.use{border-radius:22px;overflow:hidden;background:#FFFFFF;border:1px solid #E6E3DB}
+.use img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.use div{padding:18px 20px 22px}
+.use h3{margin:0 0 6px;font-size:19px}
+.use p{margin:0;color:#5E5C55;font-size:14px;line-height:1.5}
+.shop-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.card{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.card-img{position:relative;background:#EDEAE2;aspect-ratio:1/1;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-tag{position:absolute;left:14px;top:14px;background:#0E0E0C;color:#FFFFFF;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.card-tag b{color:#D4AF4A}
+.card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-body h3{margin:0;font-size:22px}
+.card-price{display:flex;align-items:baseline;gap:10px;font-size:15px;color:#5E5C55}
+.card-price b{font-size:22px;color:#0E0E0C}
+.card-actions{display:flex;gap:10px;margin-top:auto;padding-top:8px}
+.card-actions .btn{flex:1;min-height:48px;padding:12px 16px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{border:1px solid #E6E3DB;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;color:#5E5C55}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.cats a{border:1.5px solid #0E0E0C;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;text-decoration:none}
+.cats a.on{background:#0E0E0C;color:#FFFFFF}
+.faq-group{margin-bottom:56px}
+.faq-group h2{font-size:clamp(30px,3vw,42px);margin-bottom:8px}
+.help{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
+.form{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:24px;padding:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form label{display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:700}
+.form .full{grid-column:1 / -1}
+.form input,.form select,.form textarea{font:inherit;font-weight:400;font-size:16px;border:1.5px solid #DCD8CE;border-radius:14px;padding:13px 14px;background:#F7F6F2;color:#0E0E0C;width:100%}
+.form textarea{min-height:150px;resize:vertical}
+.quick{display:flex;flex-direction:column;gap:12px}
+.qcard{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;background:#FFFFFF;border:1px solid #E6E3DB;border-radius:20px;padding:18px;text-decoration:none;color:#0E0E0C}
+.qcard i{width:48px;height:48px;border-radius:14px;background:#F3EBD6;display:flex;align-items:center;justify-content:center;font-style:normal}
+.qcard b{display:block;font-size:16px}
+.qcard small{display:block;color:#5E5C55;font-size:14px;margin-top:2px}
+.sfoot{background:#0E0E0C;color:#D9D6CE;margin-top:24px}
+.sfoot a{color:#D9D6CE;text-decoration:none}
+.sfoot a:hover{color:#D4AF4A}
+.sfoot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,0.6fr));gap:40px;padding-top:72px;padding-bottom:56px}
+.sfoot h4{margin:0 0 16px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D4AF4A}
+.sfoot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font-size:15px}
+.join{display:flex;gap:8px;margin-top:20px;max-width:440px}
+.join input{flex:1;min-width:0;font:inherit;font-size:16px;border:1.5px solid #3A3A35;border-radius:999px;padding:13px 18px;background:#1A1A17;color:#FFFFFF}
+.sfoot-tag{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:clamp(56px,10.5vw,168px);line-height:0.85;letter-spacing:-0.02em;color:#1F1F1C;white-space:nowrap;overflow:hidden;padding-top:8px}
+.sfoot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;padding-bottom:32px;border-top:1px solid #2A2A26;font-size:13px;color:#9A978E}
+.sfoot-bot div{display:flex;flex-wrap:wrap;gap:8px 20px}
+.sfoot-bot a{color:#9A978E}
+.drawer{z-index:60;position:absolute;top:0;right:0;bottom:0;width:440px;background:#FFFFFF;display:flex;flex-direction:column;box-shadow:-30px 0 60px rgba(0,0,0,0.25)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid #EFEBE3}
+.drawer-body{flex:1;overflow:auto;padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+.gift-bar{background:#F3EBD6;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600}
+.gift-track{height:8px;border-radius:4px;background:#E8DBB6;overflow:hidden}
+.gift-track i{display:block;height:100%;width:100%;background:#C9A13B}
+.line{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:14px;align-items:start;padding-bottom:16px;border-bottom:1px solid #EFEBE3}
+.line-img{width:84px;height:84px;border-radius:14px;background:#F1EEE7;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.line-img img{max-height:72px;width:auto}
+.line b{display:block;font-size:15px}
+.line small{display:block;color:#5E5C55;font-size:13px;margin-top:3px}
+.qty{display:inline-flex;align-items:center;border:1.5px solid #DCD8CE;border-radius:999px;margin-top:10px;font-size:14px;font-weight:700}
+.qty span{width:34px;height:32px;display:flex;align-items:center;justify-content:center}
+.line-price{text-align:right;font-size:15px}
+.line-price b{display:block}
+.line-price s{display:block;color:#9A978E;font-size:13px}
+.upsell{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:12px;align-items:center;border:1.5px dashed #DCD8CE;border-radius:16px;padding:12px}
+.upsell img{width:60px;height:60px;object-fit:cover;border-radius:12px}
+.drawer-foot{padding:18px 22px 22px;border-top:1px solid #EFEBE3;display:flex;flex-direction:column;gap:12px;background:#FFFFFF}
+@media (max-width:1100px){
+.sfoot-top{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sfoot-top > div:first-child{grid-column:1 / -1}
+.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shop-grid > .card:first-child{grid-column:1 / -1}
+.uses{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+.menu-btn{display:inline-flex}
+.nav-shop,.hide-m{display:none !important}
+.page-head,.help,.honest,.formula{grid-template-columns:minmax(0,1fr)}
+.page-head{gap:28px;padding-top:20px;padding-bottom:48px}
+.who{grid-template-columns:minmax(0,1fr);gap:12px}
+.who-card{aspect-ratio:16/11}
+.steps,.pillars,.split{grid-template-columns:minmax(0,1fr)}
+.goals li{grid-template-columns:56px minmax(0,1fr)}
+.goals span{grid-column:2}
+.work{grid-template-columns:minmax(0,1fr);padding:20px}
+.work img{width:72px;height:72px;border-radius:14px}
+}
+@media (max-width:760px){
+.page-head h1{font-size:clamp(42px,12vw,60px)}
+.page-head .script{font-size:32px}
+.who-copy{padding:18px}
+.who-copy .script{font-size:24px !important}
+.math{padding:22px}
+.math-row{font-size:15px}
+.math-total b{font-size:38px}
+.step{display:grid;grid-template-columns:112px minmax(0,1fr)}
+.step-img{aspect-ratio:auto;height:100%}
+.step-body{padding:14px 16px}
+.step-n{font-size:28px}
+.step h3{font-size:18px}
+.step p{font-size:14px}
+.pillar{padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:18px;row-gap:4px;align-items:center}
+.pillar b{font-size:42px;grid-row:1 / span 2}
+.pillar p{grid-column:2}
+.honest{padding:32px 22px;gap:20px;border-radius:22px}
+.honest p{font-size:16px}
+.goals li{padding:18px 0;gap:6px 14px}
+.goals li::before{font-size:28px}
+.goals b{font-size:18px}
+.goals span{font-size:15px}
+.vs{font-size:14px}
+.vs th,.vs td{padding:12px 12px}
+.uses{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.use div{padding:12px 14px 16px}
+.use h3{font-size:16px}
+.use p{font-size:13px}
+.shop-grid{grid-template-columns:minmax(0,1fr)}
+.form{grid-template-columns:minmax(0,1fr);padding:20px}
+.cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:28px}
+.cats a{flex:none}
+.faq-group{margin-bottom:36px}
+.sfoot-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px;padding-top:48px;padding-bottom:36px}
+.sfoot-tag{font-size:17vw}
+.drawer{width:100%}
+}
+.cmp-box{overflow-x:auto;background:#FFFFFF;border:1px solid #E6E3DB;border-radius:24px}
+.cmp{width:100%;min-width:720px;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{padding:16px 18px;text-align:center;border-top:1px solid #EFEBE3}
+.cmp thead th{border-top:0;font-size:14px;color:#5E5C55;font-weight:700}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font-weight:700;color:#0E0E0C}
+.cmp .us{background:#0E0E0C;color:#FFFFFF}
+.cmp td.us{background:#FAF6EC;color:#8C6614;font-weight:800}
+.ugc{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:max(20px,calc((100% - 1280px)/2));padding-right:20px}
+.ugc::-webkit-scrollbar{display:none}
+.ugc-card{flex:none;width:300px;border-radius:22px;overflow:hidden;background:#0E0E0C;scroll-snap-align:start;margin:0;display:flex;flex-direction:column}
+.ugc-card video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#0E0E0C}
+.ugc-card figcaption{padding:14px 16px 16px;color:#FFFFFF;font-size:14px;line-height:1.45}
+.ugc-card figcaption b{display:block;color:#D4AF4A;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.proofbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.proofbar div{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:4px;text-align:center}
+.proofbar b{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:36px;line-height:1}
+.proofbar span{font-size:13px;color:#5E5C55}
+@media (max-width:760px){
+.cmp{min-width:600px;font-size:13px}
+.cmp th,.cmp td{padding:12px 10px}
+.cmp td:first-child,.cmp th:first-child{position:sticky;left:0;background:#FFFFFF;z-index:1}
+.ugc-card{width:72vw}
+.proofbar{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.proofbar div{padding:14px 10px}
+.proofbar b{font-size:28px}
+}
+</style>
+<style>:root{color-scheme:light}html{scroll-behavior:smooth}body{background:#F7F6F2;overflow-x:hidden}img{max-width:100%}button:focus-visible,a:focus-visible{outline:3px solid #B8912E;outline-offset:3px}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.ugc-track{transition:none!important}}</style>
+</head>
+<body style="margin: 0">
+<div style="width: 100%; min-height: 100%; background: #F7F6F2">
+
+<div class="marquee" aria-label="Offers">
+<div class="marquee-track">
+<span>Buy a tub, get a HYPR bottle free</span><span>Subscribe &amp; save 15%</span><span>Zero sugar</span><span>No artificial dyes</span><span>Made in the USA</span><span>Built by former D1 athletes</span>
+<span>Buy a tub, get a HYPR bottle free</span><span>Subscribe &amp; save 15%</span><span>Zero sugar</span><span>No artificial dyes</span><span>Made in the USA</span><span>Built by former D1 athletes</span>
+</div>
+</div>
+
+<nav class="nav" aria-label="Main">
+<div class="wrap nav-in">
+<div class="nav-left"><button type="button" class="icon-btn menu-btn" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button><a href="/" aria-label="HYPR home"><img loading="lazy" decoding="async" src="{{ 'hypr-logo-black.png' | asset_url }}" alt="HYPR" style="height: 28px; width: auto"></a></div>
+<div class="nav-links"><a href="/pages/shop">Shop</a><a href="/pages/the-science" class="on" aria-current="page">The Science</a><a href="/pages/our-story">Our Story</a><a href="/#reviews">Reviews</a><a href="/pages/questions">FAQ</a></div>
+<div class="nav-right"><a href="/search" class="icon-btn hide-m" aria-label="Search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></a><a href="/account" class="icon-btn hide-m" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a><a href="/cart" class="icon-btn" aria-label="Cart, {{ cart.item_count }} items">{% if cart.item_count > 0 %}<span class="cart-count">{{ cart.item_count }}</span>{% endif %}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"></path><path d="M9 8V6a3 3 0 016 0v2"></path></svg></a><a href="/products/vitamins-and-supplements-example-product-4" class="btn btn-dark nav-shop" style="min-height: 44px; padding: 10px 20px; font-size: 15px">Shop HYPR</a></div>
+</div>
+</nav>
+
+<header id="top" class="wrap hero-wrap" style="padding-top: 8px">
+<div class="hero">
+<div class="hero-media"><img fetchpriority="high" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt="Pink HYPR powder dissolving in a glass of water" style="--pos: 50% 50%; --mpos: 50% 50%"></div>
+<div class="hero-copy">
+<h1 class="disp hero-h1"><span class="script">The science,</span>Three essentials. Real research.</h1>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p class="hero-sub">No secret blends. No big promises. Three ingredients with real research behind them, at doses you can see on the label.</p>
+<div class="hero-cta"><a href="#buy" class="btn btn-gold">Shop HYPR · $49.99</a><a href="#research" class="hero-link">Read the research</a></div>
+<div class="offer-pill"><img loading="lazy" decoding="async" src="{{ 'hypr-bottle.jpg' | asset_url }}" alt=""><span><b>Buy one, get a HYPR bottle free.</b> $14.99 value</span></div>
+<div class="hero-proof"><span class="stars">★★★★★</span><span>Five-star reviews · Made in the USA</span></div>
+</div>
+</div>
+
+<div class="hero-stats" aria-label="Per scoop"><div class="stat-chip">Creatine<b>5 g</b></div><div class="stat-chip">Collagen<b>5 g</b></div><div class="stat-chip">Sugar<b>0 g</b></div></div>
+</div>
+</header>
+
+<section class="wrap sec">
+<div class="intro">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">Read the label</span>
+<h2 class="disp h2">Nothing hidden. Nothing extra.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p class="intro-text">Most powders hide their doses in a “blend.” HYPR lists every gram. <span class="muted">Salt for hydration. Creatine for power. Collagen for joints.</span> That’s it.</p>
+</div>
+</div>
+</section>
+
+<section id="formula" class="wrap" style="padding-bottom: 96px">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">The formula</span><h2 class="disp h2">What each one does.</h2></div>
+<div class="formula">
+<div class="facts">
+<h3>Supplement Facts</h3>
+<div class="row" style="border-bottom: 8px solid #0E0E0C"><span>Serving size 16.7 g (1 scoop)</span><span>30 servings</span></div>
+
+<div class="row"><span><b>Calories</b> </span><span class="mono">25</span></div>
+
+<div class="row"><span><b>Total Carbohydrate</b> </span><span class="mono">2 g · 1%</span></div>
+
+<div class="row"><span><b>Protein</b> </span><span class="mono">5 g</span></div>
+
+<div class="row"><span><b>Magnesium</b> (as glycinate)</span><span class="mono">80 mg · 19%</span></div>
+
+<div class="row"><span><b>Sodium</b> </span><span class="mono">810 mg · 35%</span></div>
+
+<div class="row"><span><b>Potassium</b> (as citrate)</span><span class="mono">200 mg · 4%</span></div>
+
+<div class="row"><span><b>Bovine Collagen Peptides</b> </span><span class="mono">5 g · **</span></div>
+
+<div class="row"><span><b>Creatine Monohydrate</b> </span><span class="mono">5 g · **</span></div>
+
+<p style="margin: 10px 0 0; font-size: 12px; color: #5E5C55; line-height: 1.5">**Daily Value not established. Percent Daily Values are based on a 2,000 calorie diet.</p>
+</div>
+<div class="works">
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-salt.jpg' | asset_url }}" alt="Pink Himalayan salt"><div><p class="eyebrow">01 · Hydrate</p><h3>Electrolytes</h3><p>Sweat takes out water and salt, mostly sodium. HYPR puts back 810 mg of sodium with potassium and magnesium. Replacing them matters most in long or very sweaty sessions.</p><span class="ref mono">[3] Sawka et al., Med Sci Sports Exerc, 2007</span></div></div>
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of creatine powder"><div><p class="eyebrow">02 · Perform</p><h3>Creatine monohydrate</h3><p>Creatine refills the fast fuel your muscles use for sprints, jumps and lifts. 5 g a day is right in the 3–5 g range sports nutrition experts (ISSN) describe. Loading is optional.*</p><span class="ref mono">[1] Kreider et al., J Int Soc Sports Nutr, 2017</span></div></div>
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-swirl.jpg' | asset_url }}" alt="Collagen dissolving in water"><div><p class="eyebrow">03 · Support</p><h3>Collagen peptides</h3><p>Collagen gives you the amino acids found in tendons and ligaments. The research is promising but mixed, so we keep the claim simple. It is not a full protein.*</p><span class="ref mono">[4] Khatri et al., Amino Acids, 2021</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="inside" class="sec" style="background: #FFFFFF">
+<div class="wrap">
+<div class="ingr-head">
+<span class="script">Ingredients</span>
+<h2 class="disp h2">Three essentials. Nothing to hide.</h2>
+<p class="lede">Every dose is on the label. No secret blends.</p>
+</div>
+<div class="ingr">
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-salt.jpg' | asset_url }}" alt="Pink Himalayan salt"><h3>Pink Himalayan salt</h3><span class="dose">810 mg sodium</span><p>Puts back the main thing lost in sweat.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of HYPR powder"><h3>Creatine monohydrate</h3><span class="dose">5 g</span><p>The most studied form, for strength and power.*</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-swirl.jpg' | asset_url }}" alt="Pink powder dissolving in water"><h3>Collagen peptides</h3><span class="dose">5 g</span><p>Building blocks for tendons and joints.*</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-mg.jpg' | asset_url }}" alt="Magnesium powder with spinach, almonds and pumpkin seeds"><h3>Magnesium glycinate</h3><span class="dose">80 mg</span><p>Supports normal muscle function. Easy on the stomach.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-k.jpg' | asset_url }}" alt="Potassium powder with banana and coconut"><h3>Potassium citrate</h3><span class="dose">200 mg</span><p>Works with sodium to keep fluid where it's needed.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-melon.jpg' | asset_url }}" alt="A slice of watermelon"><h3>Watermelon flavor</h3><span class="dose">0 g sugar</span><p>Sweetened with stevia. Colored with beet root.</p></div>
+</div>
+</div>
+</section>
+
+<section class="wrap sec">
+<div class="honest">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 44px">Straight talk,</span>
+<h2 class="disp h2" style="color: #FFFFFF">Is the blend better?</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p>No study shows that mixing these three works better than taking them apart. And no one has run a trial on HYPR as a finished product.</p>
+<p>The win is simple: one tub, one scoop and a habit that’s easy to keep. With creatine, every day matters more than timing.</p>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 96px">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">Make it a habit</span><h2 class="disp h2">Scoop. Mix. Repeat.</h2></div>
+
+<div class="steps">
+<div class="step"><div class="step-img"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of pink HYPR powder"></div><div class="step-body"><span class="step-n">01</span><h3>Scoop</h3><p>One level scoop. That's your whole routine.</p></div></div>
+<div class="step"><div class="step-img"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt="HYPR dissolving in a glass of water"></div><div class="step-body"><span class="step-n">02</span><h3>Mix</h3><p>Shake into 16–24 oz of cold water. No clumps.</p></div></div>
+<div class="step"><div class="step-img"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-pantry.jpg' | asset_url }}" alt="A HYPR tub on a pantry shelf"></div><div class="step-body"><span class="step-n">03</span><h3>Repeat</h3><p>Once a day, rest days too. 30 scoops, 30 days.</p></div></div>
+</div>
+</section>
+
+<section id="research" class="wrap sec" style="max-width: 1000px">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px"><span class="script" style="font-size: 40px">Read it yourself</span><h2 class="disp h2">The research.</h2></div>
+<ol class="refs">
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[1]</span><div><b>ISSN position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine</b><span>Kreider RB, et al. J Int Soc Sports Nutr. 2017;14:18.</span><em>Creatine benefits, safety and the 3 to 5 g daily dose</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[2]</span><div><b>Common questions and misconceptions about creatine supplementation</b><span>Antonio J, et al. J Int Soc Sports Nutr. 2021;18:13.</span><em>Kidneys, hair, water weight and other myths</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[3]</span><div><b>American College of Sports Medicine position stand: Exercise and fluid replacement</b><span>Sawka MN, et al. Med Sci Sports Exerc. 2007;39(2):377-390.</span><em>Sweat loss and sodium replacement</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[4]</span><div><b>The effects of collagen peptide supplementation on body composition, collagen synthesis, and recovery from joint injury and exercise: a systematic review</b><span>Khatri M, et al. Amino Acids. 2021;53(10):1493-1506.</span><em>Collagen dosing and connective tissue</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[5]</span><div><b>Impact of collagen peptide supplementation in combination with long-term physical training: a systematic review with meta-analysis</b><span>Bischof K, et al. Sports Med. 2024;54(11):2865-2888.</span><em>Where collagen research is still uncertain</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[6]</span><div><b>Magnesium: Fact Sheet for Health Professionals</b><span>NIH Office of Dietary Supplements.</span><em>Magnesium and muscle function</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[7]</span><div><b>Potassium: Fact Sheet for Health Professionals</b><span>NIH Office of Dietary Supplements.</span><em>Potassium and fluid balance</em></div></li>
+
+</ol>
+<p style="margin: 18px 0 0; font-size: 13px; color: #9A978E">These sources look at the ingredients, not at HYPR as a finished product.</p>
+</section>
+
+<section id="faq" class="wrap" style="padding-bottom: 96px">
+<div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 36px"><span class="script" style="font-size: 40px; transform-origin: center">Myths and facts</span><h2 class="disp h2">Good questions.</h2></div>
+<div class="faq"><details><summary>Does combining them work better than taking them apart?<span class="plus">+</span></summary><p>No study shows that. The win is simple: one tub, one scoop, one habit that’s easier to keep.</p></details><details><summary>Is collagen the same as protein powder?<span class="plus">+</span></summary><p>No. Collagen isn’t a complete protein. HYPR adds to your routine. It doesn’t replace meals or your protein.</p></details><details><summary>Is creatine safe for teens?<span class="plus">+</span></summary><p>Creatine is one of the most studied sports supplements. A 2026 guide for pediatricians says 3–5 g a day can be reasonable for teens who train hard and eat enough. Talk with your doctor first. HYPR is labeled for [AGE GUIDANCE FROM LABEL].</p></details><details><summary>When should I take it?<span class="plus">+</span></summary><p>Any time that’s easy to remember. Creatine works by building up, so every day matters more than timing.</p></details><details><summary>Do I need electrolytes every day?<span class="plus">+</span></summary><p>Not always. For short, easy workouts, water and food may be enough. They matter most when it’s hot, sessions run long or you sweat a lot.</p></details></div>
+</section>
+
+<section class="wrap" style="padding-bottom: 72px">
+<div class="final">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<span class="script" style="font-size: 48px">Ready?</span>
+<h2 class="disp" style="font-size: clamp(44px, 6vw, 88px); color: #FFFFFF">Make your routine simpler.</h2>
+<p style="margin: 0; color: #D9D6CE; font-size: 18px; line-height: 1.6; max-width: 460px">Three essentials. One scoop. A free HYPR bottle with your tub.</p>
+<a href="/products/vitamins-and-supplements-example-product-4" class="btn btn-gold" style="align-self: flex-start">Shop HYPR · $49.99</a>
+</div>
+<img loading="lazy" decoding="async" class="final-tub" src="{{ 'hypr-tub.png' | asset_url }}" alt="HYPR Watermelon tub">
+</div>
+</section>
+
+<footer class="sfoot">
+<div class="wrap sfoot-top">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<img loading="lazy" decoding="async" src="{{ 'hypr-logo-white.png' | asset_url }}" alt="HYPR" style="height: 32px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #FFFFFF; max-width: 420px">Get new flavor drops, restock alerts and training tips first.</p>
+{% form 'customer', class: 'join' %}<input type="hidden" name="contact[tags]" value="newsletter"><input type="email" name="contact[email]" placeholder="Your email" aria-label="Email address" required><button type="submit" class="btn btn-gold" style="min-height: 50px; padding: 12px 22px">Join</button>{% endform %}
+</div>
+<div><h4>Shop</h4><ul><li><a href="/products/vitamins-and-supplements-example-product-4">HYPR Watermelon</a></li><li><a href="/products/untitled-jul13_21-16-20">HYPR Bottle</a></li><li><a href="/pages/shop">Subscribe &amp; save</a></li><li><a href="/pages/shop">Shop all</a></li></ul></div>
+<div><h4>Learn</h4><ul><li><a href="/pages/the-science">The Science</a></li><li><a href="/pages/our-story">Our Story</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/pages/questions">FAQ</a></li></ul></div>
+<div><h4>Help</h4><ul><li><a href="/pages/contact-us">Contact us</a></li><li><a href="/account">Manage subscription</a></li><li><a href="/policies/refund-policy">Returns &amp; refunds</a></li><li><a href="https://www.instagram.com/tryhypr">Instagram</a></li><li><a href="https://www.tiktok.com/t/ZTBg6KR5R/">TikTok</a></li></ul></div>
+</div>
+<div class="wrap"><div class="sfoot-tag" aria-hidden="true">#FUELTHEGRIND</div></div>
+<div class="wrap sfoot-bot">
+<span style="max-width: 640px; line-height: 1.55">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. © 2026 HYPR</span>
+<div><a href="/policies/privacy-policy">Privacy</a><a href="/policies/terms-of-service">Terms</a><a href="/policies/refund-policy">Refunds</a><a href="/policies/subscription-policy">Cancellation</a><a href="/policies/contact-information">Contact info</a></div>
+</div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var ON="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 2px solid #C9A13B; box-shadow: 0 10px 30px rgba(201,161,59,0.18);", OFF="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 1.5px solid #E6E3DB;";
+  var PRODUCT="https://drinkhypr.com/products/vitamins-and-supplements-example-product-4", CART="https://drinkhypr.com/cart/47081531310255:1";
+  function setPlan(p){
+    document.querySelectorAll('[data-plan]').forEach(function(b){ b.setAttribute('style', b.getAttribute('data-plan')===p?ON:OFF); b.setAttribute('aria-pressed', b.getAttribute('data-plan')===p); });
+    document.querySelectorAll('.js-price').forEach(function(s){ s.textContent = p==='sub' ? '$42.49/mo' : '$49.99'; });
+    document.querySelectorAll('.js-buy').forEach(function(a){ a.href = p==='sub' ? PRODUCT : CART; });
+  }
+  document.querySelectorAll('[data-plan]').forEach(function(b){ b.addEventListener('click', function(){ setPlan(b.getAttribute('data-plan')); }); });
+  if (document.querySelector('[data-plan]')) setPlan('sub');
+  var track=document.querySelector('.ugc-track'), idx=0;
+  function moveUgc(d){
+    if(!track) return;
+    var n=track.children.length, step=274, vis=Math.max(1, Math.floor(track.parentElement.clientWidth/step));
+    idx=Math.min(Math.max(0, idx+d), Math.max(0, n-vis));
+    track.style.transform='translateX(-'+(idx*step)+'px)';
+  }
+  document.querySelectorAll('[data-ugc]').forEach(function(b){ b.addEventListener('click', function(){ moveUgc(b.getAttribute('data-ugc')==='next'?1:-1); }); });
+  window.addEventListener('resize', function(){ moveUgc(0); });
+  var GON="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid #0E0E0C; background: #FFFFFF; cursor: pointer;", GOFF="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;";
+  var main=document.getElementById('galMain');
+  document.querySelectorAll('[data-pick]').forEach(function(b){ b.addEventListener('click', function(){
+    if(main){ main.src=b.getAttribute('data-src'); main.alt=b.getAttribute('data-alt')||''; }
+    document.querySelectorAll('[data-pick]').forEach(function(x){ x.setAttribute('style', x===b?GON:GOFF); x.setAttribute('aria-pressed', x===b); });
+  }); });
+  var ING=null, TON="", TOFF="";
+  document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click', function(){
+    var id=b.getAttribute('data-tab');
+    document.querySelectorAll('[data-tab]').forEach(function(x){ var on=x===b; x.setAttribute('style', on?TON:TOFF); x.setAttribute('aria-selected', on); });
+    document.querySelectorAll('[data-ing]').forEach(function(s){ s.textContent = ING[id][s.getAttribute('data-ing')]; });
+  }); });
+})();
+</script>
+<script>
+(function(){
+  var sp=document.querySelectorAll('.js-sp');
+  function sync(){ var on=document.querySelector('[data-plan="sub"][aria-pressed="true"]'); var sub = on ? true : (document.querySelector('[data-plan="one"][aria-pressed="true"]') ? false : true); sp.forEach(function(i){ i.disabled = !sub; }); }
+  document.querySelectorAll('[data-plan]').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(sync, 0); }); });
+  sync();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F7F6F2">
+<title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
+{%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if settings.favicon %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}">{% endif %}
+{{ content_for_header }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&amp;family=Caveat:wght@700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F7F6F2;color:#0E0E0C;font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0E0E0C}a:hover{color:#8C6614}
+img{max-width:100%;display:block}
+.wrap{max-width:1320px;margin:0 auto;padding-left:20px;padding-right:20px}
+.sec{padding-top:96px;padding-bottom:96px}
+.disp{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;letter-spacing:-0.015em;line-height:0.92;margin:0;text-wrap:balance}
+.h2{font-size:clamp(40px,5.2vw,72px)}
+.script{font-family:'Caveat','Brush Script MT',cursive;font-weight:700;color:#C9A13B;text-transform:none;letter-spacing:0;display:block;transform:rotate(-5deg);transform-origin:left bottom;line-height:1}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C6614;margin:0}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.lede{font-size:18px;line-height:1.6;color:#5E5C55;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:#C9A13B;color:#0E0E0C}.btn-gold:hover{color:#0E0E0C}
+.btn-dark{background:#0E0E0C;color:#FFFFFF}.btn-dark:hover{color:#FFFFFF}
+.btn-line{background:transparent;color:#0E0E0C;border:1.5px solid #0E0E0C}
+.stars{color:#C9A13B;letter-spacing:2px}
+.marquee{background:#0E0E0C;color:#FFFFFF;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600}
+.marquee-track{display:inline-flex;gap:44px;padding:10px 22px;animation:mq 36s linear infinite}
+.marquee-track span::before{content:"✦";color:#C9A13B;margin-right:12px}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.nav{position:sticky;top:0;z-index:40;background:rgba(247,246,242,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
+.nav-links{display:flex;gap:28px;font-size:15px;font-weight:600}
+.nav-links a{text-decoration:none;color:#5E5C55}
+.hero{position:relative;border-radius:28px;overflow:hidden;background:#0E0E0C;color:#FFFFFF;min-height:700px;display:flex}
+.hero-media{position:absolute;top:0;right:0;bottom:0;width:64%}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
+.hero-copy{position:relative;z-index:2;width:min(620px,56%);padding:56px 0 48px 56px;display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+.hero-h1{font-size:clamp(56px,6.6vw,100px);color:#FFFFFF}
+.hero-h1 .script{font-size:0.6em;color:#D4AF4A;margin-bottom:0.08em}
+.hero-sub{font-size:18px;line-height:1.55;color:#D9D6CE;max-width:460px;margin:0}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-link{color:#FFFFFF;font-weight:700;text-underline-offset:4px}
+.hero-link:hover{color:#D4AF4A}
+.hero-proof{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:#D9D6CE}
+.offer-pill{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;max-width:100%;border:1.5px solid #C9A13B;border-radius:999px;padding:6px 18px 6px 6px;font-size:15px;color:#FFFFFF}
+.offer-pill img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 45%;flex:none}
+.offer-pill b{color:#D4AF4A}
+.hero-stats{position:absolute;z-index:3;right:24px;bottom:24px;display:flex;flex-direction:column;gap:8px}
+.stat-chip{background:rgba(14,14,12,0.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:10px 14px;min-width:168px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#D9D6CE}
+.stat-chip b{font-size:20px;letter-spacing:0;color:#FFFFFF;text-transform:none}
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.intro-text{font-size:clamp(22px,2.3vw,32px);line-height:1.45;font-weight:500;margin:0;color:#0E0E0C}
+.intro-text .muted{color:#9A978E}
+.pill-img{display:inline-block;width:84px;height:40px;border-radius:999px;object-fit:cover;vertical-align:middle;margin:0 4px}
+.pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start}
+.pdp-main{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:24px;overflow:hidden;background:#EDEAE2}
+.pdp-main img{width:100%;height:100%;object-fit:cover}
+.pdp-badge{position:absolute;left:16px;top:16px;background:#0E0E0C;color:#FFFFFF;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700}
+.pdp-badge b{color:#D4AF4A}
+.pdp-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.pdp-thumbs button img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.acc{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.acc details{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:16px;padding:0 18px}
+.acc summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;font-weight:700;cursor:pointer;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc .plus{font-size:22px;transition:transform .2s}
+.acc details[open] .plus{transform:rotate(45deg)}
+.acc p,.acc ul{margin:0 0 18px;color:#5E5C55;line-height:1.6;font-size:15px}
+.pdp-info{display:flex;flex-direction:column;gap:18px;position:sticky;top:86px}
+.pdp-title{font-size:clamp(36px,3.6vw,52px)}
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:14px;color:#5E5C55}
+.bens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;margin:0;padding:0;list-style:none;font-size:15px;font-weight:600}
+.bens li{display:flex;gap:10px;align-items:flex-start}
+.bens svg{flex:none;margin-top:1px}
+.plan-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px 12px;width:100%;text-align:left}
+.plan-top b{font-size:17px;display:block}
+.plan-top small{display:block;font-size:13px;color:#5E5C55;margin-top:4px}
+.plan-price{text-align:right;flex:none}
+.plan-price b{font-size:22px}
+.plan-price s{display:block;font-size:13px;color:#9A978E}
+.plan-gift{display:flex;align-items:center;gap:8px;width:100%;padding:10px 18px;background:#F3EBD6;font-size:14px;font-weight:600;color:#0E0E0C;text-align:left}
+.plan-badge{display:inline-block;vertical-align:2px;margin-left:6px;background:#C9A13B;color:#0E0E0C;border-radius:999px;padding:3px 9px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:13px;color:#5E5C55}
+.formula{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+.facts{background:#FFFFFF;border:3px solid #0E0E0C;padding:22px 24px;font-family:'Helvetica Neue',Arial,sans-serif}
+.facts h3{margin:0;font-size:34px;font-weight:900;line-height:1;border-bottom:1px solid #0E0E0C;padding-bottom:8px}
+.facts .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:8px 0;border-bottom:1px solid #0E0E0C}
+.facts .row span:last-child{white-space:nowrap}
+.works{display:flex;flex-direction:column;gap:14px}
+.work{background:#FFFFFF;border:1px solid #E6E3DB;border-radius:22px;padding:26px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;align-items:start}
+.work img,.work .sym{width:120px;height:120px;border-radius:18px;object-fit:cover}
+.work .sym{background:#0E0E0C;color:#D4AF4A;display:flex;align-items:center;justify-content:center;font-family:'Archivo',Arial,sans-serif;font-weight:800;font-size:40px}
+.work h3{margin:4px 0 8px;font-size:24px}
+.work p{margin:0 0 10px;color:#5E5C55;line-height:1.55;font-size:15px}
+.work .ref{font-size:12px;color:#8C6614}
+.ingr-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:720px;margin:0 auto 48px}
+.ingr-head .script{transform-origin:center;font-size:44px}
+.ingr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #E6E3DB;border-left:1px solid #E6E3DB}
+.ing{border-right:1px solid #E6E3DB;border-bottom:1px solid #E6E3DB;padding:36px 28px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.ing img,.ing .sym{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.ing .sym{background:#0E0E0C;color:#D4AF4A;display:flex;align-items:center;justify-content:center;font-family:'Archivo',Arial,sans-serif;font-weight:800;font-size:44px}
+.ing h3{margin:6px 0 0;font-size:20px}
+.ing .dose{font-weight:700;color:#8C6614;font-size:14px}
+.ing p{margin:0;color:#5E5C55;font-size:15px;line-height:1.5;max-width:280px}
+.feel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#FFFFFF;border-radius:28px;overflow:hidden}
+.feel-media{position:relative;min-height:540px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.feel-media img{width:100%;height:100%;object-fit:cover}
+.feel-copy{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.social-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px}
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:max(20px,calc((100% - 1280px)/2));padding-right:20px}
+.strip::-webkit-scrollbar{display:none}
+.tile{flex:none;width:260px;aspect-ratio:4/5;border-radius:20px;overflow:hidden;position:relative;background:#0E0E0C;scroll-snap-align:start;margin:0}
+.tile img,.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
+.stat{padding:12px 24px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.stat + .stat{border-left:1px solid #E6E3DB}
+.stat b{font-family:'Archivo',Arial,sans-serif;font-weight:800;font-stretch:82%;font-size:clamp(64px,8vw,120px);line-height:0.9;letter-spacing:-0.02em}
+.stat span{font-size:15px;color:#5E5C55;max-width:240px}
+.rev-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px}
+.rev{flex:none;width:320px;background:#FFFFFF;border:1px solid #E6E3DB;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;scroll-snap-align:start;margin:0}
+.rev-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.rev-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.rev blockquote{margin:0;font-size:16px;line-height:1.5}
+.rev-prod{background:#F1EEE7;height:150px;display:flex;align-items:center;justify-content:center}
+.rev-prod img{height:120px;width:auto}
+.wall{columns:3 280px;column-gap:14px}
+.refs{list-style:none;margin:0;padding:0;border-top:1px solid #DCD8CE}
+.refs li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid #DCD8CE}
+.refs b{display:block;font-size:17px;line-height:1.4}
+.refs span{display:block;color:#5E5C55;font-size:15px;margin-top:4px}
+.refs em{display:block;font-style:normal;color:#8C6614;font-size:14px;margin-top:4px}
+.faq{max-width:880px;margin:0 auto}
+.faq details{border-bottom:1px solid #DCD8CE}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:72px;font-size:19px;font-weight:700;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq .plus{font-size:26px;transition:transform .2s;flex:none}
+.faq details[open] .plus{transform:rotate(45deg)}
+.faq p{margin:0 0 22px;color:#5E5C55;line-height:1.65;font-size:16px}
+.final{background:#0E0E0C;color:#FFFFFF;border-radius:28px;padding:72px 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center;overflow:hidden;position:relative}
+.final img.final-tub{width:min(300px,100%);justify-self:center;filter:drop-shadow(0 30px 40px rgba(201,161,59,0.25))}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;padding-top:48px;padding-bottom:120px;font-size:14px;color:#5E5C55}
+.foot a{color:#5E5C55;text-decoration:none}
+.foot-links{display:flex;flex-wrap:wrap;gap:12px 28px}
+.mbar{display:none}
+@media (max-width:900px){
+.nav-links{display:none}
+.intro,.pdp,.feel,.final,.formula{grid-template-columns:minmax(0,1fr)}
+.pdp-info{position:static}
+.feel-media{min-height:380px}
+.feel-copy{padding:36px 24px}
+.ingr{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+.sec{padding-top:56px;padding-bottom:56px}
+.marquee{font-size:12px}
+.hero-wrap{padding-left:10px;padding-right:10px}
+.hero{flex-direction:column;min-height:0;border-radius:22px}
+.hero-media{position:relative;width:100%;aspect-ratio:4/5;max-width:100%}
+.hero-media img{object-position:var(--mpos,50% 50%);-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+.hero-copy{width:100%;padding:0 18px 26px;margin-top:-84px;gap:20px}
+.hero-h1{font-size:clamp(40px,11.4vw,58px)}
+.hero-sub{font-size:16px}
+.hero-cta .btn{width:100%}
+.hero-link{display:none}
+.hero-stats{top:12px;right:12px;bottom:auto;gap:6px}
+.stat-chip{min-width:0;padding:7px 10px;font-size:10px;gap:10px}
+.stat-chip b{font-size:14px}
+.intro-text{font-size:21px}
+.pill-img{width:60px;height:30px}
+.bens{grid-template-columns:minmax(0,1fr)}
+.facts{padding:18px}
+.facts h3{font-size:28px}
+.facts .row{font-size:14px}
+.work{grid-template-columns:minmax(0,1fr);padding:20px}
+.work img,.work .sym{width:72px;height:72px;border-radius:14px}
+.work .sym{font-size:26px}
+.ingr{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ing{padding:24px 12px}
+.ing img,.ing .sym{width:88px;height:88px}
+.ing .sym{font-size:32px}
+.ing p{font-size:13px}
+.tile{width:68vw}
+.rev{width:82vw}
+.stats{grid-template-columns:minmax(0,1fr)}
+.stat + .stat{border-left:0;border-top:1px solid #E6E3DB;padding-top:24px}
+.wall{columns:1}
+.wall figure:nth-child(n+7){display:none}
+.faq summary{font-size:17px}
+.final{padding:44px 22px;border-radius:22px}
+.mbar{display:flex;position:sticky;bottom:0;z-index:50;background:rgba(14,14,12,0.96);color:#FFFFFF;padding:10px 14px;align-items:center;justify-content:space-between;gap:12px}
+.mbar .btn{white-space:nowrap;flex:none;min-height:48px;padding:10px 22px}
+}
+@media (max-width:760px){
+.sec{padding-top:44px;padding-bottom:44px}
+.h2{font-size:clamp(32px,9vw,40px)}
+section .script{font-size:30px !important}
+.hero-media{aspect-ratio:1/1}
+.hero-copy{margin-top:-64px;gap:16px}
+.hero-copy > div{gap:14px !important}
+.hero-cta{order:-1}
+.hero-sub{font-size:15px}
+.hero-proof{font-size:13px}
+.offer-pill{font-size:13px;padding:4px 14px 4px 4px}
+.offer-pill img{width:32px;height:32px}
+.intro{gap:18px}
+.intro-text{font-size:19px}
+.pdp{display:flex;flex-direction:column;gap:16px}
+.pdp > div:first-child{display:contents}
+.pdp-main{order:1}
+.pdp-thumbs{order:2;margin-top:-4px}
+.pdp-info{order:3;gap:14px}
+.acc{order:4;margin-top:0;width:100%;align-self:stretch}
+.pdp-thumbs button{width:60px !important;height:60px !important}
+.pdp-title{font-size:34px}
+.bens{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;font-size:13px}
+.plan-top{padding:14px 14px 10px}
+.plan-top b{font-size:16px}
+.plan-gift{padding:8px 14px;font-size:13px}
+.feel-media{min-height:300px}
+.feel-copy{gap:16px}
+.work{gap:12px}
+.ingr-head{margin-bottom:24px}
+.ingr{grid-template-columns:minmax(0,1fr);border-left:0}
+.ing{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:14px;row-gap:2px;text-align:left;align-items:start;padding:14px 0;border-right:0}
+.ing img,.ing .sym{grid-row:1 / span 3;width:64px;height:64px;align-self:center}
+.ing .sym{font-size:24px}
+.ing h3{margin:0;font-size:16px}
+.ing p{font-size:13px;max-width:none}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat{padding:4px 6px;gap:6px}
+.stat + .stat{border-left:1px solid #E6E3DB;border-top:0;padding-top:4px}
+.stat b{font-size:clamp(28px,8.6vw,38px)}
+.stat span{font-size:12px}
+.rev-head .btn{display:none}
+.rev-prod{height:90px}
+.rev-prod img{height:72px}
+.refs li{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:16px 0}
+.refs b{font-size:15px}
+.final{gap:20px}
+.final img.final-tub{width:150px}
+}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none}.btn{transition:none}}
+</style>
+<style>:root{color-scheme:light}html{scroll-behavior:smooth}body{background:#F7F6F2;overflow-x:hidden}img{max-width:100%}button:focus-visible,a:focus-visible{outline:3px solid #B8912E;outline-offset:3px}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.ugc-track{transition:none!important}}</style>
+</head>
+<body style="margin: 0">
+<div style="width: 100%; min-height: 100%; background: #F7F6F2">
+
+<div class="marquee" aria-label="Offers">
+<div class="marquee-track">
+<span>Buy a tub, get a HYPR bottle free</span><span>No proprietary blends</span><span>5 g creatine monohydrate</span><span>0 g sugar</span><span>Subscribe &amp; save 15%</span><span>Made in the USA</span>
+<span>Buy a tub, get a HYPR bottle free</span><span>No proprietary blends</span><span>5 g creatine monohydrate</span><span>0 g sugar</span><span>Subscribe &amp; save 15%</span><span>Made in the USA</span>
+</div>
+</div>
+
+<nav class="nav" aria-label="Main">
+<div class="wrap nav-in">
+<a href="#top" aria-label="HYPR home"><img loading="lazy" decoding="async" src="{{ 'hypr-logo-black.png' | asset_url }}" alt="HYPR" style="height: 28px; width: auto"></a>
+<div class="nav-links"><a href="#buy">Shop</a><a href="#formula">Formula</a><a href="#research">Research</a><a href="#faq">Myths</a></div>
+<a href="#buy" class="btn btn-dark" style="min-height: 44px; padding: 10px 20px; font-size: 15px">Shop HYPR</a>
+</div>
+</nav>
+
+<header id="top" class="wrap hero-wrap" style="padding-top: 8px">
+<div class="hero">
+<div class="hero-media"><img fetchpriority="high" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt="The HYPR tub with pink Himalayan salt, a scoop of powder, watermelon and a glass of the drink" style="--pos: 50% 50%; --mpos: 50% 55%"></div>
+<div class="hero-copy">
+<h1 class="disp hero-h1"><span class="script">For label readers,</span>All of the HYPR. None of the hype.</h1>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p class="hero-sub">No secret blends. No big promises. Three things with real research behind them, at doses you can see on the label.</p>
+<div class="hero-cta"><a href="#buy" class="btn btn-gold">Shop HYPR · $49.99</a><a href="#research" class="hero-link">See the research</a></div>
+<div class="offer-pill"><img loading="lazy" decoding="async" src="{{ 'hypr-bottle.jpg' | asset_url }}" alt=""><span><b>Buy one, get a HYPR bottle free.</b> $14.99 value</span></div>
+<div class="hero-proof"><span class="stars">★★★★★</span><span>Five-star reviews · Made in the USA</span></div>
+</div>
+</div>
+<div class="hero-stats" aria-label="Per scoop">
+<div class="stat-chip">Creatine<b>5 g</b></div>
+<div class="stat-chip">Collagen<b>5 g</b></div>
+<div class="stat-chip">Sugar<b>0 g</b></div>
+</div>
+</div>
+</header>
+
+<section class="wrap sec">
+<div class="intro">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">Read the label</span>
+<h2 class="disp h2">Nothing hidden. Nothing extra.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p class="intro-text">Most powders hide their doses in a “blend.” HYPR lists every gram. <span class="muted">Salt for hydration. Creatine for power. Collagen for joints.</span> That's it.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px"><a href="#buy" class="btn btn-dark">Shop HYPR</a><a href="#formula" class="btn btn-line">See the formula</a></div>
+</div>
+</div>
+</section>
+
+<section id="buy" class="wrap" style="padding-bottom: 96px">
+<div class="pdp">
+<div>
+<div class="pdp-main">
+<img loading="lazy" decoding="async" id="galMain" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt="HYPR Watermelon tub with pink Himalayan salt, a scoop and watermelon">
+<span class="pdp-badge"><b>Free bottle</b> with every tub</span>
+</div>
+<div class="pdp-thumbs" role="group" aria-label="Product photos">
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-studio.jpg' | asset_url }}" data-alt="HYPR Watermelon tub with pink Himalayan salt, a scoop and watermelon" aria-label="Product" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid #0E0E0C; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" data-alt="Pink powder dissolving cleanly in water" aria-label="Mixes clean" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-label-story.jpg' | asset_url }}" data-alt="The back of the tub: our story from the two D1 founders" aria-label="Our story" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-label-story.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" data-alt="Scooping HYPR in the weight room" aria-label="Weight room" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-ls-basketball.jpg' | asset_url }}" data-alt="A basketball player drinks HYPR during a timeout" aria-label="Game day" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-ls-basketball.jpg' | asset_url }}" alt=""></button>
+
+<button type="button" data-pick="1" data-src="{{ 'hypr-bottle.jpg' | asset_url }}" data-alt="The free HYPR water bottle" aria-label="Free bottle" style="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;"><img loading="lazy" decoding="async" src="{{ 'hypr-bottle.jpg' | asset_url }}" alt=""></button>
+
+</div>
+<div class="acc">
+<details><summary>Other ingredients<span class="plus">+</span></summary><p>Himalayan pink salt, citric acid, pineapple fruit powder, natural flavor, bamboo stem/shoot extract, rebaudioside A (from stevia leaf extract), beet root powder (color).</p></details>
+<details><summary>How to use<span class="plus">+</span></summary><p>Mix one scoop (16.7 g) with 16–24 oz of water, once a day. A steady 3–5 g of creatine a day fills your muscles in about 3–4 weeks, no loading needed.</p></details>
+<details><summary>Is it third-party tested?<span class="plus">+</span></summary><p>[ADD TESTING / CERTIFICATION DETAILS]</p></details>
+</div>
+</div>
+
+<div class="pdp-info">
+<p class="eyebrow">Watermelon · 30 servings</p>
+<h2 class="disp pdp-title">HYPR All-in-One Hydration</h2>
+<div class="rating"><span class="stars">★★★★★</span><span>Five-star reviews</span><span>·</span><span>Made in the USA</span></div>
+<p class="lede" style="font-size: 17px">Three essentials at full, listed doses. Mix with water. Drink once a day.</p>
+<ul class="bens">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>No proprietary blends</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>5 g creatine monohydrate</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>810 mg sodium per scoop</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>No stimulants, no sugar</li>
+</ul>
+<button type="button" data-plan="sub" style="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 2px solid #C9A13B; box-shadow: 0 10px 30px rgba(201,161,59,0.18);">
+<span class="plan-top"><span><b>Subscribe &amp; save 15% <span class="plan-badge">Best value</span></b><small>Keeps creatine topped up daily · cancel anytime</small></span><span class="plan-price"><b>$42.49</b><s>$49.99</s></span></span>
+<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>Free HYPR bottle ($14.99 value)</span>
+</button>
+<button type="button" data-plan="one" style="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 1.5px solid #E6E3DB;">
+<span class="plan-top"><span><b>One-time purchase</b><small>One tub, 30 scoops</small></span><span class="plan-price"><b>$49.99</b></span></span>
+<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>Free HYPR bottle ($14.99 value)</span>
+</button>
+<form method="post" action="/cart/add" style="margin: 0; width: 100%"><input type="hidden" name="form_type" value="product"><input type="hidden" name="id" value="47081531310255"><input type="hidden" name="quantity" value="1"><input type="hidden" name="selling_plan" value="3294625967" class="js-sp"><input type="hidden" name="return_to" value="/cart"><button type="submit" class="btn" style="background: #C9A13B; color: #0E0E0C; width: 100%; min-height: 58px; font-size: 18px">Add to cart · <span class="js-price">$42.49/mo</span></button></form>
+<div class="trust"><span>✓ Every dose listed</span><span>✓ Zero sugar</span><span>✓ Made in the USA</span><span>✓ $1.42 a scoop subscribed</span></div>
+</div>
+</div>
+</section>
+
+<section id="formula" class="wrap" style="padding-bottom: 96px">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px">
+<span class="script" style="font-size: 40px">The formula</span>
+<h2 class="disp h2">What each one does.</h2>
+</div>
+<div class="formula">
+<div class="facts">
+<h3>Supplement Facts</h3>
+<div class="row" style="border-bottom: 8px solid #0E0E0C"><span>Serving size 16.7 g (1 scoop)</span><span>30 servings</span></div>
+
+<div class="row"><span><b>Calories</b> </span><span class="mono">25</span></div>
+
+<div class="row"><span><b>Total Carbohydrate</b> </span><span class="mono">2 g · 1%</span></div>
+
+<div class="row"><span><b>Protein</b> </span><span class="mono">5 g</span></div>
+
+<div class="row"><span><b>Magnesium</b> (as glycinate)</span><span class="mono">80 mg · 19%</span></div>
+
+<div class="row"><span><b>Sodium</b> </span><span class="mono">810 mg · 35%</span></div>
+
+<div class="row"><span><b>Potassium</b> (as citrate)</span><span class="mono">200 mg · 4%</span></div>
+
+<div class="row"><span><b>Bovine Collagen Peptides</b> </span><span class="mono">5 g · **</span></div>
+
+<div class="row"><span><b>Creatine Monohydrate</b> </span><span class="mono">5 g · **</span></div>
+
+<p style="margin: 10px 0 0; font-size: 12px; color: #5E5C55; line-height: 1.5">**Daily Value not established. Percent Daily Values are based on a 2,000 calorie diet.</p>
+</div>
+<div class="works">
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-salt.jpg' | asset_url }}" alt="Pink Himalayan salt"><div><p class="eyebrow">01 · Hydrate</p><h3>Electrolytes</h3><p>Sodium is the main mineral you lose in sweat. Potassium and magnesium round it out. A top sports medicine group (ACSM) says losing more than 2% of your body weight in sweat can hurt endurance and focus.</p><span class="ref mono">[3] Sawka et al., Med Sci Sports Exerc, 2007</span></div></div>
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of creatine powder"><div><p class="eyebrow">02 · Perform</p><h3>Creatine monohydrate</h3><p>Creatine tops up the fast fuel your muscles use for sprints, jumps and lifts. Sports nutrition experts (ISSN) call monohydrate the most effective supplement for high-intensity training.*</p><span class="ref mono">[1] Kreider et al., J Int Soc Sports Nutr, 2017</span></div></div>
+<div class="work"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-swirl.jpg' | asset_url }}" alt="Collagen dissolving in water"><div><p class="eyebrow">03 · Support</p><h3>Collagen peptides</h3><p>Collagen gives you glycine and proline, the building blocks of tendons and ligaments. Research here is newer than for creatine, so we keep the claim simple.*</p><span class="ref mono">[4] Shaw et al., Am J Clin Nutr, 2017</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="inside" class="sec" style="background: #FFFFFF">
+<div class="wrap">
+<div class="ingr-head">
+<span class="script">Ingredients</span>
+<h2 class="disp h2">Six on the label. Zero mystery.</h2>
+<p class="lede">Every active ingredient and its dose, in plain sight.</p>
+</div>
+<div class="ingr">
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-salt.jpg' | asset_url }}" alt="Pink Himalayan salt"><h3>Pink Himalayan salt</h3><span class="dose">810 mg sodium · 35% DV</span><p>The main mineral lost in sweat.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-scoop.jpg' | asset_url }}" alt="A scoop of HYPR powder"><h3>Creatine monohydrate</h3><span class="dose">5 g</span><p>The form used in most creatine research.*</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-swirl.jpg' | asset_url }}" alt="Pink powder dissolving in water"><h3>Bovine collagen peptides</h3><span class="dose">5 g</span><p>Dissolves clean with no taste.*</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-mg.jpg' | asset_url }}" alt="Magnesium powder with spinach, almonds and pumpkin seeds"><h3>Magnesium glycinate</h3><span class="dose">80 mg · 19% DV</span><p>A gentle form, easy on the stomach.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-k.jpg' | asset_url }}" alt="Potassium powder with banana and coconut"><h3>Potassium citrate</h3><span class="dose">200 mg · 4% DV</span><p>Works with sodium to hold fluid.</p></div>
+<div class="ing"><img loading="lazy" decoding="async" src="{{ 'hypr-ing-melon.jpg' | asset_url }}" alt="A slice of watermelon"><h3>Stevia + beet root</h3><span class="dose">0 g sugar</span><p>Sweet from stevia. Pink from beets.</p></div>
+</div>
+</div>
+</section>
+
+<section class="wrap sec">
+<div class="feel">
+<div class="feel-media">
+<img loading="lazy" decoding="async" src="{{ 'hypr-founder.jpg' | asset_url }}" alt="HYPR co-founder jogging off the field in his college baseball uniform" style="object-position: 55% 40%">
+<img loading="lazy" decoding="async" src="{{ 'hypr-label-story.jpg' | asset_url }}" alt="The back of the HYPR tub: our story from TJ and Caleb, with their signatures" style="background: #000000">
+</div>
+<div class="feel-copy">
+<span class="script" style="font-size: 44px">Built from experience,</span>
+<h2 class="disp h2">By former D1 players.</h2>
+<p class="lede">TJ and Caleb got tired of three tubs, three scoops and three reorders. So they built the one product they wished they'd had in the dugout, and put every dose on the label.</p>
+<a href="#buy" class="btn btn-dark" style="align-self: flex-start">Shop HYPR</a>
+</div>
+</div>
+</section>
+
+<section style="padding-bottom: 72px">
+<div class="wrap social-head">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">See it mix</span>
+<h2 class="disp h2">Follow @tryhypr</h2>
+</div>
+<a href="https://www.instagram.com/tryhypr" class="btn btn-line">Instagram ↗</a>
+</div>
+<div class="strip">
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-dissolve.jpg' | asset_url }}" alt="HYPR dissolving in water">
+</figure>
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-2.mp4' | file_url }}" poster="{{ 'hypr-ugc-2-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-studio.jpg' | asset_url }}" alt="HYPR tub with salt, scoop and watermelon">
+</figure>
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-1.mp4' | file_url }}" poster="{{ 'hypr-ugc-1-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+<figure class="tile">
+
+<img loading="lazy" decoding="async" src="{{ 'hypr-ls-weightroom.jpg' | asset_url }}" alt="Scooping HYPR in the weight room">
+</figure>
+
+<figure class="tile">
+<video src="{{ 'hypr-ugc-3.mp4' | file_url }}" poster="{{ 'hypr-ugc-3-poster.jpg' | asset_url }}" controls playsinline preload="none"></video>
+
+</figure>
+
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 96px">
+<div class="stats">
+<div class="stat"><b>0</b><span>Proprietary blends</span></div>
+<div class="stat"><b>5 g</b><span>Creatine, the daily dose research uses</span></div>
+<div class="stat"><b>25</b><span>Calories per scoop</span></div>
+</div>
+</section>
+
+<section id="reviews" class="sec" style="background: #FFFFFF">
+<div class="wrap rev-head">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="script" style="font-size: 40px">Reviews</span>
+<h2 class="disp h2">It mixes clean. It's legit.</h2>
+</div>
+<a href="#buy" class="btn btn-dark">Shop HYPR</a>
+</div>
+<div class="strip">
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Michael Smith</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“My order was shipped with tracking information the day after purchase. The flavor is great. It mixes well with water and is not grainy.”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Caleb N.</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“My daily routine is much more consistent now. One scoop is easier than remembering multiple products at different times.”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Brynn Garrett</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“AMAZING taste and im so excited that im getting more than one benefit in one drink”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Jordan T.</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“I have been drinking it daily for weeks and the flavor still has not gotten old.”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+<figure class="rev">
+<div class="rev-body">
+<div class="rev-top"><b>Nico Ferroni</b><span style="color: #9A978E">Verified buyer</span></div>
+<span class="stars">★★★★★</span>
+<blockquote>“Tastes really good and good price”</blockquote>
+</div>
+<div class="rev-prod"><img loading="lazy" decoding="async" src="{{ 'hypr-tub.png' | asset_url }}" alt=""></div>
+</figure>
+
+</div>
+<div class="wrap" style="margin-top: 64px">
+<div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px">
+<p class="eyebrow">Unedited texts from HYPR customers</p>
+<h3 class="disp" style="font-size: clamp(32px, 3.6vw, 48px)">Even the skeptics.</h3>
+</div>
+<div class="wall">
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-b73f5cca.jpg' | asset_url }}" alt="I was a little curious how the creatine and collagen would mix in water. But HYPR actually mixes insanely well." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #FFFFFF"><img loading="lazy" decoding="async" src="{{ 'hypr-t-0820bf67.jpg' | asset_url }}" alt="It taste great and it's so good to know the right stuff is in it" style="display: block; width: 100%; max-width: 406px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #000000"><img loading="lazy" decoding="async" src="{{ 'hypr-t-cb148868.jpg' | asset_url }}" alt="HYPR combines hydration, creatine, and collagen in one easy scoop, tastes great, and saves me from buying multiple supplements." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #131315"><img loading="lazy" decoding="async" src="{{ 'hypr-t-76fb4a1c.jpg' | asset_url }}" alt="The flavor is great. It mixes well with water and is not grainy." style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-0384b28c.jpg' | asset_url }}" alt="wow this stuff is legit" style="display: block; width: 100%; max-width: 331px; height: auto"></figure>
+
+<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: #0B0E15"><img loading="lazy" decoding="async" src="{{ 'hypr-t-232d6089.jpg' | asset_url }}" alt="Just got my order and it tastes amazing!" style="display: block; width: 100%; max-width: 409px; height: auto"></figure>
+
+</div>
+</div>
+</section>
+
+<section id="research" class="wrap sec" style="max-width: 1000px">
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 32px">
+<span class="script" style="font-size: 40px">Read it yourself</span>
+<h2 class="disp h2">The research.</h2>
+</div>
+<ol class="refs">
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[1]</span><div><b>ISSN position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine</b><span>Kreider RB, et al. J Int Soc Sports Nutr. 2017;14:18.</span><em>Creatine benefits, safety and daily dosing</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[2]</span><div><b>Common questions and misconceptions about creatine supplementation</b><span>Antonio J, et al. J Int Soc Sports Nutr. 2021;18:13.</span><em>Hair loss, kidneys, water weight and other myths</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[3]</span><div><b>American College of Sports Medicine position stand: Exercise and fluid replacement</b><span>Sawka MN, et al. Med Sci Sports Exerc. 2007;39(2):377–390.</span><em>The 2% sweat-loss line and sodium replacement</em></div></li>
+
+<li><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[4]</span><div><b>Vitamin C–enriched gelatin supplementation before intermittent activity augments collagen synthesis</b><span>Shaw G, et al. Am J Clin Nutr. 2017;105(1):136–143.</span><em>Collagen and connective tissue</em></div></li>
+
+</ol>
+<p style="margin: 18px 0 0; font-size: 13px; color: #9A978E">These studies looked at the ingredients, not at HYPR as a finished product.</p>
+</section>
+
+<section id="faq" class="wrap" style="padding-bottom: 96px">
+<div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 36px">
+<span class="script" style="font-size: 40px; transform-origin: center">Myth vs. fact</span>
+<h2 class="disp h2">The questions everyone Googles.</h2>
+</div>
+<div class="faq">
+<details><summary>Will creatine make my hair fall out?<span class="plus">+</span></summary><p>This myth comes from one small 2009 study. It found a hormone change, but it never measured hair. Later studies have not shown that creatine causes hair loss [2].</p></details>
+<details><summary>Is creatine bad for your kidneys?<span class="plus">+</span></summary><p>In healthy people, normal doses have not been shown to harm the kidneys [1][2]. If you have kidney problems, talk to your doctor before taking it.</p></details>
+<details><summary>Does creatine cause cramps or dehydration?<span class="plus">+</span></summary><p>No. Research does not back that up [2]. HYPR pairs creatine with 810 mg of sodium plus potassium and magnesium, so your electrolytes come in the same drink.</p></details>
+<details><summary>Do I need to “load” creatine?<span class="plus">+</span></summary><p>No. Loading gets you there faster, but a steady 3–5 g a day fills your muscles in a few weeks [1]. HYPR's 5 g scoop is built for that.</p></details>
+<details><summary>Will it make me bloated?<span class="plus">+</span></summary><p>Some people gain a little water weight early on. That water goes into your muscle, not under your skin [2].</p></details>
+<details><summary>Why magnesium glycinate?<span class="plus">+</span></summary><p>It's magnesium bound to the amino acid glycine. It's often picked because it's gentle on the stomach, which matters when you drink it every day.</p></details>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom: 24px">
+<div class="final">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<span class="script" style="font-size: 48px">Convinced?</span>
+<h2 class="disp" style="font-size: clamp(44px, 6vw, 88px); color: #FFFFFF">The science, in one scoop.</h2>
+<p style="margin: 0; color: #D9D6CE; font-size: 18px; line-height: 1.6; max-width: 460px">Electrolytes + 5 g creatine + 5 g collagen. A free HYPR bottle with your tub.</p>
+<a href="#buy" class="btn btn-gold" style="align-self: flex-start">Shop HYPR · $49.99</a>
+</div>
+<img loading="lazy" decoding="async" class="final-tub" src="{{ 'hypr-tub.png' | asset_url }}" alt="HYPR Watermelon tub">
+</div>
+</section>
+
+<footer class="wrap foot">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 520px">
+<img loading="lazy" decoding="async" src="{{ 'hypr-logo-black.png' | asset_url }}" alt="HYPR" style="height: 30px; width: auto; align-self: flex-start">
+<p style="margin: 0; font-size: 12px; line-height: 1.6">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Talk to a healthcare professional before starting any supplement.</p>
+<p style="margin: 0; font-size: 12px">© 2026 HYPR Nutrition · #FUELTHEGRIND</p>
+</div>
+<div class="foot-links"><a href="#buy">Shop</a><a href="#formula">Formula</a><a href="#research">Research</a><a href="https://www.instagram.com/tryhypr">Instagram</a><a href="https://drinkhypr.com/policies/refund-policy">Refund policy</a></div>
+</footer>
+
+<div class="mbar">
+<div style="display: flex; flex-direction: column; min-width: 0"><b style="font-size: 15px">HYPR · Watermelon</b><span style="font-size: 12px; color: #D9D6CE">+ free bottle · <span class="js-price">$42.49/mo</span></span></div>
+<a href="#buy" class="btn btn-gold">Add to cart</a>
+</div>
+
+</div>
+<script>
+(function(){
+  var ON="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 2px solid #C9A13B; box-shadow: 0 10px 30px rgba(201,161,59,0.18);", OFF="position: relative; display: flex; flex-direction: column; width: 100%; padding: 0; border-radius: 18px; overflow: hidden; cursor: pointer; font-family: inherit; color: #0E0E0C; background: #FFFFFF; border: 1.5px solid #E6E3DB;";
+  var PRODUCT="https://drinkhypr.com/products/vitamins-and-supplements-example-product-4", CART="https://drinkhypr.com/cart/47081531310255:1";
+  function setPlan(p){
+    document.querySelectorAll('[data-plan]').forEach(function(b){ b.setAttribute('style', b.getAttribute('data-plan')===p?ON:OFF); b.setAttribute('aria-pressed', b.getAttribute('data-plan')===p); });
+    document.querySelectorAll('.js-price').forEach(function(s){ s.textContent = p==='sub' ? '$42.49/mo' : '$49.99'; });
+    document.querySelectorAll('.js-buy').forEach(function(a){ a.href = p==='sub' ? PRODUCT : CART; });
+  }
+  document.querySelectorAll('[data-plan]').forEach(function(b){ b.addEventListener('click', function(){ setPlan(b.getAttribute('data-plan')); }); });
+  if (document.querySelector('[data-plan]')) setPlan('sub');
+  var track=document.querySelector('.ugc-track'), idx=0;
+  function moveUgc(d){
+    if(!track) return;
+    var n=track.children.length, step=274, vis=Math.max(1, Math.floor(track.parentElement.clientWidth/step));
+    idx=Math.min(Math.max(0, idx+d), Math.max(0, n-vis));
+    track.style.transform='translateX(-'+(idx*step)+'px)';
+  }
+  document.querySelectorAll('[data-ugc]').forEach(function(b){ b.addEventListener('click', function(){ moveUgc(b.getAttribute('data-ugc')==='next'?1:-1); }); });
+  window.addEventListener('resize', function(){ moveUgc(0); });
+  var GON="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid #0E0E0C; background: #FFFFFF; cursor: pointer;", GOFF="flex: none; width: 76px; height: 76px; padding: 3px; border-radius: 14px; border: 2px solid transparent; background: #FFFFFF; cursor: pointer;";
+  var main=document.getElementById('galMain');
+  document.querySelectorAll('[data-pick]').forEach(function(b){ b.addEventListener('click', function(){
+    if(main){ main.src=b.getAttribute('data-src'); main.alt=b.getAttribute('data-alt')||''; }
+    document.querySelectorAll('[data-pick]').forEach(function(x){ x.setAttribute('style', x===b?GON:GOFF); x.setAttribute('aria-pressed', x===b); });
+  }); });
+  var ING=null, TON="", TOFF="";
+  document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click', function(){
+    var id=b.getAttribute('data-tab');
+    document.querySelectorAll('[data-tab]').forEach(function(x){ var on=x===b; x.setAttribute('style', on?TON:TOFF); x.setAttribute('aria-selected', on); });
+    document.querySelectorAll('[data-ing]').forEach(function(s){ s.textContent = ING[id][s.getAttribute('data-ing')]; });
+  }); });
+})();
+</script>
+<script>
+(function(){
+  var sp=document.querySelectorAll('.js-sp');
+  function sync(){ var on=document.querySelector('[data-plan="sub"][aria-pressed="true"]'); var sub = on ? true : (document.querySelector('[data-plan="one"][aria-pressed="true"]') ? false : true); sp.forEach(function(i){ i.disabled = !sub; }); }
+  document.querySelectorAll('[data-plan]').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(sync, 0); }); });
+  sync();
+})();
+</script>
+</body>
+</html>
