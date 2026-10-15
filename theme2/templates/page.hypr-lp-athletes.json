@@ -8,7 +8,7 @@
         "message_336": {
           "type": "message",
           "settings": {
-            "text": "First order? Get a free HYPR bottle"
+            "text": "Subscribe & get a free HYPR bottle"
           }
         },
         "message_337": {
@@ -102,33 +102,33 @@
     "hero_2": {
       "type": "hypr-hero",
       "settings": {
-        "image": "shopify://shop_images/hypr-ls-basketball.jpg",
+        "image": "shopify://shop_images/IMG_1549.jpg",
         "position": "50% 42%",
         "mobile_position": "50% 62%",
         "script": "Every sport,",
         "heading": "Finish as strong as you start.",
         "text": "Cramps, dead legs and late-game fades often start with the salt you sweat out. One scoop of HYPR puts back 810 mg of sodium. It also gives you 5 g of creatine and 5 g of collagen. Zero sugar.*",
-        "button_label": "Shop HYPR · $49.99",
+        "button_label": "Shop HYPR · $42.49",
         "button_link": "#buy",
         "link_label": "Why you fade",
         "link_link": "#fade",
         "offer_image": "shopify://shop_images/hypr-bottle.jpg",
-        "offer_text": "<b>First order? Get a HYPR bottle free.</b> $14.99 value",
+        "offer_text": "<b>Subscribe & get a HYPR bottle free.</b> $14.99 value",
         "proof": "Five-star reviews · Built by former D1 athletes",
         "stats_top": true,
         "anchor": "top",
         "card_image": "shopify://shop_images/hypr-tub.png",
         "card_eyebrow": "Watermelon · 30 scoops",
         "card_title": "HYPR All-in-One",
-        "card_text": "$49.99 · free bottle, first order",
+        "card_text": "$42.49/mo · free bottle",
         "card_link": "#buy"
       },
       "blocks": {
         "stat_346": {
           "type": "stat",
           "settings": {
-            "label": "Sodium",
-            "value": "810 mg"
+            "label": "Electrolyte’s",
+            "value": "1090 mg"
           }
         },
         "stat_347": {
@@ -174,21 +174,21 @@
         "heading_tag": "h2",
         "rating": "Five-star reviews · Made in the USA",
         "lede": "Hydration, creatine and collagen in one scoop. No more three tubs in your bag.",
-        "badge": "<b>Free bottle</b> on your first order",
+        "badge": "<b>Free bottle</b> when you subscribe",
         "sub_title": "Subscribe & save 15%",
         "sub_badge": "Best value",
         "sub_note": "Never run out mid-season · cancel anytime",
         "per_month": "/mo",
         "one_title": "One-time purchase",
         "one_note": "One tub, 30 scoops",
-        "gift": "Free HYPR bottle on your first order ($14.99 value)",
+        "gift": "Free HYPR bottle with your first subscription ($14.99 value)",
         "button_label": "Add to cart",
         "trust": "Zero sugar | Mixes smooth | Made in the USA | $1.42 a scoop subscribed",
         "crumbs": false,
         "crumb_label": "",
         "show_mbar": true,
         "mbar_title": "HYPR · Watermelon",
-        "mbar_text": "+ free bottle on first order",
+        "mbar_text": "+ free bottle when you subscribe",
         "anchor": "buy"
       },
       "blocks": {
@@ -504,7 +504,7 @@
           "type": "row",
           "settings": {
             "label": "Price per serving",
-            "v1": "$1.67",
+            "v1": "$1.42",
             "v2": "About $1.50",
             "v3": "About $1.56",
             "v4": "About $1.60"
@@ -608,49 +608,54 @@
           "type": "video",
           "settings": {
             "video": "hypr-ugc-1.mp4",
-            "poster": "shopify://shop_images/hypr-ugc-1-poster.jpg"
-          }
-        },
-        "photo_388": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/hypr-ls-football.jpg"
+            "poster": "shopify://shop_images/hypr-ugc-1-poster.jpg",
+            "tag": "",
+            "caption": ""
           }
         },
         "video_389": {
           "type": "video",
           "settings": {
             "video": "hypr-ugc-2.mp4",
-            "poster": "shopify://shop_images/hypr-ugc-2-poster.jpg"
-          }
-        },
-        "photo_390": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/hypr-ls-track.jpg"
+            "poster": "shopify://shop_images/hypr-ugc-2-poster.jpg",
+            "tag": "",
+            "caption": ""
           }
         },
         "video_391": {
           "type": "video",
           "settings": {
             "video": "hypr-ugc-3.mp4",
-            "poster": "shopify://shop_images/hypr-ugc-3-poster.jpg"
+            "poster": "shopify://shop_images/hypr-ugc-3-poster.jpg",
+            "tag": "",
+            "caption": ""
           }
         },
-        "photo_392": {
-          "type": "photo",
+        "video_7YCeLH": {
+          "type": "video",
           "settings": {
-            "image": "shopify://shop_images/hypr-ls-locker.jpg"
+            "video": "hypr-ugc-3.mp4",
+            "poster": "shopify://shop_images/shopify_image.jpg",
+            "tag": "",
+            "caption": ""
+          }
+        },
+        "video_je9Bk4": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-3.mp4",
+            "poster": "shopify://shop_images/shopify_image_2.jpg",
+            "tag": "",
+            "caption": ""
           }
         }
       },
       "block_order": [
         "video_387",
-        "photo_388",
         "video_389",
-        "photo_390",
         "video_391",
-        "photo_392"
+        "video_7YCeLH",
+        "video_je9Bk4"
       ]
     },
     "stats_10": {
@@ -937,17 +942,6 @@
         "question_420"
       ]
     },
-    "cta_13": {
-      "type": "hypr-cta",
-      "settings": {
-        "script": "Next game?",
-        "heading": "Stop playing on empty.",
-        "text": "Hydration, creatine and collagen in one scoop. First order? Get a free HYPR bottle.",
-        "button_label": "Shop HYPR · $49.99",
-        "button_link": "#buy",
-        "image": "shopify://shop_images/hypr-tub.png"
-      }
-    },
     "footer_14": {
       "type": "hypr-footer",
       "settings": {
@@ -1001,7 +995,6 @@
     "stats_10",
     "reviews_11",
     "faq_12",
-    "cta_13",
     "footer_14"
   ]
 }

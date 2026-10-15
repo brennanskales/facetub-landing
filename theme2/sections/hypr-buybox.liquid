@@ -45,7 +45,7 @@
 {%- endif -%}
 <button type="button" class="plan{% unless plan %} is-on{% endunless %}" data-plan="one" aria-pressed="{% if plan %}false{% else %}true{% endif %}">
 <span class="plan-top"><span><b>{{ s.one_title }}</b><small>{{ s.one_note }}</small></span><span class="plan-price"><b>{{ v.price | money }}</b></span></span>
-{%- if s.gift != blank -%}<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>{{ s.gift }}</span>{%- endif -%}
+
 </button>
 <button type="submit" class="btn" style="background: #C9A13B; color: #0E0E0C; width: 100%; min-height: 58px; font-size: 18px"{% unless v.available %} disabled{% endunless %}>{% if v.available %}{{ s.button_label }} · <span class="js-price">{% if plan %}{{ sub_price | money }}{{ s.per_month }}{% else %}{{ v.price | money }}{% endif %}</span>{% else %}Sold out{% endif %}</button>
 {%- endform -%}
@@ -111,7 +111,7 @@
       "type": "inline_richtext",
       "id": "badge",
       "label": "Photo badge",
-      "default": "<b>Free bottle</b> on your first order"
+      "default": "<b>Free bottle</b> when you subscribe"
     },
     {
       "type": "header",
@@ -156,8 +156,8 @@
     {
       "type": "text",
       "id": "gift",
-      "label": "Gift line on each plan",
-      "default": "Free HYPR bottle on your first order ($14.99 value)"
+      "label": "Gift line (subscribe plan only)",
+      "default": "Free HYPR bottle with your first subscription ($14.99 value)"
     },
     {
       "type": "text",
@@ -202,7 +202,7 @@
       "type": "text",
       "id": "mbar_text",
       "label": "Mobile bar text",
-      "default": "+ free bottle on first order"
+      "default": "+ free bottle when you subscribe"
     },
     {
       "type": "text",
