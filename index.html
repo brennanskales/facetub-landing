@@ -613,7 +613,7 @@ footer p { max-width: 820px; }
 
   <section class="section wrap shop" id="shop" aria-labelledby="shop-h">
     <div class="gallery">
-      <div class="main" id="gMain"><img id="gImg" class="cover" src="img/ps_front.jpg" alt="The FaceTub, front view">
+      <div class="main" id="gMain"><img id="gImg" class="cover" src="img/real_ps1_front.jpg" alt="The FaceTub, front view with the breathing attachment">
         <button class="gnav prev" type="button" id="gPrev" aria-label="Previous image">←</button>
         <button class="gnav next" type="button" id="gNext" aria-label="Next image">→</button>
       </div>
@@ -690,7 +690,7 @@ footer p { max-width: 820px; }
 
 <div class="sticky show" id="sticky" aria-hidden="false">
   <div class="wrap">
-    <img src="img/ps_front.jpg" alt="">
+    <img src="img/real_ps1_front.jpg" alt="">
     <div class="txt"><b id="stickyName"><span class="s-long">The FaceTub — Full Kit</span><span class="s-short">The FaceTub</span></b><span><span class="stars">★★★★★</span> 4.9<span class="s-long"> (2,300) · Free shipping · Lifetime warranty</span><span class="s-short"> (2,300)</span></span></div>
     <a class="btn btn-dark" id="stickyCta" href="https://thefacetub.com/products/the-facetub-full-kit" target="_blank" rel="noopener" >Buy now · $119</a>
   </div>
@@ -1124,11 +1124,9 @@ function ftCreateTub(THREE, canvas, opts) {
 
   // gallery
   var G = [
-    { src: 'img/ps_front.jpg', alt: 'The FaceTub, front view', cover: true },
-    { src: 'img/ps_34.jpg', alt: 'The FaceTub, three-quarter view', cover: true },
-    { src: 'img/ps_ice.jpg', alt: 'The FaceTub filled with ice water', cover: true },
-    { src: 'img/ps_side.jpg', alt: 'The FaceTub, side view showing the breathing attachment', cover: true },
-    { src: 'img/ps_flatlay.jpg', alt: 'The FaceTub with nose clip and the spare Breathing Attachment add-on', cover: true }
+    { src: 'img/real_ps1_front.jpg', alt: 'The FaceTub, front view with the breathing attachment', cover: true },
+    { src: 'img/real_ps2_34.jpg', alt: 'The FaceTub, three-quarter view', cover: true },
+    { src: 'img/real_ps3_water.jpg', alt: 'The FaceTub filled with water and ice', cover: true }
   ];
   var gi = 0, gImg = document.getElementById('gImg'), gThumbs = document.getElementById('gThumbs');
   G.forEach(function (g, i) {
