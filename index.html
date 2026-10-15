@@ -7,7 +7,7 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="preload" as="image" href="img/hero_tub.jpg" fetchpriority="high">
 <title>The FaceTub | Breathable Facial Ice Bath for De-Puffing</title>
-<meta name="description" content="The FaceTub is a breathable facial ice bath. A built-in breathing attachment lets you keep your whole face in ice water for up to 2 minutes to de-puff, tighten the look of pores and wake up your skin. Free US shipping, 30-day returns.">
+<meta name="description" content="The FaceTub is a breathable facial ice bath. A built-in breathing attachment lets you keep your whole face in ice water for up to 2 minutes to de-puff, tighten the look of pores and wake up your skin. Free US shipping and a lifetime warranty on the tub.">
 <meta name="keywords" content="facial ice bath, face ice bath, de-puff, depuffing, cold plunge for face, face plunge, breathable face ice bath, morning skincare routine, puffy eyes">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="The FaceTub">
@@ -50,8 +50,7 @@
     "price": "119.00",
     "availability": "https://schema.org/InStock",
     "itemCondition": "https://schema.org/NewCondition",
-    "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" } },
-    "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "US", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30 }
+    "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" } }
   }
 }
 </script>
@@ -62,7 +61,7 @@
   "mainEntity": [
     { "@type": "Question", "name": "How do I breathe with my face under water?", "acceptedAnswer": { "@type": "Answer", "text": "The breathing attachment clips to the rim and sits in the basin, so you can breathe slowly and comfortably while your whole face is submerged. Use the included nose clip for the best experience." } },
     { "@type": "Question", "name": "How long should I stay under?", "acceptedAnswer": { "@type": "Answer", "text": "Start with 30 seconds and listen to your body. Build up gradually to a maximum of 2 minutes." } },
-    { "@type": "Question", "name": "What if it's not for me?", "acceptedAnswer": { "@type": "Answer", "text": "Every FaceTub comes with a 30-day return policy, plus free shipping on US orders." } },
+    { "@type": "Question", "name": "Is there a warranty?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The FaceTub tub has a lifetime warranty. If it is damaged, we send you a replacement." } },
     { "@type": "Question", "name": "How do I clean it?", "acceptedAnswer": { "@type": "Answer", "text": "Rinse with water after each use. For a deeper clean, use a mild soap, then wipe or air dry and store somewhere cool and dry." } }
   ]
 }
@@ -108,6 +107,9 @@ p { margin: 0; }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .logo { display: inline-flex; align-items: center; text-decoration: none; }
 .logo img { height: 34px; width: auto; }
+.logo-the { font-family: var(--display); font-weight: 800; font-size: 15px; line-height: 1; color: #1673E6; letter-spacing: -0.01em; margin-right: 5px; align-self: flex-start; margin-top: 1px; }
+.footer-brand { display: flex; align-items: flex-start; }
+.footer-brand .logo-the { font-size: 20px; margin-top: 4px; margin-right: 6px; }
 .footer-logo { width: 180px; height: auto; margin-bottom: 8px; }
 .nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a:not(.btn) { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
@@ -133,6 +135,9 @@ p { margin: 0; }
 .award .badge { width: 44px; height: 44px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex: none; }
 .award small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
 .award strong { display: block; font-size: 15px; line-height: 1.3; }
+.award-oprah { bottom: auto; top: 16px; max-width: calc(100% - 32px); background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.award-oprah .badge { background: #FFF4D6; color: #B7791F; }
+.award .aw-k { display: block; margin: 0 0 1px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #B7791F; }
 .chip-dark { position: absolute; right: 16px; top: 16px; background: var(--ink); color: #FFFFFF; border-radius: 999px; padding: 10px 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
 
 
@@ -366,7 +371,6 @@ footer p { max-width: 820px; }
   .hero-copy > h1 { order: 2; font-size: 46px; }
   .hero-media { order: 3; flex: none; }
   .hero-media .frame { border-radius: 24px; }
-  .award { position: static; margin-top: 10px; max-width: none; box-shadow: none; border: 1px solid var(--line); }
   .hero-copy > .lede { order: 4; font-size: 16px; }
   .hero-copy > .checks { order: 5; gap: 8px; }
   .checks li { font-size: 15px; }
@@ -374,9 +378,12 @@ footer p { max-width: 820px; }
   .hero-copy > .cta-row .btn { width: 100%; }
   .hero-copy > .cta-row .btn-ghost { border: 0; min-height: 44px; padding: 8px; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
   .hero-copy > .meta-row { order: 7; justify-content: center; font-size: 13px; }
-  .award { left: 12px; bottom: 12px; padding: 10px 12px; gap: 10px; border-radius: 14px; }
+  .award { left: 50%; top: -12px; transform: translateX(-50%); width: max-content; max-width: 94%; padding: 8px 14px 8px 8px; gap: 8px; border-radius: 14px; box-shadow: 0 8px 24px rgba(15,27,38,0.14); }
+  .hero-media { margin-top: 14px; }
   .award .badge { width: 36px; height: 36px; }
   .award strong { font-size: 13px; }
+  .award small { font-size: 11px; margin-top: 1px; }
+  .award .aw-k { font-size: 10px; }
   .chip-dark { right: 12px; top: 12px; padding: 8px 12px; font-size: 12px; }
 
   .section { padding-block: 48px; }
@@ -453,11 +460,11 @@ footer p { max-width: 820px; }
 </head>
 <body>
 
-<div class="announce"><span class="ann-long">Free US shipping · 30‑day returns · ★ 4.9 from 2,300 reviews</span><span class="ann-short">Free shipping · 30‑day returns · ★ 4.9</span></div>
+<div class="announce"><span class="ann-long">Free US Shipping · Lifetime Warranty · ★ 4.9 from 2,300 reviews</span><span class="ann-short">Free US Shipping · Lifetime Warranty · ★ 4.9</span></div>
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="FaceTub home"><img src="img/logo_word.png" alt="FaceTub" width="900" height="237"></a>
+    <a class="logo" href="#top" aria-label="The FaceTub home"><span class="logo-the">The</span><img src="img/logo_word_blue.png" alt="FaceTub" width="900" height="237"></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#reviews">Reviews</a>
@@ -489,9 +496,9 @@ footer p { max-width: 820px; }
     </div>
     <div class="hero-media">
       <div class="frame frame-ba"><img src="img/hero_tub.jpg" alt="Woman with a glowing, refreshed face behind the FaceTub filled with ice water and the blue breathing ring" fetchpriority="high"></div>
-      <div class="award">
-        <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 18v-5.5C4 8.4 6.2 5.6 9.8 5l.7 1.6C8.6 7.3 7.6 8.8 7.5 11H10v7H4zm10 0v-5.5c0-4.1 2.2-6.9 5.8-7.5l.7 1.6c-1.9.7-2.9 2.2-3 4.4H20v7h-6z"></path></svg></span>
-        <span><strong>“Using this daily really helps with depuffing before my day. I feel younger already.”</strong><small>Sarah M. · Verified buyer</small></span>
+      <div class="award award-oprah">
+        <span class="badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 13.8 7 22l5-3 5 3-1.5-8.2"></path><path d="m12 6 .9 1.9 2.1.3-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.3z" fill="currentColor" stroke="none"></path></svg></span>
+        <span><small class="aw-k">Award winner</small><strong>Oprah Daily Self‑Care Award</strong><small>2026 · Best At‑Home Facial</small></span>
       </div>
       
     </div>
@@ -499,9 +506,8 @@ footer p { max-width: 820px; }
 
   <section class="press" aria-label="Press">
     <div class="wrap">
-      <span class="label">As featured in</span>
+      <span class="label">As seen in</span>
       <div class="logos">
-        <a href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/oprah.png" alt="Oprah Daily O-Wards 2026" style="height:56px"></a>
         <a href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/gma.png" alt="Good Morning America" style="height:46px"></a>
         <img src="img/press/enews.png" alt="E! News" style="height:36px">
         <img src="img/press/pagesix.png" alt="Page Six" style="height:28px">
@@ -548,7 +554,7 @@ footer p { max-width: 820px; }
       <div style="display:flex;flex-direction:column;gap:12px">
         <div class="eyebrow">How it works</div>
         <h2 class="h2" id="how-h">The ice bath you can <span>breathe in.</span></h2>
-        <p class="lede">Holding your breath in a bowl of ice water gets you a few seconds. The FaceTub’s patent‑pending breathing attachment keeps air within reach, so you can stay under for the full two minutes.</p>
+        <p class="lede">Holding your breath in a bowl of ice water gets you a few seconds. With the FaceTub’s patented design, the breathing attachment keeps air within reach, so you can stay under for the full two minutes.</p>
       </div>
       <div class="how-grid">
         <div class="stage">
@@ -559,7 +565,7 @@ footer p { max-width: 820px; }
         </div>
         <div class="steps" id="steps">
           <button class="step" type="button" data-step="0" aria-pressed="true"><span class="num">01</span><span class="body"><span class="title">Fill with ice water</span><span class="desc">Cold water and a handful of ice. The deep basin holds enough to cover your whole face.</span><span class="bar"><i></i></span></span></button>
-          <button class="step" type="button" data-step="1" aria-pressed="false"><span class="num">02</span><span class="body"><span class="title">Clip in the breathing attachment</span><span class="desc">The patent‑pending attachment clips to the rim and sits in the basin, keeping air within reach.</span><span class="bar"><i></i></span></span></button>
+          <button class="step" type="button" data-step="1" aria-pressed="false"><span class="num">02</span><span class="body"><span class="title">Clip in the breathing attachment</span><span class="desc">Part of the FaceTub’s patented design, the attachment clips to the rim and sits in the basin, keeping air within reach.</span><span class="bar"><i></i></span></span></button>
           <button class="step" type="button" data-step="2" aria-pressed="false"><span class="num">03</span><span class="body"><span class="title">Face in. Breathe easy.</span><span class="desc">Submerge your whole face and breathe slowly through the attachment. No breath‑holding, no gasping.</span><span class="bar"><i></i></span></span></button>
           <button class="step" type="button" data-step="3" aria-pressed="false"><span class="num">04</span><span class="body"><span class="title">Two minutes. Glow.</span><span class="desc">Start with 30 seconds and build to 2 minutes. Lift out to skin that looks tighter, brighter and less puffy.</span><span class="bar"><i></i></span></span></button>
           <a class="btn btn-light" href="#shop" style="align-self:flex-start;margin-top:6px">Get yours — $119</a>
@@ -619,19 +625,19 @@ footer p { max-width: 820px; }
         <h2 id="shop-h">The FaceTub — Full Kit</h2>
         <span style="font-size:14px;color:var(--muted)"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 · 2,300 reviews</span>
       </div>
-      <div class="price"><b id="priceShown">$210</b><span id="priceNote">2 FaceTubs · free US shipping</span></div>
-      <div class="bundles" role="radiogroup" aria-label="Choose a bundle" id="bundles"></div>
+      <div class="price"><b id="priceShown">$119</b><span id="priceNote">Free US shipping</span></div>
+      <div class="bundles" role="radiogroup" aria-label="Choose a bundle" id="bundles" hidden></div>
       <button class="addon" type="button" role="checkbox" aria-checked="false" id="addon">
         <img src="img/attachment.jpg" alt="Breathing Attachment 2-Pack">
         <span class="mid"><small>Add a spare</small><b>Breathing Attachment 2‑Pack</b><span>Keep a backup at home or in your travel bag.</span></span>
         <span class="right"><span>+$25</span><span class="box" aria-hidden="true">✓</span></span>
       </button>
-      <a class="btn btn-dark addcart" id="addCart" href="https://thefacetub.com/products/the-facetub-full-kit" target="_blank" rel="noopener">Add to cart — $210</a>
+      <a class="btn btn-dark addcart" id="addCart" href="https://thefacetub.com/products/the-facetub-full-kit" target="_blank" rel="noopener">Add to cart — $119</a>
       <p class="pay">Shop Pay · Apple Pay · Google Pay · PayPal</p>
       <div class="trust">
         <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"></path><path d="M14 9h4l3 3v4h-7"></path><circle cx="5.5" cy="17.5" r="1.8"></circle><circle cx="17.5" cy="17.5" r="1.8"></circle></svg><span>Free US<br>shipping</span></div>
         <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4"></path><path d="M4 4h14l-2.5 4L18 12H4"></path><path d="M7 7h3"></path></svg><span>Made in<br>the USA</span></div>
-        <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v4h4"></path><path d="M12 8v4l2.5 2"></path></svg><span>30‑day<br>returns</span></div>
+        <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Lifetime<br>warranty</span></div>
       </div>
       <div class="inbox">
         <small>In the box</small>
@@ -649,8 +655,8 @@ footer p { max-width: 820px; }
       <details><summary>How quickly will I see less puffiness?</summary><p>Customers often notice their skin looks tighter and less puffy once their face warms back up after a session. Consistency matters more than duration.</p></details>
       <details><summary>How long should I stay under?</summary><p>Start with 30 seconds and listen to your body. Build up gradually to a maximum of 2 minutes.</p></details>
       <details><summary>Can I use warm water or skincare in it?</summary><p>Yes. Beyond ice‑water facials, you can create warm, soothing soaks for relaxation and skin hydration.</p></details>
-      <details><summary>What if it’s not for me?</summary><p>Every FaceTub comes with a 30‑day return policy, plus free shipping on US orders.</p></details>
       <details><summary>Is it safe for everyone?</summary><p>The FaceTub is safe for most people. If you have preexisting conditions, respiratory issues or extreme cold sensitivity, consult your doctor before use.</p></details>
+      <details><summary>Is there a warranty?</summary><p>Yes. The tub has a lifetime warranty. If it’s ever damaged, we’ll send you a replacement.</p></details>
       <details><summary>How do I clean it?</summary><p>Rinse with water after each use. For a deeper clean, use a mild soap, then wipe or air dry and store somewhere cool and dry.</p></details>
     </div>
   </section>
@@ -666,7 +672,7 @@ footer p { max-width: 820px; }
           <span class="final-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 · 2,300 reviews</span>
         </div>
         <ul class="final-trust">
-          <li>Free US shipping</li><li>30‑day returns</li><li>Made in the USA</li>
+          <li>Free US shipping</li><li>Lifetime warranty</li><li>Made in the USA</li>
         </ul>
       </div>
       <div class="final-media"><img src="img/ps_ice.jpg" alt="The FaceTub filled with ice water" loading="lazy"></div>
@@ -676,7 +682,7 @@ footer p { max-width: 820px; }
 
 <footer>
   <div class="wrap">
-    <img class="footer-logo" src="img/logo_lockup.png" alt="FaceTub, Made in U.S.A." width="900" height="490">
+    <div class="footer-brand"><span class="logo-the">The</span><img class="footer-logo" src="img/logo_lockup_blue.png" alt="FaceTub, Made in U.S.A." width="900" height="490"></div>
     <p>Advisory: before adding facial ice baths to your routine, consult a qualified healthcare professional, especially if you have respiratory issues, preexisting conditions or extreme cold sensitivity. All information is for educational purposes only and is not medical advice.</p>
     <span>support@thefacetub.com</span>
   </div>
@@ -685,7 +691,7 @@ footer p { max-width: 820px; }
 <div class="sticky show" id="sticky" aria-hidden="false">
   <div class="wrap">
     <img src="img/ps_front.jpg" alt="">
-    <div class="txt"><b id="stickyName"><span class="s-long">The FaceTub — Full Kit</span><span class="s-short">The FaceTub</span></b><span><span class="stars">★★★★★</span> 4.9<span class="s-long"> (2,300) · Free shipping · 30‑day returns</span><span class="s-short"> (2,300)</span></span></div>
+    <div class="txt"><b id="stickyName"><span class="s-long">The FaceTub — Full Kit</span><span class="s-short">The FaceTub</span></b><span><span class="stars">★★★★★</span> 4.9<span class="s-long"> (2,300) · Free shipping · Lifetime warranty</span><span class="s-short"> (2,300)</span></span></div>
     <a class="btn btn-dark" id="stickyCta" href="https://thefacetub.com/products/the-facetub-full-kit" target="_blank" rel="noopener" >Buy now · $119</a>
   </div>
 </div>
@@ -737,7 +743,7 @@ function ftCreateTub(THREE, canvas, opts) {
     var fz = Math.max(0, Math.min(1, z / (D / 2)));
     fz = fz * fz * (3 - 2 * fz);
     var gx = Math.max(0, 1 - Math.pow(Math.abs(x) / (W / 2 * 0.97), 2.4));
-    return H - 1.05 * fz * gx;
+    return H - 0.42 * fz * gx;
   }
   function loft(rows, closedRows) {
     var k = rows[0].length, pos = [], idx = [];
@@ -768,7 +774,8 @@ function ftCreateTub(THREE, canvas, opts) {
     color: 0xffffff, metalness: 0, roughness: 0.05, transparent: true, opacity: 0.22,
     envMapIntensity: 2.0, clearcoat: 1, side: THREE.DoubleSide, depthWrite: false
   });
-  var ringMat = new THREE.MeshPhysicalMaterial({ transparent: true, opacity: 1, color: new THREE.Color('#1A64D0'), roughness: 0.55, metalness: 0, clearcoat: 0.15, envMapIntensity: 0.3, emissive: new THREE.Color('#0a2a5a'), emissiveIntensity: 0 });
+  var ringMat = new THREE.MeshPhysicalMaterial({ transparent: true, opacity: 1, color: new THREE.Color('#1260D6'), roughness: 0.35, metalness: 0, clearcoat: 0.6, clearcoatRoughness: 0.2, envMapIntensity: 0.08, emissive: new THREE.Color('#0a2a5a'), emissiveIntensity: 0 });
+  ringMat.toneMapped = false;
   var connectorMat = new THREE.MeshPhysicalMaterial({ color: 0xe3ebf1, roughness: 0.15, transparent: true, opacity: 0.85, envMapIntensity: 1.6, clearcoat: 1, depthWrite: false });
   var waterLevelPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0.3);
   var waterMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#5DA8EC'), transparent: true, opacity: 0.38, side: THREE.DoubleSide, depthWrite: false, clippingPlanes: [waterLevelPlane] });
@@ -875,32 +882,44 @@ function ftCreateTub(THREE, canvas, opts) {
 
   // ---------- breathing attachment ----------
   var ringGroup = new THREE.Group(); tub.add(ringGroup);
-  var P1 = V(0, H - 0.1, -D / 2 * 0.84), P2 = V(0, 0.98, 0.3);
+  // Real attachment: a planar circular blue tube, a clear rim clip at the back
+  // and a clear oval mouthpiece directly opposite, tilted down into the basin.
+  var RING_R = 0.66, TILT = THREE.MathUtils.degToRad(34);
+  var P1 = V(0, H - 0.13, -D / 2 * 0.86);
+  var ua = V(0, -Math.sin(TILT), Math.cos(TILT));            // rim clip -> mouthpiece
+  var vb = V(1, 0, 0);
+  var P2 = P1.clone().add(ua.clone().multiplyScalar(RING_R * 2));
   var C = P1.clone().add(P2).multiplyScalar(0.5);
-  var ua = P2.clone().sub(P1); var semiA = ua.length() / 2; ua.normalize();
-  var vb = V(1, 0, 0), semiB = 0.7;
+  var nrm = new THREE.Vector3().crossVectors(ua, vb).normalize(); // ring plane normal (points up/back)
   var ringPts = [];
-  for (var r1 = 0; r1 < 64; r1++) {
-    var th = r1 / 64 * Math.PI * 2;
-    var pt = C.clone().add(ua.clone().multiplyScalar(-semiA * Math.cos(th))).add(vb.clone().multiplyScalar(semiB * Math.sin(th)));
-    pt.y -= 0.06 * Math.pow(Math.sin(th), 2);
-    ringPts.push(pt);
+  for (var r1 = 0; r1 < 96; r1++) {
+    var th = r1 / 96 * Math.PI * 2;
+    ringPts.push(C.clone().add(ua.clone().multiplyScalar(-RING_R * Math.cos(th))).add(vb.clone().multiplyScalar(RING_R * Math.sin(th))));
   }
-  var ringCurve = new THREE.CatmullRomCurve3(ringPts, true, 'catmullrom', 0.5);
-  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(ringCurve, 256, 0.058, 16, true), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
-  function sleeveAt(u, len) {
-    var p = ringCurve.getPointAt(u), tg = ringCurve.getTangentAt(u);
-    var m = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, len, 20), connectorMat); m.renderOrder = 21;
-    m.position.copy(p); m.quaternion.setFromUnitVectors(V(0, 1, 0), tg.normalize());
-    ringGroup.add(m);
-  }
-  sleeveAt(0.0, 0.42); sleeveAt(0.5, 0.36);
-  var clip = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.4, 0.18), connectorMat); clip.renderOrder = 21;
-  clip.position.set(0, H - 0.05, -D / 2 * 0.9); tub.add(clip);
-  var cross = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.06, 0.06), connectorMat); cross.renderOrder = 21;
-  cross.position.copy(ringCurve.getPointAt(0.5)).add(V(0, 0.05, 0.12)); ringGroup.add(cross);
-  var crossV = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.32, 0.06), connectorMat); crossV.renderOrder = 21;
-  crossV.position.copy(cross.position); ringGroup.add(crossV);
+  var ringCurve = new THREE.CatmullRomCurve3(ringPts, true, 'centripetal');
+  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(ringCurve, 256, 0.06, 18, true), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
+  // orientation shared by both clear parts: x along the tube, y along the ring-plane normal
+  var partQ = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(vb, nrm, ua));
+
+  // rim clip: clear block the tube passes through, with a tab that hooks over the rim
+  var clip = new THREE.Group(); clip.renderOrder = 21;
+  var clipBody = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.2, 0.26), connectorMat); clipBody.renderOrder = 21;
+  clipBody.position.copy(P1); clipBody.quaternion.copy(partQ); clip.add(clipBody);
+  var clipTop = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.05, 0.42), connectorMat); clipTop.renderOrder = 21;
+  clipTop.position.set(0, H + 0.03, -D / 2 + 0.02); clip.add(clipTop);
+  var clipBack = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.3, 0.05), connectorMat); clipBack.renderOrder = 21;
+  clipBack.position.set(0, H - 0.12, -D / 2 - 0.17); clip.add(clipBack);
+  ringGroup.add(clip);
+
+  // mouthpiece: flattened clear capsule with an oval opening facing up
+  var mouth = new THREE.Group();
+  var mBody = new THREE.Mesh(new THREE.CapsuleGeometry(0.13, 0.2, 8, 20), connectorMat); mBody.renderOrder = 21;
+  mBody.rotation.z = Math.PI / 2; mBody.scale.set(0.62, 1, 1.05); mouth.add(mBody);
+  var mLip = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.018, 10, 32), connectorMat); mLip.renderOrder = 22;
+  mLip.rotation.x = Math.PI / 2; mLip.scale.set(1.5, 0.75, 1); mLip.position.y = 0.075; mouth.add(mLip);
+  var mHole = new THREE.Mesh(new THREE.CircleGeometry(0.065, 28), new THREE.MeshBasicMaterial({ color: 0x9fb4c6, transparent: true, opacity: 0.55, depthWrite: false }));
+  mHole.renderOrder = 22; mHole.rotation.x = -Math.PI / 2; mHole.scale.set(1.45, 0.65, 1); mHole.position.y = 0.072; mouth.add(mHole);
+  mouth.position.copy(P2); mouth.quaternion.copy(partQ); ringGroup.add(mouth);
 
   // air particles
   var airMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.0, depthTest: false });
@@ -1065,10 +1084,8 @@ function ftCreateTub(THREE, canvas, opts) {
   var UNIT = 119, ADDON = 25;
   var BUNDLES = [
     { qty: 1, name: 'Buy 1', sub: 'For you', total: 119, tag: '' },
-    { qty: 2, name: 'Buy 2', sub: 'One for you, one to gift', total: 210, tag: 'MOST POPULAR' },
-    { qty: 3, name: 'Buy 3', sub: 'Home, travel + a gift', total: 327, tag: 'BEST VALUE' }
   ];
-  var state = { bundle: 1, addon: false };
+  var state = { bundle: 0, addon: false };
   var money = function (n) { return '$' + (Math.round(n * 100) / 100); };
 
   var bWrap = document.getElementById('bundles');
@@ -1091,7 +1108,7 @@ function ftCreateTub(THREE, canvas, opts) {
     addonBtn.setAttribute('aria-checked', state.addon ? 'true' : 'false');
     var href = VARIANT_ID ? 'https://thefacetub.com/cart/' + VARIANT_ID + ':' + b.qty + (state.addon && ADDON_VARIANT_ID ? ',' + ADDON_VARIANT_ID + ':1' : '') : PRODUCT_URL;
     document.getElementById('priceShown').textContent = money(total);
-    document.getElementById('priceNote').textContent = (b.qty === 1 ? 'Free US shipping' : b.qty + ' FaceTubs · free US shipping') + (state.addon ? ' · + spare attachments' : '');
+    document.getElementById('priceNote').textContent = (b.qty === 1 ? 'Free US shipping' : b.qty + ' FaceTubs · free US shipping') + (state.addon ? ' · + Breathing Attachment 2‑Pack' : '');
     var cart = document.getElementById('addCart');
     cart.href = href; cart.textContent = 'Add to cart — ' + money(total);
     var sc = document.getElementById('stickyCta');
@@ -1100,7 +1117,7 @@ function ftCreateTub(THREE, canvas, opts) {
   bWrap.addEventListener('keydown', function (e) {
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
     e.preventDefault();
-    state.bundle = (state.bundle + ((e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : 2)) % 3; render();
+    state.bundle = (state.bundle + ((e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : 2)) % BUNDLES.length; render();
     bWrap.children[state.bundle].focus();
   });
   render();
