@@ -675,7 +675,7 @@ footer p { max-width: 820px; }
           <li>Free US shipping</li><li>Lifetime warranty</li><li>Made in the USA</li>
         </ul>
       </div>
-      <div class="final-media"><img src="img/ps_ice.jpg" alt="The FaceTub filled with ice water" loading="lazy"></div>
+      <div class="final-media"><img src="img/real_ps3_water.jpg" alt="The FaceTub filled with water and ice" loading="lazy"></div>
     </div>
   </section>
 </main>
@@ -701,7 +701,7 @@ footer p { max-width: 820px; }
 function ftCreateTub(THREE, canvas, opts) {
   opts = opts || {};
   var accentHex = opts.accent || '#2F6FD6';
-  var W = 3.0, D = 4.0, H = 2.1, N = 128;
+  var W = 3.0, D = 4.0, H = 2.1, N = 128, RIM_DROP = 0.25;
 
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
@@ -740,10 +740,10 @@ function ftCreateTub(THREE, canvas, opts) {
     return [a * Math.sign(c) * Math.pow(Math.abs(c), 2 / n), b * Math.sign(s) * Math.pow(Math.abs(s), 2 / n)];
   }
   function topY(x, z) {
-    var fz = Math.max(0, Math.min(1, z / (D / 2)));
+    // real product: rim slopes evenly from the high back to a lower front lip
+    var fz = Math.max(0, Math.min(1, (z / (D / 2) + 1) / 2));
     fz = fz * fz * (3 - 2 * fz);
-    var gx = Math.max(0, 1 - Math.pow(Math.abs(x) / (W / 2 * 0.97), 2.4));
-    return H - 0.42 * fz * gx;
+    return H - RIM_DROP * fz;
   }
   function loft(rows, closedRows) {
     var k = rows[0].length, pos = [], idx = [];
@@ -824,7 +824,7 @@ function ftCreateTub(THREE, canvas, opts) {
   tub.add(edgeTube(botRing, 0.022));
 
   // ---------- basin ----------
-  var bottomY = 0.24, zc = -0.12, K = 26, bowlRows = [];
+  var bottomY = 0.48, zc = -0.12, K = 26, bowlRows = [];
   var rimRow = [];
   for (var i2 = 0; i2 < N; i2++) {
     var t2 = i2 / N * Math.PI * 2;
@@ -882,44 +882,47 @@ function ftCreateTub(THREE, canvas, opts) {
 
   // ---------- breathing attachment ----------
   var ringGroup = new THREE.Group(); tub.add(ringGroup);
-  // Real attachment: a planar circular blue tube, a clear rim clip at the back
-  // and a clear oval mouthpiece directly opposite, tilted down into the basin.
-  var RING_R = 0.66, TILT = THREE.MathUtils.degToRad(34);
-  var P1 = V(0, H - 0.13, -D / 2 * 0.86);
-  var ua = V(0, -Math.sin(TILT), Math.cos(TILT));            // rim clip -> mouthpiece
+  // Breathing attachment, measured from product photos: a blue tube oval that hangs from a
+  // clear rim clip at the back centre; its lower chord is a clear T-connector whose short
+  // stem (with a flat flange) points into the oval - that stem is the mouthpiece.
+  var RA = 0.5, RB = 0.46, TILT = THREE.MathUtils.degToRad(50);
+  var P1 = V(0, H - 0.1, -D / 2 * 0.84);
+  var ua = V(0, -Math.sin(TILT), Math.cos(TILT));             // down the ring plane
   var vb = V(1, 0, 0);
-  var P2 = P1.clone().add(ua.clone().multiplyScalar(RING_R * 2));
-  var C = P1.clone().add(P2).multiplyScalar(0.5);
-  var nrm = new THREE.Vector3().crossVectors(ua, vb).normalize(); // ring plane normal (points up/back)
+  var C = P1.clone().add(ua.clone().multiplyScalar(RA));
+  var nrm = new THREE.Vector3().crossVectors(ua, vb).normalize(); // faces up/forward (towards the face)
+  function ovalPt(th) { return C.clone().add(ua.clone().multiplyScalar(-RA * Math.cos(th))).add(vb.clone().multiplyScalar(RB * Math.sin(th))); }
   var ringPts = [];
-  for (var r1 = 0; r1 < 96; r1++) {
-    var th = r1 / 96 * Math.PI * 2;
-    ringPts.push(C.clone().add(ua.clone().multiplyScalar(-RING_R * Math.cos(th))).add(vb.clone().multiplyScalar(RING_R * Math.sin(th))));
-  }
-  var ringCurve = new THREE.CatmullRomCurve3(ringPts, true, 'centripetal');
-  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(ringCurve, 256, 0.06, 18, true), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
-  // orientation shared by both clear parts: x along the tube, y along the ring-plane normal
+  for (var r1 = 0; r1 < 96; r1++) ringPts.push(ovalPt(r1 / 96 * Math.PI * 2));
+  var ringCurve = new THREE.CatmullRomCurve3(ringPts, true, 'centripetal'); // full loop (air bubbles follow it)
+  var GAP = THREE.MathUtils.degToRad(42);                      // half-angle of the clear bottom chord
+  var arcPts = [];
+  for (var r2 = 0; r2 <= 80; r2++) { var th2 = (Math.PI - GAP) - r2 / 80 * (2 * Math.PI - 2 * GAP); arcPts.push(ovalPt(th2)); }
+  var arcCurve = new THREE.CatmullRomCurve3(arcPts, false, 'centripetal');
+  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(arcCurve, 200, 0.055, 18, false), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
   var partQ = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(vb, nrm, ua));
-
-  // rim clip: clear block the tube passes through, with a tab that hooks over the rim
-  var clip = new THREE.Group(); clip.renderOrder = 21;
-  var clipBody = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.2, 0.26), connectorMat); clipBody.renderOrder = 21;
-  clipBody.position.copy(P1); clipBody.quaternion.copy(partQ); clip.add(clipBody);
-  var clipTop = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.05, 0.42), connectorMat); clipTop.renderOrder = 21;
-  clipTop.position.set(0, H + 0.03, -D / 2 + 0.02); clip.add(clipTop);
-  var clipBack = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.3, 0.05), connectorMat); clipBack.renderOrder = 21;
-  clipBack.position.set(0, H - 0.12, -D / 2 - 0.17); clip.add(clipBack);
-  ringGroup.add(clip);
-
-  // mouthpiece: flattened clear capsule with an oval opening facing up
-  var mouth = new THREE.Group();
-  var mBody = new THREE.Mesh(new THREE.CapsuleGeometry(0.13, 0.2, 8, 20), connectorMat); mBody.renderOrder = 21;
-  mBody.rotation.z = Math.PI / 2; mBody.scale.set(0.62, 1, 1.05); mouth.add(mBody);
-  var mLip = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.018, 10, 32), connectorMat); mLip.renderOrder = 22;
-  mLip.rotation.x = Math.PI / 2; mLip.scale.set(1.5, 0.75, 1); mLip.position.y = 0.075; mouth.add(mLip);
-  var mHole = new THREE.Mesh(new THREE.CircleGeometry(0.065, 28), new THREE.MeshBasicMaterial({ color: 0x9fb4c6, transparent: true, opacity: 0.55, depthWrite: false }));
-  mHole.renderOrder = 22; mHole.rotation.x = -Math.PI / 2; mHole.scale.set(1.45, 0.65, 1); mHole.position.y = 0.072; mouth.add(mHole);
-  mouth.position.copy(P2); mouth.quaternion.copy(partQ); ringGroup.add(mouth);
+  function clearPiece(geo, pos, q) { var m = new THREE.Mesh(geo, connectorMat); m.renderOrder = 21; m.position.copy(pos); if (q) m.quaternion.copy(q); ringGroup.add(m); return m; }
+  function sleeve(pt, tg, len, r) { var q = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), tg.clone().normalize()); return clearPiece(new THREE.CylinderGeometry(r, r, len, 20), pt, q); }
+  // rim clip at the top of the oval: block the tube passes through + tab over the rim + back leg
+  var clip = new THREE.Group(); ringGroup.add(clip);
+  var cb = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.16, 0.22), connectorMat); cb.renderOrder = 21; cb.position.copy(P1); cb.quaternion.copy(partQ); clip.add(cb);
+  var ct = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.04, 0.34), connectorMat); ct.renderOrder = 21; ct.position.set(0, H + 0.03, -D / 2 + 0.06); clip.add(ct);
+  var cl = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.26, 0.04), connectorMat); cl.renderOrder = 21; cl.position.set(0, H - 0.1, -D / 2 - 0.1); clip.add(cl);
+  sleeve(ovalPt(0.32), ovalPt(0.34).sub(ovalPt(0.3)), 0.16, 0.075);
+  sleeve(ovalPt(-0.32), ovalPt(-0.34).sub(ovalPt(-0.3)), 0.16, 0.075);
+  // bottom chord: clear T-connector between two sleeves
+  var eL = ovalPt(Math.PI - GAP), eR = ovalPt(Math.PI + GAP);
+  sleeve(eL, ovalPt(Math.PI - GAP + 0.06).sub(ovalPt(Math.PI - GAP - 0.06)), 0.18, 0.078);
+  sleeve(eR, ovalPt(Math.PI + GAP + 0.06).sub(ovalPt(Math.PI + GAP - 0.06)), 0.18, 0.078);
+  var mid = eL.clone().add(eR).multiplyScalar(0.5);
+  sleeve(mid, eR.clone().sub(eL), eL.distanceTo(eR), 0.05);
+  // mouthpiece stem: points from the chord towards the oval centre, flat flange near its tip
+  var inward = C.clone().sub(mid).normalize();
+  var stemLen = 0.24, stemQ = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), inward);
+  var stem = clearPiece(new THREE.BoxGeometry(0.1, stemLen, 0.075), mid.clone().add(inward.clone().multiplyScalar(stemLen / 2)), stemQ);
+  var flange = clearPiece(new THREE.BoxGeometry(0.3, 0.025, 0.13), mid.clone().add(inward.clone().multiplyScalar(stemLen * 0.62)), stemQ);
+  var mouth = new THREE.Group(); // kept for API parity
+  var P2 = mid;
 
   // air particles
   var airMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.0, depthTest: false });
@@ -965,7 +968,7 @@ function ftCreateTub(THREE, canvas, opts) {
   marker.renderOrder = 10; marker.scale.set(0.34, 0.34, 1); tub.add(marker);
 
   // ---------- views / steps ----------
-  var anchors = [V(0.5, 0.55, 0.2), ringCurve.getPointAt(0.25), ringCurve.getPointAt(0.62), V(0, 0.42, D / 2)];
+  var anchors = [V(0.4, 0.95, 0.05), ringCurve.getPointAt(0.25), mid.clone().add(inward.clone().multiplyScalar(0.24)), V(0, 0.42, D / 2)];
   var views = [
     { yaw: 0.45, pitch: 0.42 },
     { yaw: -0.7, pitch: 0.3 },
@@ -974,13 +977,13 @@ function ftCreateTub(THREE, canvas, opts) {
   ];
   var state = {
     step: opts.step || 0, yaw: views[0].yaw, pitch: views[0].pitch, dragYaw: 0, dragPitch: 0,
-    water: bottomY, waterTarget: bottomY + 0.62, ringY: 1.6, ringTarget: 1.6, t: 0, lastInteract: -10, dragging: false
+    water: bottomY, waterTarget: bottomY + 0.6, ringY: 1.6, ringTarget: 1.6, t: 0, lastInteract: -10, dragging: false
   };
   function applyStep(i, instant) {
     state.step = i; state.dragYaw = 0; state.dragPitch = 0;
-    if (i === 0) { state.water = bottomY; state.waterTarget = bottomY + 0.62; state.ringY = 1.6; state.ringTarget = 1.6; }
-    if (i === 1) { state.waterTarget = bottomY + 0.62; state.ringY = 1.4; state.ringTarget = 0; }
-    if (i >= 2) { state.waterTarget = bottomY + 0.62; state.ringTarget = 0; }
+    if (i === 0) { state.water = bottomY; state.waterTarget = bottomY + 0.6; state.ringY = 1.6; state.ringTarget = 1.6; }
+    if (i === 1) { state.waterTarget = bottomY + 0.6; state.ringY = 1.4; state.ringTarget = 0; }
+    if (i >= 2) { state.waterTarget = bottomY + 0.6; state.ringTarget = 0; }
     if (instant) { state.yaw = views[i].yaw; state.pitch = views[i].pitch; state.water = state.waterTarget; state.ringY = state.ringTarget; }
   }
   applyStep(state.step, !!opts.instant);
