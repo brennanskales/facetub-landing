@@ -895,32 +895,25 @@ function ftCreateTub(THREE, canvas, opts) {
   var ringPts = [];
   for (var r1 = 0; r1 < 96; r1++) ringPts.push(ovalPt(r1 / 96 * Math.PI * 2));
   var ringCurve = new THREE.CatmullRomCurve3(ringPts, true, 'centripetal'); // full loop (air bubbles follow it)
-  var GAP = THREE.MathUtils.degToRad(42);                      // half-angle of the clear bottom chord
-  var arcPts = [];
-  for (var r2 = 0; r2 <= 80; r2++) { var th2 = (Math.PI - GAP) - r2 / 80 * (2 * Math.PI - 2 * GAP); arcPts.push(ovalPt(th2)); }
-  var arcCurve = new THREE.CatmullRomCurve3(arcPts, false, 'centripetal');
-  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(arcCurve, 200, 0.055, 18, false), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
+  // continuous blue loop
+  var ringMesh = new THREE.Mesh(new THREE.TubeGeometry(ringCurve, 256, 0.055, 18, true), ringMat); ringMesh.renderOrder = 20; ringGroup.add(ringMesh);
   var partQ = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(vb, nrm, ua));
   function clearPiece(geo, pos, q) { var m = new THREE.Mesh(geo, connectorMat); m.renderOrder = 21; m.position.copy(pos); if (q) m.quaternion.copy(q); ringGroup.add(m); return m; }
   function sleeve(pt, tg, len, r) { var q = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), tg.clone().normalize()); return clearPiece(new THREE.CylinderGeometry(r, r, len, 20), pt, q); }
-  // rim clip at the top of the oval: block the tube passes through + tab over the rim + back leg
+  // top clip: block the tube passes through + tab over the rim + back leg
   var clip = new THREE.Group(); ringGroup.add(clip);
-  var cb = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.16, 0.22), connectorMat); cb.renderOrder = 21; cb.position.copy(P1); cb.quaternion.copy(partQ); clip.add(cb);
-  var ct = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.04, 0.34), connectorMat); ct.renderOrder = 21; ct.position.set(0, H + 0.03, -D / 2 + 0.06); clip.add(ct);
-  var cl = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.26, 0.04), connectorMat); cl.renderOrder = 21; cl.position.set(0, H - 0.1, -D / 2 - 0.1); clip.add(cl);
-  sleeve(ovalPt(0.32), ovalPt(0.34).sub(ovalPt(0.3)), 0.16, 0.075);
-  sleeve(ovalPt(-0.32), ovalPt(-0.34).sub(ovalPt(-0.3)), 0.16, 0.075);
-  // bottom chord: clear T-connector between two sleeves
-  var eL = ovalPt(Math.PI - GAP), eR = ovalPt(Math.PI + GAP);
-  sleeve(eL, ovalPt(Math.PI - GAP + 0.06).sub(ovalPt(Math.PI - GAP - 0.06)), 0.18, 0.078);
-  sleeve(eR, ovalPt(Math.PI + GAP + 0.06).sub(ovalPt(Math.PI + GAP - 0.06)), 0.18, 0.078);
-  var mid = eL.clone().add(eR).multiplyScalar(0.5);
-  sleeve(mid, eR.clone().sub(eL), eL.distanceTo(eR), 0.05);
-  // mouthpiece stem: points from the chord towards the oval centre, flat flange near its tip
+  var cb = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.2, 0.2), connectorMat); cb.renderOrder = 21; cb.position.copy(P1); cb.quaternion.copy(partQ); clip.add(cb);
+  var ct = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.04, 0.34), connectorMat); ct.renderOrder = 21; ct.position.set(0, H + 0.03, -D / 2 + 0.06); clip.add(ct);
+  var cl = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.26, 0.04), connectorMat); cl.renderOrder = 21; cl.position.set(0, H - 0.1, -D / 2 - 0.1); clip.add(cl);
+  sleeve(ovalPt(0.0), ovalPt(0.08).sub(ovalPt(-0.08)), 0.36, 0.072);
+  // bottom clip (matches the top one) carrying the mouthpiece flange
+  var mid = ovalPt(Math.PI);
+  clearPiece(new THREE.BoxGeometry(0.26, 0.2, 0.2), mid, partQ);
+  sleeve(mid, ovalPt(Math.PI + 0.08).sub(ovalPt(Math.PI - 0.08)), 0.36, 0.072);
   var inward = C.clone().sub(mid).normalize();
-  var stemLen = 0.24, stemQ = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), inward);
-  var stem = clearPiece(new THREE.BoxGeometry(0.1, stemLen, 0.075), mid.clone().add(inward.clone().multiplyScalar(stemLen / 2)), stemQ);
-  var flange = clearPiece(new THREE.BoxGeometry(0.3, 0.025, 0.13), mid.clone().add(inward.clone().multiplyScalar(stemLen * 0.62)), stemQ);
+  var stemQ = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), inward);
+  clearPiece(new THREE.BoxGeometry(0.1, 0.16, 0.075), mid.clone().add(inward.clone().multiplyScalar(0.16)), stemQ);
+  clearPiece(new THREE.BoxGeometry(0.32, 0.025, 0.14), mid.clone().add(inward.clone().multiplyScalar(0.13)), stemQ);
   var mouth = new THREE.Group(); // kept for API parity
   var P2 = mid;
 
