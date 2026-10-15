@@ -1,0 +1,272 @@
+{%- liquid
+  assign s = section.settings
+  assign p = s.product | default: product
+  assign v = p.selected_or_first_available_variant
+  assign plan = v.selling_plan_allocations.first
+  assign sub_price = plan.price | default: v.price
+  assign has_imgs = false
+  for block in section.blocks
+    if block.type == 'image' and block.settings.image != blank
+      assign has_imgs = true
+    endif
+  endfor
+-%}
+{%- if p != blank -%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="wrap" style="padding-bottom: 96px; padding-top: {% if s.crumbs %}24px{% else %}0{% endif %}" data-buybox data-sub="{{ sub_price | money }}{{ s.per_month }}" data-one="{{ v.price | money }}">
+{%- if s.crumbs -%}<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span>/</span><span>{{ s.crumb_label | default: p.title }}</span></nav>{%- endif -%}
+<div class="pdp">
+<div>
+<div class="pdp-main">
+{%- if has_imgs -%}{%- for block in section.blocks -%}{%- if block.type == 'image' and block.settings.image != blank -%}<img data-main src="{{ block.settings.image | image_url: width: 1400 }}" alt="{{ block.settings.image.alt | escape }}"{% if s.heading_tag == 'h1' %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>{%- break -%}{%- endif -%}{%- endfor -%}
+{%- elsif p.featured_media -%}<img data-main src="{{ p.featured_media | image_url: width: 1400 }}" alt="{{ p.featured_media.alt | default: p.title | escape }}">{%- endif -%}
+{%- if s.badge != blank -%}<span class="pdp-badge">{{ s.badge }}</span>{%- endif -%}
+</div>
+<div class="pdp-thumbs" role="group" aria-label="Product photos">
+{%- if has_imgs -%}{%- assign n = 0 -%}{%- for block in section.blocks -%}{%- if block.type == 'image' and block.settings.image != blank -%}<button type="button" class="thumb{% if n == 0 %} is-on{% endif %}" data-pick data-src="{{ block.settings.image | image_url: width: 1400 }}" data-alt="{{ block.settings.image.alt | escape }}" aria-label="{{ block.settings.label | default: 'Photo' }}" {{ block.shopify_attributes }}>{{ block.settings.image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}</button>{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- else -%}{%- for m in p.media limit: 8 -%}{%- if m.media_type == 'image' -%}<button type="button" class="thumb{% if forloop.first %} is-on{% endif %}" data-pick data-src="{{ m | image_url: width: 1400 }}" data-alt="{{ m.alt | escape }}" aria-label="Photo {{ forloop.index }}">{{ m | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}</button>{%- endif -%}{%- endfor -%}{%- endif -%}
+</div>
+<div class="acc">{%- for block in section.blocks -%}{%- if block.type == 'accordion' -%}<details {{ block.shopify_attributes }}><summary>{{ block.settings.title }}<span class="plus">+</span></summary><div class="acc-body">{{ block.settings.content }}</div></details>{%- endif -%}{%- endfor -%}</div>
+</div>
+<div class="pdp-info">
+{%- if s.eyebrow != blank -%}<p class="eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+<{{ s.heading_tag }} class="disp pdp-title">{{ s.title | default: p.title }}</{{ s.heading_tag }}>
+{%- if s.rating != blank -%}<div class="rating"><span class="stars">★★★★★</span><span>{{ s.rating }}</span></div>{%- endif -%}
+{%- if s.lede != blank -%}<p class="lede" style="font-size: 17px">{{ s.lede }}</p>{%- endif -%}
+<ul class="bens">{%- for block in section.blocks -%}{%- if block.type == 'benefit' -%}<li {{ block.shopify_attributes }}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A13B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ block.settings.text }}</li>{%- endif -%}{%- endfor -%}</ul>
+{%- form 'product', p, class: 'buyform' -%}
+<input type="hidden" name="id" value="{{ v.id }}">
+<input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+{%- if plan -%}
+<input type="hidden" name="selling_plan" value="{{ plan.selling_plan.id }}" data-sp>
+<button type="button" class="plan is-on" data-plan="sub" aria-pressed="true">
+<span class="plan-top"><span><b>{{ s.sub_title }} {% if s.sub_badge != blank %}<span class="plan-badge">{{ s.sub_badge }}</span>{% endif %}</b><small>{{ s.sub_note }}</small></span><span class="plan-price"><b>{{ sub_price | money }}</b><s>{{ v.price | money }}</s></span></span>
+{%- if s.gift != blank -%}<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>{{ s.gift }}</span>{%- endif -%}
+</button>
+{%- endif -%}
+<button type="button" class="plan{% unless plan %} is-on{% endunless %}" data-plan="one" aria-pressed="{% if plan %}false{% else %}true{% endif %}">
+<span class="plan-top"><span><b>{{ s.one_title }}</b><small>{{ s.one_note }}</small></span><span class="plan-price"><b>{{ v.price | money }}</b></span></span>
+{%- if s.gift != blank -%}<span class="plan-gift"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C6614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1.5S9 7 12 7zM12 7c2-4 6-4 6-1.5S15 7 12 7z"></path></svg>{{ s.gift }}</span>{%- endif -%}
+</button>
+<button type="submit" class="btn" style="background: #C9A13B; color: #0E0E0C; width: 100%; min-height: 58px; font-size: 18px"{% unless v.available %} disabled{% endunless %}>{% if v.available %}{{ s.button_label }} · <span class="js-price">{% if plan %}{{ sub_price | money }}{{ s.per_month }}{% else %}{{ v.price | money }}{% endif %}</span>{% else %}Sold out{% endif %}</button>
+{%- endform -%}
+{%- if s.trust != blank -%}<div class="trust">{%- assign ts = s.trust | split: '|' -%}{%- for t in ts -%}<span>✓ {{ t | strip }}</span>{%- endfor -%}</div>{%- endif -%}
+</div>
+</div>
+</section>
+{%- if s.show_mbar -%}
+<div class="mbar"><div style="display: flex; flex-direction: column; min-width: 0"><b style="font-size: 15px">{{ s.mbar_title }}</b><span style="font-size: 12px; color: #D9D6CE">{{ s.mbar_text }} · <span class="js-price">{% if plan %}{{ sub_price | money }}{{ s.per_month }}{% else %}{{ v.price | money }}{% endif %}</span></span></div><a href="#{{ s.anchor }}" class="btn btn-gold">{{ s.button_label }}</a></div>
+{%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "HYPR buy box",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Watermelon · 30 servings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (blank uses product name)",
+      "default": "HYPR All-in-One Hydration"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Title tag",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h1",
+          "label": "H1 (product page)"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Rating text",
+      "default": "Five-star reviews · Made in the USA"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "lede",
+      "label": "Short description",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "badge",
+      "label": "Photo badge",
+      "default": "<b>Free bottle</b> with every tub"
+    },
+    {
+      "type": "header",
+      "content": "Plans"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Subscribe title",
+      "default": "Subscribe & save 15%"
+    },
+    {
+      "type": "text",
+      "id": "sub_badge",
+      "label": "Subscribe badge",
+      "default": "Best value"
+    },
+    {
+      "type": "text",
+      "id": "sub_note",
+      "label": "Subscribe note",
+      "default": "Ships every month · skip or cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "per_month",
+      "label": "Per-month suffix",
+      "default": "/mo"
+    },
+    {
+      "type": "text",
+      "id": "one_title",
+      "label": "One-time title",
+      "default": "One-time purchase"
+    },
+    {
+      "type": "text",
+      "id": "one_note",
+      "label": "One-time note",
+      "default": "One tub, 30 scoops"
+    },
+    {
+      "type": "text",
+      "id": "gift",
+      "label": "Gift line on each plan",
+      "default": "Free HYPR bottle ($14.99 value)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "trust",
+      "label": "Trust points (separate with |)",
+      "default": "Zero sugar | No artificial dyes | Made in the USA | $1.42 a scoop subscribed"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "crumbs",
+      "label": "Show breadcrumb",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "crumb_label",
+      "label": "Breadcrumb label",
+      "default": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mbar",
+      "label": "Show sticky mobile add-to-cart bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mbar_title",
+      "label": "Mobile bar title",
+      "default": "HYPR · Watermelon"
+    },
+    {
+      "type": "text",
+      "id": "mbar_text",
+      "label": "Mobile bar text",
+      "default": "+ free bottle"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "buy"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Photo"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Zero sugar, no fake dyes"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "How to use"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Mix one scoop with 16–24 oz of cold water.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "HYPR buy box"
+    }
+  ]
+}
+{% endschema %}

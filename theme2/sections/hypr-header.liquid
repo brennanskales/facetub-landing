@@ -1,0 +1,92 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<nav class="nav" aria-label="Main" data-nav>
+<div class="wrap nav-in">
+<div class="nav-left"><button type="button" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" data-menu><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<a href="{{ s.logo_link | default: routes.root_url }}" aria-label="{{ shop.name }} home">{%- if s.logo != blank -%}{{ s.logo | image_url: width: 300 | image_tag: alt: shop.name, style: 'height: 28px; width: auto' }}{%- else -%}<b class="disp" style="font-size: 28px">{{ shop.name }}</b>{%- endif -%}</a></div>
+<div class="nav-links">{%- for block in section.blocks -%}<a href="{{ block.settings.link }}" {{ block.shopify_attributes }}{% if request.path == block.settings.link %} class="on" aria-current="page"{% endif %}>{{ block.settings.label }}</a>{%- endfor -%}</div>
+<div class="nav-right">
+{%- if s.show_search -%}<a href="{{ routes.search_url }}" class="icon-btn hide-m" aria-label="Search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></a>{%- endif -%}
+{%- if s.show_account -%}<a href="{{ routes.account_url }}" class="icon-btn hide-m" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a>{%- endif -%}
+{%- if s.show_cart -%}<a href="{{ routes.cart_url }}" class="icon-btn" aria-label="Cart, {{ cart.item_count }} items"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"></path><path d="M9 8V6a3 3 0 016 0v2"></path></svg>{% if cart.item_count > 0 %}<span class="cart-count">{{ cart.item_count }}</span>{% endif %}</a>{%- endif -%}
+{%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="btn btn-dark nav-shop" style="min-height: 44px; padding: 10px 20px; font-size: 15px">{{ s.button_label }}</a>{%- endif -%}
+</div>
+</div>
+</nav>
+
+{% schema %}
+{
+  "name": "HYPR header",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_link",
+      "label": "Logo link",
+      "default": "/"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Menu link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Shop"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link",
+          "default": "/pages/shop"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "HYPR header"
+    }
+  ]
+}
+{% endschema %}

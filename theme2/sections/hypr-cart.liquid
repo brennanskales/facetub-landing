@@ -1,0 +1,90 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="wrap" style="padding-top: 32px; padding-bottom: 96px">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span>/</span><span>Cart</span></nav>
+<h1 class="disp" style="font-size: clamp(48px, 6vw, 84px); margin-bottom: 28px">{{ s.heading }}</h1>
+{%- if cart.item_count == 0 -%}
+<div class="math" style="max-width: 640px"><span class="script" style="font-size: 40px">{{ s.empty_script }}</span><h2 class="disp h2" style="color: #FFFFFF">{{ s.empty_heading }}</h2><a href="{{ s.empty_link }}" class="btn btn-gold" style="align-self: flex-start">{{ s.empty_button }}</a></div>
+{%- else -%}
+<form action="{{ routes.cart_url }}" method="post" class="help" style="align-items: start">
+<div class="card" style="padding: 8px 22px">
+{%- for item in cart.items -%}
+<div class="line" style="padding: 18px 0{% if forloop.last %}; border-bottom: 0{% endif %}">
+<a href="{{ item.url }}" class="line-img">{% if item.image %}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}">{% endif %}</a>
+<div><b>{{ item.product.title }}</b>{% if item.selling_plan_allocation %}<small>{{ item.selling_plan_allocation.selling_plan.name }}</small>{% endif %}{% unless item.variant.title contains 'Default' %}<small>{{ item.variant.title }}</small>{% endunless %}
+<label class="qty" style="padding: 0 6px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Quantity</span><input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width: 52px; border: 0; background: transparent; font: inherit; font-weight: 700; text-align: center; padding: 6px 0"></label>
+<a href="{{ item.url_to_remove }}" style="display: inline-block; margin-left: 10px; font-size: 13px; color: #5E5C55">Remove</a></div>
+<div class="line-price">{% if item.final_line_price == 0 %}<b style="color: #8C6614">FREE</b>{% else %}<b>{{ item.final_line_price | money }}</b>{% endif %}{% if item.original_line_price > item.final_line_price %}<s>{{ item.original_line_price | money }}</s>{% endif %}</div>
+</div>
+{%- endfor -%}
+</div>
+<div class="card" style="padding: 24px; gap: 14px; position: sticky; top: 90px">
+{%- if s.gift != blank -%}<div class="gift-bar"><span>{{ s.gift }}</span><div class="gift-track"><i></i></div></div>{%- endif -%}
+<div style="display: flex; justify-content: space-between; font-size: 18px"><b>Subtotal</b><b>{{ cart.total_price | money }}</b></div>
+{%- if cart.total_discount > 0 -%}<p style="margin: 0; font-size: 14px; color: #8C6614; font-weight: 700">You save {{ cart.total_discount | money }}</p>{%- endif -%}
+<p style="margin: 0; font-size: 13px; color: #5E5C55">{{ s.note }}</p>
+<button type="submit" name="checkout" class="btn btn-gold" style="width: 100%; min-height: 56px; font-size: 17px">Checkout · {{ cart.total_price | money }}</button>
+<button type="submit" name="update" class="btn btn-line" style="width: 100%">Update cart</button>
+{%- if s.trust != blank -%}<div class="trust">{%- assign ts = s.trust | split: '|' -%}{%- for t in ts -%}<span>✓ {{ t | strip }}</span>{%- endfor -%}</div>{%- endif -%}
+</div>
+</form>
+{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "HYPR cart",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your cart."
+    },
+    {
+      "type": "text",
+      "id": "gift",
+      "label": "Gift banner",
+      "default": "Every tub ships with a free HYPR bottle."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "default": "Shipping and taxes calculated at checkout."
+    },
+    {
+      "type": "text",
+      "id": "trust",
+      "label": "Trust points (separate with |)",
+      "default": "Skip or cancel anytime | Secure checkout"
+    },
+    {
+      "type": "text",
+      "id": "empty_script",
+      "label": "Empty: script",
+      "default": "Empty for now,"
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Empty: heading",
+      "default": "Let’s fix that."
+    },
+    {
+      "type": "text",
+      "id": "empty_button",
+      "label": "Empty: button",
+      "default": "Shop HYPR"
+    },
+    {
+      "type": "text",
+      "id": "empty_link",
+      "label": "Empty: link",
+      "default": "/pages/shop"
+    }
+  ]
+}
+{% endschema %}

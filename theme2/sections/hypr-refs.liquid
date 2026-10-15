@@ -1,0 +1,79 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="wrap sec" style="max-width: 1000px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<ol class="refs">{%- for block in section.blocks -%}<li {{ block.shopify_attributes }}><span class="mono" style="color: #8C6614; font-weight: 700; margin: 0">[{{ forloop.index }}]</span><div><b>{%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ block.settings.title }}</a>{%- else -%}{{ block.settings.title }}{%- endif -%}</b><span>{{ block.settings.cite }}</span><em>{{ block.settings.use }}</em></div></li>{%- endfor -%}</ol>
+{%- if s.note != blank -%}<p style="margin: 18px 0 0; font-size: 13px; color: #9A978E">{{ s.note }}</p>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "HYPR research list",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "Read it yourself"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The research."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "default": "These sources look at the ingredients, not at HYPR as a finished product."
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "research"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ref",
+      "name": "Source",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "cite",
+          "label": "Citation",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "use",
+          "label": "What it covers",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link (optional)",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 15,
+  "presets": [
+    {
+      "name": "HYPR research list"
+    }
+  ]
+}
+{% endschema %}

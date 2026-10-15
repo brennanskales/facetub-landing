@@ -1,0 +1,85 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<header class="wrap page-head{% if s.image == blank %} solo{% endif %}">
+<div>
+{%- if s.crumb != blank -%}<nav class="crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span>/</span><span>{{ s.crumb }}</span></nav>{%- endif -%}
+<h1 class="disp">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{{ s.heading }}</h1>
+{%- if s.text != blank -%}<p class="lede">{{ s.text }}</p>{%- endif -%}
+{%- if s.button_label != blank or s.button2_label != blank -%}<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px">{% if s.button_label != blank %}<a href="{{ s.button_link }}" class="btn btn-dark">{{ s.button_label }}</a>{% endif %}{% if s.button2_label != blank %}<a href="{{ s.button2_link }}" class="btn btn-line">{{ s.button2_label }}</a>{% endif %}</div>{%- endif -%}
+</div>
+{%- if s.image != blank -%}<div class="ph-media"><img src="{{ s.image | image_url: width: 1400 }}" fetchpriority="high" alt="{{ s.image.alt | escape }}" style="object-position: {{ s.position }}"></div>{%- endif -%}
+</header>
+
+{% schema %}
+{
+  "name": "HYPR page header",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "crumb",
+      "label": "Breadcrumb label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": ""
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "position",
+      "label": "Image focus",
+      "default": "50% 50%"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button2_label",
+      "label": "Second button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button2_link",
+      "label": "Second button link",
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "HYPR page header"
+    }
+  ]
+}
+{% endschema %}

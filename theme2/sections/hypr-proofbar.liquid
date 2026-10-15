@@ -1,0 +1,37 @@
+<section class="wrap" style="padding-bottom: 88px">
+<div class="proofbar">{%- for block in section.blocks -%}<div {{ block.shopify_attributes }}><b>{{ block.settings.value }}</b><span>{{ block.settings.label }}</span></div>{%- endfor -%}</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR proof bar",
+  "tag": "div",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "Free"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "HYPR bottle with every tub"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "HYPR proof bar"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section class="wrap" style="padding-bottom: 96px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<div style="overflow-x: auto; border-radius: 24px; border: 1px solid #E6E3DB"><table class="vs">
+<thead><tr><th scope="col"></th><th scope="col" class="hy">{{ s.col1 }}</th><th scope="col">{{ s.col2 }}</th></tr></thead>
+<tbody>{%- for block in section.blocks -%}<tr {{ block.shopify_attributes }}><th scope="row">{{ block.settings.label }}</th><td class="hy">{{ block.settings.v1 }}</td><td>{{ block.settings.v2 }}</td></tr>{%- endfor -%}</tbody>
+</table></div>
+{%- if s.note != blank -%}<p style="margin: 14px 0 0; font-size: 12px; color: #9A978E">{{ s.note }}</p>{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "HYPR versus table",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "The HYPR difference"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Same three. Less to manage."
+    },
+    {
+      "type": "text",
+      "id": "col1",
+      "label": "Column 1",
+      "default": "HYPR"
+    },
+    {
+      "type": "text",
+      "id": "col2",
+      "label": "Column 2",
+      "default": "Three separate tubs"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Footnote",
+      "default": ""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Containers"
+        },
+        {
+          "type": "text",
+          "id": "v1",
+          "label": "HYPR",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "v2",
+          "label": "Other",
+          "default": "3"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "HYPR versus table"
+    }
+  ]
+}
+{% endschema %}

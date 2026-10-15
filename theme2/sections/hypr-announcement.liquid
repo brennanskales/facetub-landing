@@ -1,0 +1,33 @@
+{%- if section.blocks.size > 0 -%}
+<div class="marquee" aria-label="Offers" {{ section.shopify_attributes }}><div class="marquee-track">
+{%- for i in (1..2) -%}{%- for block in section.blocks -%}<span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>{%- endfor -%}{%- endfor -%}
+</div></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "HYPR announcement bar",
+  "tag": "div",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Buy a tub, get a HYPR bottle free"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "HYPR announcement bar"
+    }
+  ]
+}
+{% endschema %}

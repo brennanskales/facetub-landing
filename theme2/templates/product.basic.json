@@ -1,0 +1,43 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "buybox_0": {
+      "type": "hypr-buybox",
+      "settings": {
+        "eyebrow": "",
+        "title": "",
+        "heading_tag": "h1",
+        "rating": "",
+        "lede": "",
+        "badge": "",
+        "sub_title": "Subscribe & save",
+        "sub_badge": "",
+        "sub_note": "",
+        "per_month": "",
+        "one_title": "One-time purchase",
+        "one_note": "",
+        "gift": "",
+        "button_label": "Add to cart",
+        "trust": "Secure checkout",
+        "crumbs": true,
+        "show_mbar": false,
+        "anchor": "buy"
+      }
+    },
+    "cta_1": {
+      "type": "hypr-cta",
+      "settings": {
+        "script": "Make it a pair,",
+        "heading": "Get it free with any tub.",
+        "text": "Every HYPR tub comes with a free HYPR bottle.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "/products/vitamins-and-supplements-example-product-4",
+        "image": "shopify://shop_images/hypr-tub.png"
+      }
+    }
+  },
+  "order": [
+    "buybox_0",
+    "cta_1"
+  ]
+}

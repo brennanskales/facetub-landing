@@ -1,0 +1,100 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<footer class="sfoot">
+<div class="wrap sfoot-top">
+<div style="display: flex; flex-direction: column; gap: 14px">
+{%- if s.logo != blank -%}{{ s.logo | image_url: width: 300 | image_tag: alt: shop.name, style: 'height: 32px; width: auto; align-self: flex-start' }}{%- endif -%}
+{%- if s.blurb != blank -%}<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #FFFFFF; max-width: 420px">{{ s.blurb }}</p>{%- endif -%}
+{%- if s.show_newsletter -%}
+{%- form 'customer', class: 'join' -%}
+<input type="hidden" name="contact[tags]" value="newsletter">
+{%- if form.posted_successfully? -%}<p style="margin: 0; color: #D4AF4A; font-weight: 700">You're on the list.</p>{%- else -%}
+<input type="email" name="contact[email]" placeholder="Your email" aria-label="Email address" required><button type="submit" class="btn btn-gold" style="min-height: 50px; padding: 12px 22px">{{ s.newsletter_button }}</button>
+{%- endif -%}
+{%- endform -%}
+{%- endif -%}
+</div>
+{%- for block in section.blocks -%}
+<div {{ block.shopify_attributes }}><h4>{{ block.settings.heading }}</h4><ul>
+{%- assign lines = block.settings.links | newline_to_br | split: '<br />' -%}
+{%- for line in lines -%}{%- assign parts = line | strip | split: '|' -%}{%- if parts.size > 1 -%}<li><a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a></li>{%- endif -%}{%- endfor -%}
+</ul></div>
+{%- endfor -%}
+</div>
+{%- if s.tagline != blank -%}<div class="wrap"><div class="sfoot-tag" aria-hidden="true">{{ s.tagline }}</div></div>{%- endif -%}
+<div class="wrap sfoot-bot">
+<span style="max-width: 640px; line-height: 1.55">{{ s.disclaimer }} © {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+<div>{%- for policy in shop.policies -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{%- endfor -%}</div>
+</div>
+</footer>
+
+{% schema %}
+{
+  "name": "HYPR footer",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (light)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "blurb",
+      "label": "Signup text",
+      "default": "Get new flavor drops, restock alerts and training tips first."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show email signup",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button",
+      "label": "Signup button",
+      "default": "Join"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Big tagline",
+      "default": "#FUELTHEGRIND"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "textarea",
+          "id": "links",
+          "label": "Links (one per line: Label | /url)",
+          "default": "Shop all | /pages/shop"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "HYPR footer"
+    }
+  ]
+}
+{% endschema %}

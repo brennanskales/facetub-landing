@@ -1,0 +1,1007 @@
+{
+  "layout": "hypr-lp",
+  "sections": {
+    "announcement_0": {
+      "type": "hypr-announcement",
+      "settings": {},
+      "blocks": {
+        "message_336": {
+          "type": "message",
+          "settings": {
+            "text": "Buy a tub, get a HYPR bottle free"
+          }
+        },
+        "message_337": {
+          "type": "message",
+          "settings": {
+            "text": "810 mg sodium per scoop"
+          }
+        },
+        "message_338": {
+          "type": "message",
+          "settings": {
+            "text": "5 g creatine + 5 g collagen"
+          }
+        },
+        "message_339": {
+          "type": "message",
+          "settings": {
+            "text": "Zero sugar"
+          }
+        },
+        "message_340": {
+          "type": "message",
+          "settings": {
+            "text": "Subscribe & save 15%"
+          }
+        },
+        "message_341": {
+          "type": "message",
+          "settings": {
+            "text": "Built by former D1 athletes"
+          }
+        }
+      },
+      "block_order": [
+        "message_336",
+        "message_337",
+        "message_338",
+        "message_339",
+        "message_340",
+        "message_341"
+      ]
+    },
+    "header_1": {
+      "type": "hypr-header",
+      "settings": {
+        "logo": "shopify://shop_images/hypr-logo-black.png",
+        "logo_link": "#top",
+        "show_search": false,
+        "show_account": false,
+        "show_cart": true,
+        "button_label": "Shop HYPR",
+        "button_link": "#buy"
+      },
+      "blocks": {
+        "link_342": {
+          "type": "link",
+          "settings": {
+            "label": "Shop",
+            "link": "#buy"
+          }
+        },
+        "link_343": {
+          "type": "link",
+          "settings": {
+            "label": "Why you fade",
+            "link": "#fade"
+          }
+        },
+        "link_344": {
+          "type": "link",
+          "settings": {
+            "label": "Compare",
+            "link": "#compare"
+          }
+        },
+        "link_345": {
+          "type": "link",
+          "settings": {
+            "label": "Reviews",
+            "link": "#reviews"
+          }
+        }
+      },
+      "block_order": [
+        "link_342",
+        "link_343",
+        "link_344",
+        "link_345"
+      ]
+    },
+    "hero_2": {
+      "type": "hypr-hero",
+      "settings": {
+        "image": "shopify://shop_images/hypr-ls-basketball.jpg",
+        "position": "50% 42%",
+        "mobile_position": "50% 62%",
+        "script": "Every sport,",
+        "heading": "Finish as strong as you start.",
+        "text": "Cramps, dead legs and late-game fades often start with the salt you sweat out. One scoop of HYPR puts back 810 mg of sodium. It also gives you 5 g of creatine and 5 g of collagen. Zero sugar.*",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "#buy",
+        "link_label": "Why you fade",
+        "link_link": "#fade",
+        "offer_image": "shopify://shop_images/hypr-bottle.jpg",
+        "offer_text": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value",
+        "proof": "Five-star reviews · Built by former D1 athletes",
+        "stats_top": true,
+        "anchor": "top",
+        "card_image": "shopify://shop_images/hypr-tub.png",
+        "card_eyebrow": "Watermelon · 30 scoops",
+        "card_title": "HYPR All-in-One",
+        "card_text": "$49.99 + free bottle",
+        "card_link": "#buy"
+      },
+      "blocks": {
+        "stat_346": {
+          "type": "stat",
+          "settings": {
+            "label": "Sodium",
+            "value": "810 mg"
+          }
+        },
+        "stat_347": {
+          "type": "stat",
+          "settings": {
+            "label": "Creatine",
+            "value": "5 g"
+          }
+        },
+        "stat_348": {
+          "type": "stat",
+          "settings": {
+            "label": "Collagen",
+            "value": "5 g"
+          }
+        }
+      },
+      "block_order": [
+        "stat_346",
+        "stat_347",
+        "stat_348"
+      ]
+    },
+    "intro_3": {
+      "type": "hypr-intro",
+      "settings": {
+        "script": "Sound familiar?",
+        "heading": "Legs lock up. Energy drops.",
+        "statement": "You trained all week. Then the fourth quarter hits and your legs lock up. <em>Water alone won’t fix it. HYPR puts back the salt you sweat out and adds creatine and collagen</em> so you can finish strong.",
+        "button_label": "Shop HYPR",
+        "button_link": "#buy",
+        "button2_label": "Compare",
+        "button2_link": "#compare",
+        "spacing": "sec"
+      }
+    },
+    "buybox_4": {
+      "type": "hypr-buybox",
+      "settings": {
+        "product": "vitamins-and-supplements-example-product-4",
+        "eyebrow": "Watermelon · 30 servings",
+        "title": "HYPR All-in-One Hydration",
+        "heading_tag": "h2",
+        "rating": "Five-star reviews · Made in the USA",
+        "lede": "Hydration, creatine and collagen in one scoop. No more three tubs in your bag.",
+        "badge": "<b>Free bottle</b> with every tub",
+        "sub_title": "Subscribe & save 15%",
+        "sub_badge": "Best value",
+        "sub_note": "Never run out mid-season · cancel anytime",
+        "per_month": "/mo",
+        "one_title": "One-time purchase",
+        "one_note": "One tub, 30 scoops",
+        "gift": "Free HYPR bottle ($14.99 value)",
+        "button_label": "Add to cart",
+        "trust": "Zero sugar | Mixes smooth | Made in the USA | $1.42 a scoop subscribed",
+        "crumbs": false,
+        "crumb_label": "",
+        "show_mbar": true,
+        "mbar_title": "HYPR · Watermelon",
+        "mbar_text": "+ free bottle",
+        "anchor": "buy"
+      },
+      "blocks": {
+        "image_349": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-studio.jpg",
+            "label": "Product"
+          }
+        },
+        "image_350": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-basketball.jpg",
+            "label": "Basketball"
+          }
+        },
+        "image_351": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-weightroom.jpg",
+            "label": "Weight room"
+          }
+        },
+        "image_352": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-locker.jpg",
+            "label": "Locker room"
+          }
+        },
+        "image_353": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dissolve.jpg",
+            "label": "Mixes clean"
+          }
+        },
+        "image_354": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-bottle.jpg",
+            "label": "Free bottle"
+          }
+        },
+        "benefit_355": {
+          "type": "benefit",
+          "settings": {
+            "text": "810 mg sodium per scoop"
+          }
+        },
+        "benefit_356": {
+          "type": "benefit",
+          "settings": {
+            "text": "5 g creatine for power*"
+          }
+        },
+        "benefit_357": {
+          "type": "benefit",
+          "settings": {
+            "text": "5 g collagen for joints*"
+          }
+        },
+        "benefit_358": {
+          "type": "benefit",
+          "settings": {
+            "text": "Zero sugar, no crash"
+          }
+        },
+        "accordion_359": {
+          "type": "accordion",
+          "settings": {
+            "title": "What’s in one scoop",
+            "content": "<ul><li>Sodium 810 mg (pink Himalayan salt)</li><li>Potassium 200 mg (potassium citrate)</li><li>Magnesium 80 mg (magnesium glycinate)</li><li>Creatine monohydrate 5 g</li><li>Bovine collagen peptides 5 g</li><li>25 calories · 0 g sugar · stevia · beet root color</li></ul>"
+          }
+        },
+        "accordion_360": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "<p>Mix one scoop with 16–24 oz of cold water. Drink it once a day, before practice, after a lift or on the bus. Take it on rest days too. Creatine builds up over time.</p>"
+          }
+        },
+        "accordion_361": {
+          "type": "accordion",
+          "settings": {
+            "title": "Will creatine make me cramp or bloat?",
+            "content": "<p>Research does not show that creatine causes cramps or dehydration. Some people gain a little water weight at first. That water goes into your muscle. A steady 5 g a day, with no loading, keeps it simple.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_349",
+        "image_350",
+        "image_351",
+        "image_352",
+        "image_353",
+        "image_354",
+        "benefit_355",
+        "benefit_356",
+        "benefit_357",
+        "benefit_358",
+        "accordion_359",
+        "accordion_360",
+        "accordion_361"
+      ]
+    },
+    "pains_5": {
+      "type": "hypr-pains",
+      "settings": {
+        "script": "Why you fade",
+        "heading": "Every sport hits the same wall.",
+        "anchor": "fade"
+      },
+      "blocks": {
+        "photo_362": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-football.jpg",
+            "label": "Football"
+          }
+        },
+        "photo_363": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-track.jpg",
+            "label": "Track"
+          }
+        },
+        "photo_364": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dugout.jpg",
+            "label": "Baseball"
+          }
+        },
+        "pain_365": {
+          "type": "pain",
+          "settings": {
+            "title": "Cramping up",
+            "text": "Hard sweating pulls salt out with the water. Plain water does not put it back.",
+            "fix": "HYPR: 810 mg sodium · 200 mg potassium · 80 mg magnesium"
+          }
+        },
+        "pain_366": {
+          "type": "pain",
+          "settings": {
+            "title": "Dead legs, late fade",
+            "text": "Fresh at tip-off, cooked by the fourth. Repeated sprints and jumps drain your fast fuel.",
+            "fix": "HYPR: 5 g creatine monohydrate*"
+          }
+        },
+        "pain_367": {
+          "type": "pain",
+          "settings": {
+            "title": "Low energy, foggy head",
+            "text": "Losing about 2% of your body weight in sweat can drag down endurance and focus.",
+            "fix": "HYPR: electrolytes in 16–24 oz of water"
+          }
+        },
+        "pain_368": {
+          "type": "pain",
+          "settings": {
+            "title": "Beat-up joints",
+            "text": "Cuts, landings and long seasons put miles on tendons and ligaments.",
+            "fix": "HYPR: 5 g collagen peptides*"
+          }
+        }
+      },
+      "block_order": [
+        "photo_362",
+        "photo_363",
+        "photo_364",
+        "pain_365",
+        "pain_366",
+        "pain_367",
+        "pain_368"
+      ]
+    },
+    "feature_6": {
+      "type": "hypr-feature",
+      "settings": {
+        "image": "shopify://shop_images/hypr-ls-weightroom.jpg",
+        "position": "60% 50%",
+        "fit": "cover",
+        "script": "Train again,",
+        "heading": "Sooner.",
+        "text": "One scoop a day, rest days too. It fits in the bag you already carry.",
+        "signature": "",
+        "button_label": "Shop HYPR",
+        "button_link": "#buy",
+        "top_space": false,
+        "media_bg": "#0E0E0C"
+      },
+      "blocks": {
+        "pin_369": {
+          "type": "pin",
+          "settings": {
+            "label": "810 mg sodium",
+            "spot": "tl"
+          }
+        },
+        "pin_370": {
+          "type": "pin",
+          "settings": {
+            "label": "5 g creatine",
+            "spot": "mr"
+          }
+        },
+        "pin_371": {
+          "type": "pin",
+          "settings": {
+            "label": "5 g collagen",
+            "spot": "bl"
+          }
+        },
+        "check_372": {
+          "type": "check",
+          "settings": {
+            "text": "Put back what you sweat out"
+          }
+        },
+        "check_373": {
+          "type": "check",
+          "settings": {
+            "text": "Back your sprints, jumps and lifts with creatine*"
+          }
+        },
+        "check_374": {
+          "type": "check",
+          "settings": {
+            "text": "Give your joints collagen for a long season*"
+          }
+        }
+      },
+      "block_order": [
+        "pin_369",
+        "pin_370",
+        "pin_371",
+        "check_372",
+        "check_373",
+        "check_374"
+      ]
+    },
+    "compare_7": {
+      "type": "hypr-compare",
+      "settings": {
+        "script": "Compare",
+        "heading": "The only one with all three.",
+        "text": "Most hydration mixes stop at salt. Some add sugar. HYPR adds creatine and collagen, with no sugar.",
+        "col0": "Per scoop",
+        "logo": "shopify://shop_images/hypr-logo-white.png",
+        "col1": "HYPR",
+        "col2": "LMNT",
+        "col3": "Liquid I.V.",
+        "col4": "Create Creatine + Electrolytes",
+        "note": "From published labels and reviews checked October 2026. Liquid I.V. is the original Hydration Multiplier. Prices vary by store. HYPR: $49.99 ÷ 30 servings, or $1.42 with subscribe & save.",
+        "spacing": "pb",
+        "anchor": "compare"
+      },
+      "blocks": {
+        "row_375": {
+          "type": "row",
+          "settings": {
+            "label": "Sodium",
+            "v1": "810 mg",
+            "v2": "1,000 mg",
+            "v3": "500 mg",
+            "v4": "About 500 mg"
+          }
+        },
+        "row_376": {
+          "type": "row",
+          "settings": {
+            "label": "Sugar",
+            "v1": "0 g",
+            "v2": "0 g",
+            "v3": "11 g",
+            "v4": "0 g"
+          }
+        },
+        "row_377": {
+          "type": "row",
+          "settings": {
+            "label": "Creatine",
+            "v1": "5 g",
+            "v2": "—",
+            "v3": "—",
+            "v4": "5 g"
+          }
+        },
+        "row_378": {
+          "type": "row",
+          "settings": {
+            "label": "Collagen",
+            "v1": "5 g",
+            "v2": "—",
+            "v3": "—",
+            "v4": "—"
+          }
+        },
+        "row_379": {
+          "type": "row",
+          "settings": {
+            "label": "All three in one scoop",
+            "v1": "✓ Yes",
+            "v2": "— No",
+            "v3": "— No",
+            "v4": "— No"
+          }
+        },
+        "row_380": {
+          "type": "row",
+          "settings": {
+            "label": "Price per serving",
+            "v1": "$1.67",
+            "v2": "About $1.50",
+            "v3": "About $1.56",
+            "v4": "About $1.60"
+          }
+        }
+      },
+      "block_order": [
+        "row_375",
+        "row_376",
+        "row_377",
+        "row_378",
+        "row_379",
+        "row_380"
+      ]
+    },
+    "ingredients_8": {
+      "type": "hypr-ingredients",
+      "settings": {
+        "script": "Ingredients",
+        "heading": "Every dose on the label.",
+        "text": "No secret blends. No stimulants. Just what works.",
+        "bg": "#FFFFFF",
+        "anchor": "inside"
+      },
+      "blocks": {
+        "ingredient_381": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-salt.jpg",
+            "name": "Pink Himalayan salt",
+            "dose": "810 mg sodium",
+            "text": "The main thing you lose in sweat."
+          }
+        },
+        "ingredient_382": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-scoop.jpg",
+            "name": "Creatine monohydrate",
+            "dose": "5 g",
+            "text": "Fuel for short, all-out bursts.*"
+          }
+        },
+        "ingredient_383": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-swirl.jpg",
+            "name": "Collagen peptides",
+            "dose": "5 g",
+            "text": "Building blocks for tendons and joints.*"
+          }
+        },
+        "ingredient_384": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-mg.jpg",
+            "name": "Magnesium glycinate",
+            "dose": "80 mg",
+            "text": "Supports normal muscle function."
+          }
+        },
+        "ingredient_385": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-k.jpg",
+            "name": "Potassium citrate",
+            "dose": "200 mg",
+            "text": "Teams with sodium to hold fluid."
+          }
+        },
+        "ingredient_386": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-melon.jpg",
+            "name": "Watermelon flavor",
+            "dose": "0 g sugar",
+            "text": "Sweetened with stevia. No crash."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_381",
+        "ingredient_382",
+        "ingredient_383",
+        "ingredient_384",
+        "ingredient_385",
+        "ingredient_386"
+      ]
+    },
+    "ugc_9": {
+      "type": "hypr-ugc",
+      "settings": {
+        "script": "Real athletes",
+        "heading": "Follow @tryhypr",
+        "button_label": "Instagram ↗",
+        "button_link": "https://www.instagram.com/tryhypr",
+        "style": "light"
+      },
+      "blocks": {
+        "video_387": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-1.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-1-poster.jpg"
+          }
+        },
+        "photo_388": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-football.jpg"
+          }
+        },
+        "video_389": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-2.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-2-poster.jpg"
+          }
+        },
+        "photo_390": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-track.jpg"
+          }
+        },
+        "video_391": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-3.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-3-poster.jpg"
+          }
+        },
+        "photo_392": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-locker.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "video_387",
+        "photo_388",
+        "video_389",
+        "photo_390",
+        "video_391",
+        "photo_392"
+      ]
+    },
+    "stats_10": {
+      "type": "hypr-stats",
+      "settings": {
+        "note": ""
+      },
+      "blocks": {
+        "stat_393": {
+          "type": "stat",
+          "settings": {
+            "value": "810 mg",
+            "label": "Sodium in every scoop"
+          }
+        },
+        "stat_394": {
+          "type": "stat",
+          "settings": {
+            "value": "5 g",
+            "label": "Creatine monohydrate, the most studied form"
+          }
+        },
+        "stat_395": {
+          "type": "stat",
+          "settings": {
+            "value": "$1.42",
+            "label": "A scoop with subscribe & save"
+          }
+        }
+      },
+      "block_order": [
+        "stat_393",
+        "stat_394",
+        "stat_395"
+      ]
+    },
+    "reviews_11": {
+      "type": "hypr-reviews",
+      "settings": {
+        "script": "Reviews",
+        "heading": "Results you can feel.",
+        "button_label": "Shop HYPR",
+        "button_link": "#buy",
+        "badge": "Verified buyer",
+        "product_image": "shopify://shop_images/hypr-tub.png",
+        "texts_eyebrow": "Unedited texts from athletes on HYPR",
+        "texts_heading": "“It’s actually gassss.”",
+        "anchor": "reviews"
+      },
+      "blocks": {
+        "review_396": {
+          "type": "review",
+          "settings": {
+            "name": "Brynn Garrett",
+            "quote": "AMAZING taste and im so excited that im getting more than one benefit in one drink"
+          }
+        },
+        "review_397": {
+          "type": "review",
+          "settings": {
+            "name": "Caleb N.",
+            "quote": "My daily routine is much more consistent now. One scoop is easier than remembering multiple products at different times."
+          }
+        },
+        "review_398": {
+          "type": "review",
+          "settings": {
+            "name": "Jordan T.",
+            "quote": "I have been drinking it daily for weeks and the flavor still has not gotten old."
+          }
+        },
+        "review_399": {
+          "type": "review",
+          "settings": {
+            "name": "Michael Smith",
+            "quote": "It mixes well with water and is not grainy. Overall a great product!"
+          }
+        },
+        "review_400": {
+          "type": "review",
+          "settings": {
+            "name": "Nico Ferroni",
+            "quote": "Tastes really good and good price"
+          }
+        },
+        "text_401": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-59915a2c.jpg",
+            "alt": "Just got it in! Unbelievable flavor, I'll get my college teammates hooked on it soon!",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_402": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-fcf4c361.jpg",
+            "alt": "Great way to start the day. Will be a part of the every morning routine from here on out.",
+            "bg": "#131315"
+          }
+        },
+        "text_403": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-86bba074.jpg",
+            "alt": "Oh my dayzz it's actually gassss",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_404": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-cb148868.jpg",
+            "alt": "HYPR combines hydration, creatine, and collagen in one easy scoop, tastes great, and saves me from buying multiple supplements.",
+            "bg": "#000000"
+          }
+        },
+        "text_405": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-325d8f91.jpg",
+            "alt": "It's gas",
+            "bg": "#0B0E13"
+          }
+        },
+        "text_406": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-2e2c6179.jpg",
+            "alt": "First thoughts.. Transcending The Game... Best purchase of 2026.",
+            "bg": "#131315"
+          }
+        },
+        "text_407": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-b73f5cca.jpg",
+            "alt": "HYPR actually mixes insanely well. And it's not too strong or sweet of a flavor.",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_408": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-4aedb9ed.jpg",
+            "alt": "Yeah this is the go to from now on, it's fire",
+            "bg": "#0B0E13"
+          }
+        },
+        "text_409": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-c515e42c.jpg",
+            "alt": "It's great brossss. Actually like it a lot",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_410": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-0d130c1d.jpg",
+            "alt": "An everyday essential from here on out",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_411": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-0384b28c.jpg",
+            "alt": "wow this stuff is legit",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_412": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-2bb57860.jpg",
+            "alt": "I just did it's really good. Like the smell too",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_413": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-89d1584b.jpg",
+            "alt": "Not just a great product for athletes, but people with active lifestyles. Plus it tastes better than any other supplements I have tried!!",
+            "bg": "#131315"
+          }
+        },
+        "text_414": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-6899fdda.jpg",
+            "alt": "This is my new thing 100%",
+            "bg": "#F6F6F6"
+          }
+        }
+      },
+      "block_order": [
+        "review_396",
+        "review_397",
+        "review_398",
+        "review_399",
+        "review_400",
+        "text_401",
+        "text_402",
+        "text_403",
+        "text_404",
+        "text_405",
+        "text_406",
+        "text_407",
+        "text_408",
+        "text_409",
+        "text_410",
+        "text_411",
+        "text_412",
+        "text_413",
+        "text_414"
+      ]
+    },
+    "faq_12": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "Locker room FAQ",
+        "heading": "Quick answers.",
+        "center": true,
+        "small": false,
+        "narrow": false,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "sec",
+        "anchor": "faq"
+      },
+      "blocks": {
+        "question_415": {
+          "type": "question",
+          "settings": {
+            "question": "When should I take it?",
+            "answer": "<p>Once a day, whenever it fits: before practice, after a lift, on the bus. Creatine works by building up over time, so every day beats perfect timing. Take it on rest days too.</p>"
+          }
+        },
+        "question_416": {
+          "type": "question",
+          "settings": {
+            "question": "Do I still need to drink water?",
+            "answer": "<p>Yes. HYPR goes into 16–24 oz of water and adds the salt plain water doesn’t have. Keep drinking through long, hot sessions.</p>"
+          }
+        },
+        "question_417": {
+          "type": "question",
+          "settings": {
+            "question": "Will creatine make me cramp or bloat?",
+            "answer": "<p>Research does not show that creatine causes cramps or dehydration. Some people gain a little water weight at first. That water goes into your muscle, not your belly.</p>"
+          }
+        },
+        "question_418": {
+          "type": "question",
+          "settings": {
+            "question": "Why not just drink LMNT or Liquid I.V.?",
+            "answer": "<p>They are hydration only. You would still need a creatine tub and a collagen tub. HYPR puts all three in one scoop, with no sugar.</p>"
+          }
+        },
+        "question_419": {
+          "type": "question",
+          "settings": {
+            "question": "Is creatine a steroid?",
+            "answer": "<p>No. Your body makes creatine and stores it in muscle. It’s also in meat and fish. HYPR uses creatine monohydrate, the most studied form.</p>"
+          }
+        },
+        "question_420": {
+          "type": "question",
+          "settings": {
+            "question": "How does it taste?",
+            "answer": "<p>Watermelon, sweetened with stevia, zero sugar. Customers say it mixes smooth and isn’t grainy.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_415",
+        "question_416",
+        "question_417",
+        "question_418",
+        "question_419",
+        "question_420"
+      ]
+    },
+    "cta_13": {
+      "type": "hypr-cta",
+      "settings": {
+        "script": "Next game?",
+        "heading": "Stop playing on empty.",
+        "text": "Hydration, creatine and collagen in one scoop. A free HYPR bottle with your tub.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "#buy",
+        "image": "shopify://shop_images/hypr-tub.png"
+      }
+    },
+    "footer_14": {
+      "type": "hypr-footer",
+      "settings": {
+        "logo": "shopify://shop_images/hypr-logo-white.png",
+        "blurb": "Get new flavor drops, restock alerts and training tips first.",
+        "show_newsletter": true,
+        "newsletter_button": "Join",
+        "tagline": "#FUELTHEGRIND"
+      },
+      "blocks": {
+        "column_421": {
+          "type": "column",
+          "settings": {
+            "heading": "Shop",
+            "links": "HYPR Watermelon | /products/vitamins-and-supplements-example-product-4\nShop all | /pages/shop"
+          }
+        },
+        "column_422": {
+          "type": "column",
+          "settings": {
+            "heading": "Learn",
+            "links": "The Science | /pages/the-science\nOur Story | /pages/our-story\nFAQ | /pages/questions"
+          }
+        },
+        "column_423": {
+          "type": "column",
+          "settings": {
+            "heading": "Help",
+            "links": "Contact us | /pages/contact-us\nInstagram | https://www.instagram.com/tryhypr"
+          }
+        }
+      },
+      "block_order": [
+        "column_421",
+        "column_422",
+        "column_423"
+      ]
+    }
+  },
+  "order": [
+    "announcement_0",
+    "header_1",
+    "hero_2",
+    "intro_3",
+    "buybox_4",
+    "pains_5",
+    "feature_6",
+    "compare_7",
+    "ingredients_8",
+    "ugc_9",
+    "stats_10",
+    "reviews_11",
+    "faq_12",
+    "cta_13",
+    "footer_14"
+  ]
+}

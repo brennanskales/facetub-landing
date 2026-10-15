@@ -1,0 +1,134 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="sec" style="background: #FFFFFF">
+<div class="wrap rev-head">
+<div style="display: flex; flex-direction: column; gap: 6px">{% if s.script != blank %}<span class="script" style="font-size: 40px">{{ s.script }}</span>{% endif %}<h2 class="disp h2">{{ s.heading }}</h2></div>
+{%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="btn btn-dark">{{ s.button_label }}</a>{%- endif -%}
+</div>
+<div class="strip">{%- for block in section.blocks -%}{%- if block.type == 'review' -%}
+<figure class="rev" {{ block.shopify_attributes }}><div class="rev-body"><div class="rev-top"><b>{{ block.settings.name }}</b><span style="color: #9A978E">{{ s.badge }}</span></div><span class="stars">★★★★★</span><blockquote>“{{ block.settings.quote }}”</blockquote></div>{% if s.product_image != blank %}<div class="rev-prod">{{ s.product_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}</div>{% endif %}</figure>
+{%- endif -%}{%- endfor -%}</div>
+{%- assign has_texts = false -%}{%- for block in section.blocks -%}{%- if block.type == 'text' -%}{%- assign has_texts = true -%}{%- endif -%}{%- endfor -%}
+{%- if has_texts -%}
+<div class="wrap" style="margin-top: 64px">
+<div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px"><p class="eyebrow">{{ s.texts_eyebrow }}</p><h3 class="disp" style="font-size: clamp(32px, 3.6vw, 48px)">{{ s.texts_heading }}</h3></div>
+<div class="wall">{%- for block in section.blocks -%}{%- if block.type == 'text' and block.settings.image != blank -%}<figure style="break-inside: avoid; margin: 0 0 14px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; padding: 8px; border: 1px solid #E6E3DB; background: {{ block.settings.bg }}" {{ block.shopify_attributes }}>{{ block.settings.image | image_url: width: 820 | image_tag: loading: 'lazy', alt: block.settings.alt, style: 'display: block; width: 100%; height: auto; max-width: 410px' }}</figure>{%- endif -%}{%- endfor -%}</div>
+</div>
+{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "HYPR reviews",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Good routines. Great reviews."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text",
+      "default": "Verified buyer"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image under reviews"
+    },
+    {
+      "type": "header",
+      "content": "Customer texts"
+    },
+    {
+      "type": "text",
+      "id": "texts_eyebrow",
+      "label": "Texts eyebrow",
+      "default": "Unedited texts from HYPR customers"
+    },
+    {
+      "type": "text",
+      "id": "texts_heading",
+      "label": "Texts heading",
+      "default": "Straight from their phones."
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Customer"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Love it!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text screenshot",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Screenshot"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "What it says",
+          "default": ""
+        },
+        {
+          "type": "color",
+          "id": "bg",
+          "label": "Background",
+          "default": "#0B0E15"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "HYPR reviews"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,47 @@
+{
+  "type": "footer",
+  "name": "HYPR footer",
+  "sections": {
+    "footer_0": {
+      "type": "hypr-footer",
+      "settings": {
+        "logo": "shopify://shop_images/hypr-logo-white.png",
+        "blurb": "Get new flavor drops, restock alerts and training tips first.",
+        "show_newsletter": true,
+        "newsletter_button": "Join",
+        "tagline": "#FUELTHEGRIND"
+      },
+      "blocks": {
+        "column_511": {
+          "type": "column",
+          "settings": {
+            "heading": "Shop",
+            "links": "HYPR Watermelon | /products/vitamins-and-supplements-example-product-4\nHYPR Bottle | /products/untitled-jul13_21-16-20\nSubscribe & save | /products/vitamins-and-supplements-example-product-4\nShop all | /pages/shop"
+          }
+        },
+        "column_512": {
+          "type": "column",
+          "settings": {
+            "heading": "Learn",
+            "links": "The Science | /pages/the-science\nOur Story | /pages/our-story\nReviews | /#reviews\nFAQ | /pages/questions"
+          }
+        },
+        "column_513": {
+          "type": "column",
+          "settings": {
+            "heading": "Help",
+            "links": "Contact us | /pages/contact-us\nManage subscription | /account\nReturns & refunds | /policies/refund-policy\nInstagram | https://www.instagram.com/tryhypr\nTikTok | https://www.tiktok.com/t/ZTBg6KR5R/"
+          }
+        }
+      },
+      "block_order": [
+        "column_511",
+        "column_512",
+        "column_513"
+      ]
+    }
+  },
+  "order": [
+    "footer_0"
+  ]
+}

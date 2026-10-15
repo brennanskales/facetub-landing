@@ -1,0 +1,466 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "hero_0": {
+      "type": "hypr-hero",
+      "settings": {
+        "image": "shopify://shop_images/hypr-ls-dissolve.jpg",
+        "position": "50% 50%",
+        "mobile_position": "50% 50%",
+        "script": "The science,",
+        "heading": "Three essentials. Real research.",
+        "text": "No secret blends. No big promises. Three ingredients with real research behind them, at doses you can see on the label.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "#buy",
+        "link_label": "Read the research",
+        "link_link": "#research",
+        "offer_image": "shopify://shop_images/hypr-bottle.jpg",
+        "offer_text": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value",
+        "proof": "Five-star reviews · Made in the USA",
+        "stats_top": false,
+        "anchor": "top"
+      },
+      "blocks": {
+        "stat_191": {
+          "type": "stat",
+          "settings": {
+            "label": "Creatine",
+            "value": "5 g"
+          }
+        },
+        "stat_192": {
+          "type": "stat",
+          "settings": {
+            "label": "Collagen",
+            "value": "5 g"
+          }
+        },
+        "stat_193": {
+          "type": "stat",
+          "settings": {
+            "label": "Sugar",
+            "value": "0 g"
+          }
+        }
+      },
+      "block_order": [
+        "stat_191",
+        "stat_192",
+        "stat_193"
+      ]
+    },
+    "intro_1": {
+      "type": "hypr-intro",
+      "settings": {
+        "script": "Read the label",
+        "heading": "Nothing hidden. Nothing extra.",
+        "statement": "Most powders hide their doses in a “blend.” HYPR lists every gram. <em>Salt for hydration. Creatine for power. Collagen for joints.</em> That’s it.",
+        "button_label": "",
+        "button_link": "",
+        "button2_label": "",
+        "button2_link": "",
+        "spacing": "sec"
+      }
+    },
+    "facts_2": {
+      "type": "hypr-facts",
+      "settings": {
+        "script": "The formula",
+        "heading": "What each one does.",
+        "button_label": "",
+        "button_link": "",
+        "anchor": "formula"
+      },
+      "blocks": {
+        "fact_194": {
+          "type": "fact",
+          "settings": {
+            "name": "Calories",
+            "form": "",
+            "amount": "25"
+          }
+        },
+        "fact_195": {
+          "type": "fact",
+          "settings": {
+            "name": "Total Carbohydrate",
+            "form": "",
+            "amount": "2 g · 1%"
+          }
+        },
+        "fact_196": {
+          "type": "fact",
+          "settings": {
+            "name": "Protein",
+            "form": "",
+            "amount": "5 g"
+          }
+        },
+        "fact_197": {
+          "type": "fact",
+          "settings": {
+            "name": "Magnesium",
+            "form": "(as glycinate)",
+            "amount": "80 mg · 19%"
+          }
+        },
+        "fact_198": {
+          "type": "fact",
+          "settings": {
+            "name": "Sodium",
+            "form": "",
+            "amount": "810 mg · 35%"
+          }
+        },
+        "fact_199": {
+          "type": "fact",
+          "settings": {
+            "name": "Potassium",
+            "form": "(as citrate)",
+            "amount": "200 mg · 4%"
+          }
+        },
+        "fact_200": {
+          "type": "fact",
+          "settings": {
+            "name": "Bovine Collagen Peptides",
+            "form": "",
+            "amount": "5 g · **"
+          }
+        },
+        "fact_201": {
+          "type": "fact",
+          "settings": {
+            "name": "Creatine Monohydrate",
+            "form": "",
+            "amount": "5 g · **"
+          }
+        },
+        "card_202": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-salt.jpg",
+            "eyebrow": "01 · Hydrate",
+            "title": "Electrolytes",
+            "text": "Sweat takes out water and salt, mostly sodium. HYPR puts back 810 mg of sodium with potassium and magnesium. Replacing them matters most in long or very sweaty sessions.",
+            "ref": "[3] Sawka et al., Med Sci Sports Exerc, 2007"
+          }
+        },
+        "card_203": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-scoop.jpg",
+            "eyebrow": "02 · Perform",
+            "title": "Creatine monohydrate",
+            "text": "Creatine refills the fast fuel your muscles use for sprints, jumps and lifts. 5 g a day is right in the 3–5 g range sports nutrition experts (ISSN) describe. Loading is optional.*",
+            "ref": "[1] Kreider et al., J Int Soc Sports Nutr, 2017"
+          }
+        },
+        "card_204": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-swirl.jpg",
+            "eyebrow": "03 · Support",
+            "title": "Collagen peptides",
+            "text": "Collagen gives you the amino acids found in tendons and ligaments. The research is promising but mixed, so we keep the claim simple. It is not a full protein.*",
+            "ref": "[4] Khatri et al., Amino Acids, 2021"
+          }
+        }
+      },
+      "block_order": [
+        "fact_194",
+        "fact_195",
+        "fact_196",
+        "fact_197",
+        "fact_198",
+        "fact_199",
+        "fact_200",
+        "fact_201",
+        "card_202",
+        "card_203",
+        "card_204"
+      ]
+    },
+    "ingredients_3": {
+      "type": "hypr-ingredients",
+      "settings": {
+        "script": "Ingredients",
+        "heading": "Three essentials. Nothing to hide.",
+        "text": "Every dose is on the label. No secret blends.",
+        "bg": "#FFFFFF",
+        "anchor": "inside"
+      },
+      "blocks": {
+        "ingredient_205": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-salt.jpg",
+            "name": "Pink Himalayan salt",
+            "dose": "810 mg sodium",
+            "text": "Puts back the main thing lost in sweat."
+          }
+        },
+        "ingredient_206": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-scoop.jpg",
+            "name": "Creatine monohydrate",
+            "dose": "5 g",
+            "text": "The most studied form, for strength and power.*"
+          }
+        },
+        "ingredient_207": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-swirl.jpg",
+            "name": "Collagen peptides",
+            "dose": "5 g",
+            "text": "Building blocks for tendons and joints.*"
+          }
+        },
+        "ingredient_208": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-mg.jpg",
+            "name": "Magnesium glycinate",
+            "dose": "80 mg",
+            "text": "Supports normal muscle function. Easy on the stomach."
+          }
+        },
+        "ingredient_209": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-k.jpg",
+            "name": "Potassium citrate",
+            "dose": "200 mg",
+            "text": "Works with sodium to keep fluid where it’s needed."
+          }
+        },
+        "ingredient_210": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-melon.jpg",
+            "name": "Watermelon flavor",
+            "dose": "0 g sugar",
+            "text": "Sweetened with stevia. Colored with beet root."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_205",
+        "ingredient_206",
+        "ingredient_207",
+        "ingredient_208",
+        "ingredient_209",
+        "ingredient_210"
+      ]
+    },
+    "callout_4": {
+      "type": "hypr-callout",
+      "settings": {
+        "script": "Straight talk,",
+        "heading": "Is the blend better?",
+        "text": "<p>No study shows that mixing these three works better than taking them apart. And no one has run a trial on HYPR as a finished product.</p><p>The win is simple: one tub, one scoop and a habit that’s easy to keep. With creatine, every day matters more than timing.</p>",
+        "spacing": "sec"
+      }
+    },
+    "steps_5": {
+      "type": "hypr-steps",
+      "settings": {
+        "script": "Make it a habit",
+        "heading": "Scoop. Mix. Repeat.",
+        "spacing": "sec"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-scoop.jpg",
+            "number": "01",
+            "title": "Scoop",
+            "text": "One level scoop. That’s your whole routine."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dissolve.jpg",
+            "number": "02",
+            "title": "Mix",
+            "text": "Shake into 16–24 oz of cold water. No clumps."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-pantry.jpg",
+            "number": "03",
+            "title": "Repeat",
+            "text": "Once a day, rest days too. 30 scoops, 30 days."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "refs_6": {
+      "type": "hypr-refs",
+      "settings": {
+        "script": "Read it yourself",
+        "heading": "The research.",
+        "note": "These sources look at the ingredients, not at HYPR as a finished product.",
+        "anchor": "research"
+      },
+      "blocks": {
+        "ref_211": {
+          "type": "ref",
+          "settings": {
+            "title": "ISSN position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine",
+            "cite": "Kreider RB, et al. J Int Soc Sports Nutr. 2017;14:18.",
+            "use": "Creatine benefits, safety and the 3 to 5 g daily dose"
+          }
+        },
+        "ref_212": {
+          "type": "ref",
+          "settings": {
+            "title": "Common questions and misconceptions about creatine supplementation",
+            "cite": "Antonio J, et al. J Int Soc Sports Nutr. 2021;18:13.",
+            "use": "Kidneys, hair, water weight and other myths"
+          }
+        },
+        "ref_213": {
+          "type": "ref",
+          "settings": {
+            "title": "American College of Sports Medicine position stand: Exercise and fluid replacement",
+            "cite": "Sawka MN, et al. Med Sci Sports Exerc. 2007;39(2):377-390.",
+            "use": "Sweat loss and sodium replacement"
+          }
+        },
+        "ref_214": {
+          "type": "ref",
+          "settings": {
+            "title": "The effects of collagen peptide supplementation on body composition, collagen synthesis, and recovery from joint injury and exercise: a systematic review",
+            "cite": "Khatri M, et al. Amino Acids. 2021;53(10):1493-1506.",
+            "use": "Collagen dosing and connective tissue"
+          }
+        },
+        "ref_215": {
+          "type": "ref",
+          "settings": {
+            "title": "Impact of collagen peptide supplementation in combination with long-term physical training: a systematic review with meta-analysis",
+            "cite": "Bischof K, et al. Sports Med. 2024;54(11):2865-2888.",
+            "use": "Where collagen research is still uncertain"
+          }
+        },
+        "ref_216": {
+          "type": "ref",
+          "settings": {
+            "title": "Magnesium: Fact Sheet for Health Professionals",
+            "cite": "NIH Office of Dietary Supplements.",
+            "use": "Magnesium and muscle function"
+          }
+        },
+        "ref_217": {
+          "type": "ref",
+          "settings": {
+            "title": "Potassium: Fact Sheet for Health Professionals",
+            "cite": "NIH Office of Dietary Supplements.",
+            "use": "Potassium and fluid balance"
+          }
+        }
+      },
+      "block_order": [
+        "ref_211",
+        "ref_212",
+        "ref_213",
+        "ref_214",
+        "ref_215",
+        "ref_216",
+        "ref_217"
+      ]
+    },
+    "faq_7": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "Myths and facts",
+        "heading": "Good questions.",
+        "center": true,
+        "small": false,
+        "narrow": false,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "pb",
+        "anchor": "faq"
+      },
+      "blocks": {
+        "question_218": {
+          "type": "question",
+          "settings": {
+            "question": "Does combining them work better than taking them apart?",
+            "answer": "<p>No study shows that. The win is simple: one tub, one scoop, one habit that’s easier to keep.</p>"
+          }
+        },
+        "question_219": {
+          "type": "question",
+          "settings": {
+            "question": "Is collagen the same as protein powder?",
+            "answer": "<p>No. Collagen isn’t a complete protein. HYPR adds to your routine. It doesn’t replace meals or your protein.</p>"
+          }
+        },
+        "question_220": {
+          "type": "question",
+          "settings": {
+            "question": "Is creatine safe for teens?",
+            "answer": "<p>Creatine is one of the most studied sports supplements. A 2026 guide for pediatricians says 3–5 g a day can be reasonable for teens who train hard and eat enough. Talk with your doctor first. HYPR is labeled for [AGE GUIDANCE FROM LABEL].</p>"
+          }
+        },
+        "question_221": {
+          "type": "question",
+          "settings": {
+            "question": "When should I take it?",
+            "answer": "<p>Any time that’s easy to remember. Creatine works by building up, so every day matters more than timing.</p>"
+          }
+        },
+        "question_222": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need electrolytes every day?",
+            "answer": "<p>Not always. For short, easy workouts, water and food may be enough. They matter most when it’s hot, sessions run long or you sweat a lot.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_218",
+        "question_219",
+        "question_220",
+        "question_221",
+        "question_222"
+      ]
+    },
+    "cta_8": {
+      "type": "hypr-cta",
+      "settings": {
+        "script": "Ready?",
+        "heading": "Make your routine simpler.",
+        "text": "Three essentials. One scoop. A free HYPR bottle with your tub.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "/products/vitamins-and-supplements-example-product-4",
+        "image": "shopify://shop_images/hypr-tub.png"
+      }
+    }
+  },
+  "order": [
+    "hero_0",
+    "intro_1",
+    "facts_2",
+    "ingredients_3",
+    "callout_4",
+    "steps_5",
+    "refs_6",
+    "faq_7",
+    "cta_8"
+  ]
+}

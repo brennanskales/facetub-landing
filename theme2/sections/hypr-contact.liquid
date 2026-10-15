@@ -1,0 +1,110 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="wrap" style="padding-bottom: 96px">
+<div class="help">
+{%- form 'contact', class: 'form' -%}
+{%- if form.posted_successfully? -%}<p class="full" style="margin: 0; padding: 14px 16px; border-radius: 14px; background: #F3EBD6; font-weight: 700">{{ s.success }}</p>{%- endif -%}
+{%- if form.errors -%}<p class="full" style="margin: 0; color: #9B1C1C">{{ form.errors | default_errors }}</p>{%- endif -%}
+<label>Name<input type="text" name="contact[name]" autocomplete="name"></label>
+<label>Email<input type="email" name="contact[email]" autocomplete="email" required></label>
+<label>Order number<input type="text" name="contact[Order number]" placeholder="Optional, like #1001"></label>
+<label>Topic<select name="contact[Topic]">{%- assign topics = s.topics | split: '|' -%}{%- for t in topics -%}<option>{{ t | strip }}</option>{%- endfor -%}</select></label>
+<label class="full">Message<textarea name="contact[body]" required></textarea></label>
+<button type="submit" class="btn btn-dark full" style="justify-self: start">{{ s.button }}</button>
+{%- endform -%}
+<div class="quick">
+{%- for block in section.blocks -%}<a href="{{ block.settings.link }}" class="qcard" {{ block.shopify_attributes }}><i>{{ block.settings.icon }}</i><span><b>{{ block.settings.title }}</b><small>{{ block.settings.text }}</small></span><span>→</span></a>{%- endfor -%}
+<div class="qcard" style="grid-template-columns: minmax(0,1fr)"><span><b>{{ s.email_label }}</b><small>{{ s.email }}</small>{% if s.dm_label != blank %}<b style="margin-top: 12px">{{ s.dm_label }}</b><small>{{ s.dm }}</small>{% endif %}</span></div>
+</div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR contact form",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "topics",
+      "label": "Topics (separate with |)",
+      "default": "My order | My subscription | Product question | Wholesale or teams | Something else"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Send button",
+      "default": "Send message"
+    },
+    {
+      "type": "text",
+      "id": "success",
+      "label": "Success message",
+      "default": "Thanks! We got your message and will reply soon."
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email us"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "[SUPPORT EMAIL]"
+    },
+    {
+      "type": "text",
+      "id": "dm_label",
+      "label": "DM label",
+      "default": "DM us"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "dm",
+      "label": "DM text",
+      "default": "<a href=\"https://www.instagram.com/tryhypr\">@tryhypr on Instagram</a>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Quick link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or symbol)",
+          "default": "→"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Track an order"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link",
+          "default": "/account"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "HYPR contact form"
+    }
+  ]
+}
+{% endschema %}

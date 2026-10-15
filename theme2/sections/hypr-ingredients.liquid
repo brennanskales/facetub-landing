@@ -1,0 +1,91 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="sec" style="background: {{ s.bg }}">
+<div class="wrap">
+<div class="ingr-head">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}<h2 class="disp h2">{{ s.heading }}</h2>{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>
+<div class="ingr">{%- for block in section.blocks -%}{%- assign b = block.settings -%}<div class="ing" {{ block.shopify_attributes }}>{% if b.image != blank %}{{ b.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: b.image.alt }}{% else %}<span class="sym" aria-hidden="true">{{ b.symbol }}</span>{% endif %}<h3>{{ b.name }}</h3><span class="dose">{{ b.dose }}</span><p>{{ b.text }}</p></div>{%- endfor -%}</div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR ingredients",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Three essentials. Nothing to hide."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "Every dose is on the label. No secret blends."
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "inside"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "symbol",
+          "label": "Symbol if no image",
+          "default": "Mg"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Ingredient"
+        },
+        {
+          "type": "text",
+          "id": "dose",
+          "label": "Dose",
+          "default": "5 g"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "HYPR ingredients"
+    }
+  ]
+}
+{% endschema %}

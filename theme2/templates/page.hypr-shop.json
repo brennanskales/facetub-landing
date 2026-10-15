@@ -1,0 +1,670 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "buybox_0": {
+      "type": "hypr-buybox",
+      "settings": {
+        "product": "vitamins-and-supplements-example-product-4",
+        "eyebrow": "Watermelon · 30 servings",
+        "title": "HYPR All-in-One Hydration",
+        "heading_tag": "h2",
+        "rating": "Five-star reviews · Made in the USA",
+        "lede": "Electrolytes, 5 g creatine and 5 g collagen in one watermelon scoop. Your whole routine in one tub. Zero sugar.",
+        "badge": "<b>Free bottle</b> with every tub",
+        "sub_title": "Subscribe & save 15%",
+        "sub_badge": "Best value",
+        "sub_note": "Ships every month · skip or cancel anytime",
+        "per_month": "/mo",
+        "one_title": "One-time purchase",
+        "one_note": "One tub, 30 scoops",
+        "gift": "Free HYPR bottle ($14.99 value)",
+        "button_label": "Add to cart",
+        "trust": "Zero sugar | No artificial dyes | Made in the USA | $1.42 a scoop subscribed",
+        "crumbs": true,
+        "crumb_label": "Shop",
+        "show_mbar": true,
+        "mbar_title": "HYPR · Watermelon",
+        "mbar_text": "+ free bottle",
+        "anchor": "buy"
+      },
+      "blocks": {
+        "image_134": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-studio.jpg",
+            "label": "Product"
+          }
+        },
+        "image_135": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dissolve.jpg",
+            "label": "Mixes clean"
+          }
+        },
+        "image_136": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-weightroom.jpg",
+            "label": "In the gym"
+          }
+        },
+        "image_137": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-pantry.jpg",
+            "label": "In the pantry"
+          }
+        },
+        "image_138": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-label-story.jpg",
+            "label": "Our story"
+          }
+        },
+        "image_139": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hypr-bottle.jpg",
+            "label": "Free bottle"
+          }
+        },
+        "benefit_140": {
+          "type": "benefit",
+          "settings": {
+            "text": "810 mg sodium for sweat"
+          }
+        },
+        "benefit_141": {
+          "type": "benefit",
+          "settings": {
+            "text": "5 g creatine for power*"
+          }
+        },
+        "benefit_142": {
+          "type": "benefit",
+          "settings": {
+            "text": "5 g collagen for joints*"
+          }
+        },
+        "benefit_143": {
+          "type": "benefit",
+          "settings": {
+            "text": "Zero sugar, no fake dyes"
+          }
+        },
+        "accordion_144": {
+          "type": "accordion",
+          "settings": {
+            "title": "What’s in one scoop",
+            "content": "<ul><li>Sodium 810 mg (pink Himalayan salt)</li><li>Potassium 200 mg (potassium citrate)</li><li>Magnesium 80 mg (magnesium glycinate)</li><li>Creatine monohydrate 5 g</li><li>Bovine collagen peptides 5 g</li><li>25 calories · 0 g sugar · stevia · beet root color</li></ul>"
+          }
+        },
+        "accordion_145": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "<p>Mix one scoop with 16–24 oz of cold water. Shake and drink once a day, rest days too. Creatine builds up over time, so every day beats perfect timing.</p>"
+          }
+        },
+        "accordion_146": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & returns",
+            "content": "<p>[CONFIRM SHIPPING TIMES AND RETURN WINDOW] See our <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_134",
+        "image_135",
+        "image_136",
+        "image_137",
+        "image_138",
+        "image_139",
+        "benefit_140",
+        "benefit_141",
+        "benefit_142",
+        "benefit_143",
+        "accordion_144",
+        "accordion_145",
+        "accordion_146"
+      ]
+    },
+    "proofbar_1": {
+      "type": "hypr-proofbar",
+      "settings": {},
+      "blocks": {
+        "item_147": {
+          "type": "item",
+          "settings": {
+            "value": "3 → 1",
+            "label": "Tubs in your cabinet"
+          }
+        },
+        "item_148": {
+          "type": "item",
+          "settings": {
+            "value": "0 g",
+            "label": "Sugar per scoop"
+          }
+        },
+        "item_149": {
+          "type": "item",
+          "settings": {
+            "value": "$1.42",
+            "label": "A scoop subscribed"
+          }
+        },
+        "item_150": {
+          "type": "item",
+          "settings": {
+            "value": "Free",
+            "label": "HYPR bottle with every tub"
+          }
+        }
+      },
+      "block_order": [
+        "item_147",
+        "item_148",
+        "item_149",
+        "item_150"
+      ]
+    },
+    "ugc_2": {
+      "type": "hypr-ugc",
+      "settings": {
+        "script": "Real people,",
+        "heading": "See HYPR in real life.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "#buy",
+        "style": "dark"
+      },
+      "blocks": {
+        "video_151": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-1.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-1-poster.jpg",
+            "tag": "College ballplayer",
+            "caption": "Why one scoop replaced his three tubs."
+          }
+        },
+        "video_152": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-2.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-2-poster.jpg",
+            "tag": "Taste test",
+            "caption": "First sip at the ballpark."
+          }
+        },
+        "photo_153": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dugout.jpg",
+            "tag": "Under the lights",
+            "caption": "Between innings, not after."
+          }
+        },
+        "video_154": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-3.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-3-poster.jpg",
+            "tag": "After practice",
+            "caption": "The post-practice refill."
+          }
+        },
+        "photo_155": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-track.jpg",
+            "tag": "Track day",
+            "caption": "One scoop before the workout."
+          }
+        }
+      },
+      "block_order": [
+        "video_151",
+        "video_152",
+        "photo_153",
+        "video_154",
+        "photo_155"
+      ]
+    },
+    "compare_3": {
+      "type": "hypr-compare",
+      "settings": {
+        "script": "Compare",
+        "heading": "The only one with all three.",
+        "text": "Most hydration mixes stop at salt. Some add sugar. HYPR adds creatine and collagen, with no sugar.",
+        "col0": "Per scoop",
+        "logo": "shopify://shop_images/hypr-logo-white.png",
+        "col1": "HYPR",
+        "col2": "LMNT",
+        "col3": "Liquid I.V.",
+        "col4": "Create Creatine + Electrolytes",
+        "note": "From published labels checked October 2026. Prices vary by store. HYPR: $49.99 ÷ 30 servings, or $1.42 with subscribe & save.",
+        "spacing": "sec",
+        "anchor": "compare"
+      },
+      "blocks": {
+        "row_156": {
+          "type": "row",
+          "settings": {
+            "label": "Sodium",
+            "v1": "810 mg",
+            "v2": "1,000 mg",
+            "v3": "500 mg",
+            "v4": "About 500 mg"
+          }
+        },
+        "row_157": {
+          "type": "row",
+          "settings": {
+            "label": "Sugar",
+            "v1": "0 g",
+            "v2": "0 g",
+            "v3": "11 g",
+            "v4": "0 g"
+          }
+        },
+        "row_158": {
+          "type": "row",
+          "settings": {
+            "label": "Creatine",
+            "v1": "5 g",
+            "v2": "—",
+            "v3": "—",
+            "v4": "5 g"
+          }
+        },
+        "row_159": {
+          "type": "row",
+          "settings": {
+            "label": "Collagen",
+            "v1": "5 g",
+            "v2": "—",
+            "v3": "—",
+            "v4": "—"
+          }
+        },
+        "row_160": {
+          "type": "row",
+          "settings": {
+            "label": "All three in one scoop",
+            "v1": "✓ Yes",
+            "v2": "— No",
+            "v3": "— No",
+            "v4": "— No"
+          }
+        },
+        "row_161": {
+          "type": "row",
+          "settings": {
+            "label": "Price per serving",
+            "v1": "$1.67",
+            "v2": "About $1.50",
+            "v3": "About $1.56",
+            "v4": "About $1.60"
+          }
+        }
+      },
+      "block_order": [
+        "row_156",
+        "row_157",
+        "row_158",
+        "row_159",
+        "row_160",
+        "row_161"
+      ]
+    },
+    "intro_4": {
+      "type": "hypr-intro",
+      "settings": {
+        "script": "Do the math",
+        "heading": "One tub. Not three.",
+        "side_text": "The same three essentials for less than half the price of buying them apart.",
+        "button_label": "Shop HYPR",
+        "button_link": "#buy",
+        "math_eyebrow": "Three separate tubs",
+        "total_label": "One tub of HYPR",
+        "total_old": "$115",
+        "total_new": "$49.99",
+        "math_note": "Typical separate prices supplied by HYPR. $42.49 with subscribe & save.",
+        "spacing": "pb"
+      },
+      "blocks": {
+        "row_162": {
+          "type": "row",
+          "settings": {
+            "label": "Electrolytes",
+            "value": "$45"
+          }
+        },
+        "row_163": {
+          "type": "row",
+          "settings": {
+            "label": "Creatine",
+            "value": "$30"
+          }
+        },
+        "row_164": {
+          "type": "row",
+          "settings": {
+            "label": "Collagen",
+            "value": "$40"
+          }
+        }
+      },
+      "block_order": [
+        "row_162",
+        "row_163",
+        "row_164"
+      ]
+    },
+    "ingredients_5": {
+      "type": "hypr-ingredients",
+      "settings": {
+        "script": "Ingredients",
+        "heading": "Three essentials. Nothing to hide.",
+        "text": "Every dose is on the label. No secret blends.",
+        "bg": "#FFFFFF",
+        "anchor": "inside"
+      },
+      "blocks": {
+        "ingredient_165": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-salt.jpg",
+            "name": "Pink Himalayan salt",
+            "dose": "810 mg sodium",
+            "text": "Puts back the main thing lost in sweat."
+          }
+        },
+        "ingredient_166": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-scoop.jpg",
+            "name": "Creatine monohydrate",
+            "dose": "5 g",
+            "text": "The most studied form, for strength and power.*"
+          }
+        },
+        "ingredient_167": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-swirl.jpg",
+            "name": "Collagen peptides",
+            "dose": "5 g",
+            "text": "Building blocks for tendons and joints.*"
+          }
+        },
+        "ingredient_168": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-mg.jpg",
+            "name": "Magnesium glycinate",
+            "dose": "80 mg",
+            "text": "Supports normal muscle function. Easy on the stomach."
+          }
+        },
+        "ingredient_169": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-k.jpg",
+            "name": "Potassium citrate",
+            "dose": "200 mg",
+            "text": "Works with sodium to keep fluid where it’s needed."
+          }
+        },
+        "ingredient_170": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ing-melon.jpg",
+            "name": "Watermelon flavor",
+            "dose": "0 g sugar",
+            "text": "Sweetened with stevia. Colored with beet root."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_165",
+        "ingredient_166",
+        "ingredient_167",
+        "ingredient_168",
+        "ingredient_169",
+        "ingredient_170"
+      ]
+    },
+    "reviews_6": {
+      "type": "hypr-reviews",
+      "settings": {
+        "script": "Reviews",
+        "heading": "Good routines. Great reviews.",
+        "button_label": "Shop HYPR",
+        "button_link": "#buy",
+        "badge": "Verified buyer",
+        "product_image": "shopify://shop_images/hypr-tub.png",
+        "texts_eyebrow": "Unedited texts from HYPR customers",
+        "texts_heading": "Straight from their phones.",
+        "anchor": "reviews"
+      },
+      "blocks": {
+        "review_171": {
+          "type": "review",
+          "settings": {
+            "name": "Caleb N.",
+            "quote": "My daily routine is much more consistent now. One scoop is easier than remembering multiple products at different times."
+          }
+        },
+        "review_172": {
+          "type": "review",
+          "settings": {
+            "name": "Brynn Garrett",
+            "quote": "AMAZING taste and im so excited that im getting more than one benefit in one drink"
+          }
+        },
+        "review_173": {
+          "type": "review",
+          "settings": {
+            "name": "Michael Smith",
+            "quote": "It mixes well with water and is not grainy. Overall a great product!"
+          }
+        },
+        "review_174": {
+          "type": "review",
+          "settings": {
+            "name": "Jordan T.",
+            "quote": "I have been drinking it daily for weeks and the flavor still has not gotten old."
+          }
+        },
+        "review_175": {
+          "type": "review",
+          "settings": {
+            "name": "Nico Ferroni",
+            "quote": "Tastes really good and good price"
+          }
+        },
+        "text_176": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-cb148868.jpg",
+            "alt": "HYPR combines hydration, creatine, and collagen in one easy scoop, tastes great, and saves me from buying multiple supplements.",
+            "bg": "#000000"
+          }
+        },
+        "text_177": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-0820bf67.jpg",
+            "alt": "I got the HYPR and it taste great and it's so good to know the right stuff is in it",
+            "bg": "#FFFFFF"
+          }
+        },
+        "text_178": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-b73f5cca.jpg",
+            "alt": "HYPR actually mixes insanely well. And it's not too strong or sweet of a flavor.",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_179": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-232d6089.jpg",
+            "alt": "Just got my order and it tastes amazing! If you guys are ever looking for people to test different flavors I would love to!",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_180": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-89d1584b.jpg",
+            "alt": "Not just a great product for athletes, but people with active lifestyles. Plus it tastes better than any other supplements I have tried!!",
+            "bg": "#131315"
+          }
+        },
+        "text_181": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-0d130c1d.jpg",
+            "alt": "An everyday essential from here on out",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_182": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-fcf4c361.jpg",
+            "alt": "Great way to start the day. Will be a part of the every morning routine from here on out.",
+            "bg": "#131315"
+          }
+        },
+        "text_183": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-0384b28c.jpg",
+            "alt": "wow this stuff is legit",
+            "bg": "#0B0E15"
+          }
+        },
+        "text_184": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/hypr-t-76fb4a1c.jpg",
+            "alt": "The flavor is great. It mixes well with water and is not grainy.",
+            "bg": "#131315"
+          }
+        }
+      },
+      "block_order": [
+        "review_171",
+        "review_172",
+        "review_173",
+        "review_174",
+        "review_175",
+        "text_176",
+        "text_177",
+        "text_178",
+        "text_179",
+        "text_180",
+        "text_181",
+        "text_182",
+        "text_183",
+        "text_184"
+      ]
+    },
+    "faq_7": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "Before you buy",
+        "heading": "Quick answers.",
+        "center": true,
+        "small": false,
+        "narrow": false,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "sec",
+        "anchor": "faq"
+      },
+      "blocks": {
+        "question_185": {
+          "type": "question",
+          "settings": {
+            "question": "How do I use it?",
+            "answer": "<p>Mix one scoop with 16–24 oz of cold water once a day, rest days too. Follow the label on your tub.</p>"
+          }
+        },
+        "question_186": {
+          "type": "question",
+          "settings": {
+            "question": "Is there sugar or anything artificial?",
+            "answer": "<p>No sugar. No artificial flavors or dyes. HYPR is sweetened with stevia and colored with beet root.</p>"
+          }
+        },
+        "question_187": {
+          "type": "question",
+          "settings": {
+            "question": "How does subscribe & save work?",
+            "answer": "<p>Your tub ships every month at 15% off ($42.49). Skip, pause or cancel anytime from your account. [CONFIRM SUBSCRIPTION TERMS]</p>"
+          }
+        },
+        "question_188": {
+          "type": "question",
+          "settings": {
+            "question": "How do I get the free bottle?",
+            "answer": "<p>Add any tub to your cart and the HYPR bottle ($14.99 value) is added free. One bottle per order.</p>"
+          }
+        },
+        "question_189": {
+          "type": "question",
+          "settings": {
+            "question": "How fast does it ship?",
+            "answer": "<p>[CONFIRM SHIPPING TIMES] You get tracking by email as soon as it ships.</p>"
+          }
+        },
+        "question_190": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don’t love it?",
+            "answer": "<p>[CONFIRM RETURN WINDOW] See our <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_185",
+        "question_186",
+        "question_187",
+        "question_188",
+        "question_189",
+        "question_190"
+      ]
+    },
+    "cta_8": {
+      "type": "hypr-cta",
+      "settings": {
+        "script": "Ready?",
+        "heading": "Make your routine simpler.",
+        "text": "Three essentials. One scoop. A free HYPR bottle with your tub.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "#buy",
+        "image": "shopify://shop_images/hypr-tub.png"
+      }
+    }
+  },
+  "order": [
+    "buybox_0",
+    "proofbar_1",
+    "ugc_2",
+    "compare_3",
+    "intro_4",
+    "ingredients_5",
+    "reviews_6",
+    "faq_7",
+    "cta_8"
+  ]
+}

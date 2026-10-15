@@ -1,0 +1,107 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section class="wrap" style="padding-bottom: 96px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<div class="split">
+<div class="card" style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr)">
+<div class="card-img" style="aspect-ratio: auto">{% if s.image != blank %}{{ s.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: s.image.alt, style: 'object-fit: contain; padding: 18px' }}{% endif %}</div>
+<div class="card-body" style="justify-content: center"><p class="eyebrow">{{ s.card_eyebrow }}</p><h3>{{ s.card_title }}</h3><div class="card-price"><b>{{ s.card_price }}</b><s>{{ s.card_old }}</s></div><p style="margin: 0; color: #5E5C55; font-size: 15px; line-height: 1.5">{{ s.card_text }}</p></div>
+</div>
+<div class="math" style="justify-content: center">
+<span class="script" style="font-size: 40px">{{ s.right_script }}</span><h3 class="disp" style="font-size: 44px; color: #FFFFFF">{{ s.right_heading }}</h3><p style="margin: 0; color: #D9D6CE; line-height: 1.6">{{ s.right_text }}</p>
+{%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="btn btn-gold" style="align-self: flex-start">{{ s.button_label }}</a>{%- endif -%}
+</div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR bottle + subscribe",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "Pairs with"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The HYPR bottle."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Card image"
+    },
+    {
+      "type": "text",
+      "id": "card_eyebrow",
+      "label": "Card eyebrow",
+      "default": "Free with any tub"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Card title",
+      "default": "HYPR Bottle"
+    },
+    {
+      "type": "text",
+      "id": "card_price",
+      "label": "Price",
+      "default": "FREE"
+    },
+    {
+      "type": "text",
+      "id": "card_old",
+      "label": "Old price",
+      "default": "$14.99"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_text",
+      "label": "Card text",
+      "default": "Holds a full serving. Added to your cart automatically with every tub."
+    },
+    {
+      "type": "text",
+      "id": "right_script",
+      "label": "Right script",
+      "default": "Subscribe & save"
+    },
+    {
+      "type": "text",
+      "id": "right_heading",
+      "label": "Right heading",
+      "default": "15% off. Every month."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "right_text",
+      "label": "Right text",
+      "default": "$42.49 a tub. Skip, pause or cancel anytime. The free bottle comes with your first box."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "HYPR bottle + subscribe"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section class="wrap" style="padding-bottom: 96px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<div class="swap">
+<div class="swap-card" style="background: #FFFFFF; border: 1px solid #E6E3DB"><p class="eyebrow" style="color: #5E5C55">{{ s.left_title }}</p>{%- for block in section.blocks -%}<div class="swap-row"{% unless forloop.last %} style="border-bottom: 1px solid #EFEBE3"{% endunless %} {{ block.shopify_attributes }}><span>{{ block.settings.label }}</span><b>{{ block.settings.left }}</b></div>{%- endfor -%}</div>
+<div class="swap-card" style="background: #0E0E0C; color: #FFFFFF"><p class="eyebrow" style="color: #D4AF4A">{{ s.right_title }}</p>{%- for block in section.blocks -%}<div class="swap-row"{% unless forloop.last %} style="border-bottom: 1px solid #2A2A26"{% endunless %}><span>{{ block.settings.label }}</span><b style="color: #D4AF4A">{{ block.settings.right }}</b></div>{%- endfor -%}</div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR side-by-side swap",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "The swap"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What’s in their water bottle?"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left card title",
+      "default": "A typical sports drink"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right card title",
+      "default": "One scoop of HYPR"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Sugar"
+        },
+        {
+          "type": "text",
+          "id": "left",
+          "label": "Left value",
+          "default": "Often 30 g+ a bottle"
+        },
+        {
+          "type": "text",
+          "id": "right",
+          "label": "Right value",
+          "default": "0 g"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "HYPR side-by-side swap"
+    }
+  ]
+}
+{% endschema %}

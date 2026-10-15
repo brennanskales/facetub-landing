@@ -1,0 +1,116 @@
+{
+  "type": "header",
+  "name": "HYPR header",
+  "sections": {
+    "announcement_0": {
+      "type": "hypr-announcement",
+      "settings": {},
+      "blocks": {
+        "message_500": {
+          "type": "message",
+          "settings": {
+            "text": "Buy a tub, get a HYPR bottle free"
+          }
+        },
+        "message_501": {
+          "type": "message",
+          "settings": {
+            "text": "Subscribe & save 15%"
+          }
+        },
+        "message_502": {
+          "type": "message",
+          "settings": {
+            "text": "Zero sugar"
+          }
+        },
+        "message_503": {
+          "type": "message",
+          "settings": {
+            "text": "No artificial dyes"
+          }
+        },
+        "message_504": {
+          "type": "message",
+          "settings": {
+            "text": "Made in the USA"
+          }
+        },
+        "message_505": {
+          "type": "message",
+          "settings": {
+            "text": "Built by former D1 athletes"
+          }
+        }
+      },
+      "block_order": [
+        "message_500",
+        "message_501",
+        "message_502",
+        "message_503",
+        "message_504",
+        "message_505"
+      ]
+    },
+    "header_1": {
+      "type": "hypr-header",
+      "settings": {
+        "logo": "shopify://shop_images/hypr-logo-black.png",
+        "logo_link": "/",
+        "show_search": true,
+        "show_account": true,
+        "show_cart": true,
+        "button_label": "Shop HYPR",
+        "button_link": "/products/vitamins-and-supplements-example-product-4"
+      },
+      "blocks": {
+        "link_506": {
+          "type": "link",
+          "settings": {
+            "label": "Shop",
+            "link": "/pages/shop"
+          }
+        },
+        "link_507": {
+          "type": "link",
+          "settings": {
+            "label": "The Science",
+            "link": "/pages/the-science"
+          }
+        },
+        "link_508": {
+          "type": "link",
+          "settings": {
+            "label": "Our Story",
+            "link": "/pages/our-story"
+          }
+        },
+        "link_509": {
+          "type": "link",
+          "settings": {
+            "label": "Reviews",
+            "link": "/#reviews"
+          }
+        },
+        "link_510": {
+          "type": "link",
+          "settings": {
+            "label": "FAQ",
+            "link": "/pages/questions"
+          }
+        }
+      },
+      "block_order": [
+        "link_506",
+        "link_507",
+        "link_508",
+        "link_509",
+        "link_510"
+      ]
+    }
+  },
+  "order": [
+    "announcement_0",
+    "header_1"
+  ]
+}

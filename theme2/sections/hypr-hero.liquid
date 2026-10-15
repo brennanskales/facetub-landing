@@ -1,0 +1,179 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<header class="wrap hero-wrap" style="padding-top: 8px"{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %}>
+<div class="hero">
+<div class="hero-media">{%- if s.image != blank -%}<img src="{{ s.image | image_url: width: 2000 }}" srcset="{{ s.image | image_url: width: 800 }} 800w, {{ s.image | image_url: width: 1400 }} 1400w, {{ s.image | image_url: width: 2000 }} 2000w" sizes="(max-width: 760px) 100vw, 64vw" fetchpriority="high" alt="{{ s.image.alt | escape }}" style="--pos: {{ s.position }}; --mpos: {{ s.mobile_position }}">{%- endif -%}</div>
+<div class="hero-copy">
+<h1 class="disp hero-h1">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{{ s.heading }}</h1>
+<div style="display: flex; flex-direction: column; gap: 20px">
+{%- if s.text != blank -%}<p class="hero-sub">{{ s.text }}</p>{%- endif -%}
+<div class="hero-cta">{% if s.button_label != blank %}<a href="{{ s.button_link }}" class="btn btn-gold">{{ s.button_label }}</a>{% endif %}{% if s.link_label != blank %}<a href="{{ s.link_link }}" class="hero-link">{{ s.link_label }}</a>{% endif %}</div>
+{%- if s.offer_text != blank -%}<div class="offer-pill">{% if s.offer_image != blank %}{{ s.offer_image | image_url: width: 120 | image_tag: alt: '' }}{% endif %}<span>{{ s.offer_text }}</span></div>{%- endif -%}
+{%- if s.proof != blank -%}<div class="hero-proof"><span class="stars">★★★★★</span><span>{{ s.proof }}</span></div>{%- endif -%}
+</div>
+</div>
+{%- if s.card_title != blank -%}<a href="{{ s.card_link }}" class="hero-card">{% if s.card_image != blank %}{{ s.card_image | image_url: width: 160 | image_tag: alt: '' }}{% endif %}<span style="margin: 0"><small>{{ s.card_eyebrow }}</small><b>{{ s.card_title }}</b><span>{{ s.card_text }}</span></span></a>{%- endif -%}
+{%- if section.blocks.size > 0 -%}<div class="hero-stats{% if s.card_title != blank and s.stats_top %} up{% endif %}" aria-label="Per scoop">{%- for block in section.blocks -%}<div class="stat-chip" {{ block.shopify_attributes }}>{{ block.settings.label }}<b>{{ block.settings.value }}</b></div>{%- endfor -%}</div>{%- endif -%}
+</div>
+</header>
+
+{% schema %}
+{
+  "name": "HYPR hero",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "position",
+      "label": "Image focus (desktop)",
+      "default": "50% 50%"
+    },
+    {
+      "type": "text",
+      "id": "mobile_position",
+      "label": "Image focus (mobile)",
+      "default": "50% 50%"
+    },
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Text link label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "link_link",
+      "label": "Text link",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Offer"
+    },
+    {
+      "type": "image_picker",
+      "id": "offer_image",
+      "label": "Offer image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "offer_text",
+      "label": "Offer text (bold for gold)",
+      "default": "<b>Buy one, get a HYPR bottle free.</b> $14.99 value"
+    },
+    {
+      "type": "text",
+      "id": "proof",
+      "label": "Star rating text",
+      "default": "Five-star reviews · Made in the USA"
+    },
+    {
+      "type": "header",
+      "content": "Product card"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Card image"
+    },
+    {
+      "type": "text",
+      "id": "card_eyebrow",
+      "label": "Card eyebrow",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Card title (blank hides card)",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "card_text",
+      "label": "Card text",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "card_link",
+      "label": "Card link",
+      "default": "#buy"
+    },
+    {
+      "type": "checkbox",
+      "id": "stats_top",
+      "label": "Move stat chips up when card shows",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "top"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat chip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Sodium"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "810 mg"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "HYPR hero"
+    }
+  ]
+}
+{% endschema %}

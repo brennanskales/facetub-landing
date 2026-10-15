@@ -1,0 +1,84 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="wrap" style="padding-bottom: 96px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<div class="sports">{%- for block in section.blocks -%}{%- if block.type == 'photo' -%}<figure class="sport" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 800 }}" loading="lazy" alt="{{ block.settings.image.alt | escape }}">{% endif %}<figcaption>{{ block.settings.label }}</figcaption></figure>{%- endif -%}{%- endfor -%}</div>
+<div class="pains">{%- for block in section.blocks -%}{%- if block.type == 'pain' -%}<div class="pain" {{ block.shopify_attributes }}><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p><span class="fix">{{ block.settings.fix }}</span></div>{%- endif -%}{%- endfor -%}</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR pain points",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "Why you fade"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every sport hits the same wall."
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "fade"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Sport photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Football"
+        }
+      ]
+    },
+    {
+      "type": "pain",
+      "name": "Pain point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Cramping up"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "fix",
+          "label": "HYPR fix",
+          "default": "HYPR: 810 mg sodium"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "HYPR pain points"
+    }
+  ]
+}
+{% endschema %}

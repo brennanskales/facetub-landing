@@ -1,0 +1,198 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "page-head_0": {
+      "type": "hypr-page-head",
+      "settings": {
+        "crumb": "FAQ",
+        "script": "Clarity. Included.",
+        "heading": "Good questions.",
+        "text": "Everything you want to know about HYPR, your order and your subscription."
+      }
+    },
+    "faq_1": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "",
+        "heading": "The product",
+        "center": false,
+        "small": true,
+        "narrow": true,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "pb-sm",
+        "anchor": "product"
+      },
+      "blocks": {
+        "question_241": {
+          "type": "question",
+          "settings": {
+            "question": "What is HYPR?",
+            "answer": "<p>One watermelon scoop with electrolytes, 5 g creatine and 5 g collagen. It replaces three separate tubs with one.</p>"
+          }
+        },
+        "question_242": {
+          "type": "question",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>Athletes, sports families and anyone with an active routine. You don’t need to be a pro. Electrolyte needs depend on how much you sweat, eat and drink.</p>"
+          }
+        },
+        "question_243": {
+          "type": "question",
+          "settings": {
+            "question": "How do I use it?",
+            "answer": "<p>Mix one scoop with 16–24 oz of cold water once a day, rest days too. Follow the label on your tub.</p>"
+          }
+        },
+        "question_244": {
+          "type": "question",
+          "settings": {
+            "question": "Is there sugar or anything artificial?",
+            "answer": "<p>No sugar. No artificial flavors or dyes. HYPR is sweetened with stevia and colored with beet root.</p>"
+          }
+        },
+        "question_245": {
+          "type": "question",
+          "settings": {
+            "question": "Does combining them work better than taking them apart?",
+            "answer": "<p>No study shows that. The win is simple: one tub, one scoop, one habit that’s easier to keep.</p>"
+          }
+        },
+        "question_246": {
+          "type": "question",
+          "settings": {
+            "question": "Is collagen the same as protein powder?",
+            "answer": "<p>No. Collagen isn’t a complete protein. HYPR adds to your routine. It doesn’t replace meals or your protein.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_241",
+        "question_242",
+        "question_243",
+        "question_244",
+        "question_245",
+        "question_246"
+      ]
+    },
+    "faq_2": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "",
+        "heading": "Athletes & teens",
+        "center": false,
+        "small": true,
+        "narrow": true,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "pb-sm",
+        "anchor": "athletes"
+      },
+      "blocks": {
+        "question_247": {
+          "type": "question",
+          "settings": {
+            "question": "Is creatine safe for teens?",
+            "answer": "<p>Creatine is one of the most studied sports supplements. A 2026 guide for pediatricians says 3–5 g a day can be reasonable for teens who train hard and eat enough. Talk with your doctor first. HYPR is labeled for [AGE GUIDANCE FROM LABEL].</p>"
+          }
+        },
+        "question_248": {
+          "type": "question",
+          "settings": {
+            "question": "When should I take it?",
+            "answer": "<p>Any time that’s easy to remember. Creatine works by building up, so every day matters more than timing.</p>"
+          }
+        },
+        "question_249": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need electrolytes every day?",
+            "answer": "<p>Not always. For short, easy workouts, water and food may be enough. They matter most when it’s hot, sessions run long or you sweat a lot.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_247",
+        "question_248",
+        "question_249"
+      ]
+    },
+    "faq_3": {
+      "type": "hypr-faq",
+      "settings": {
+        "script": "",
+        "heading": "Orders & subscriptions",
+        "center": false,
+        "small": true,
+        "narrow": true,
+        "button_label": "",
+        "button_link": "",
+        "spacing": "pb-sm",
+        "anchor": "orders"
+      },
+      "blocks": {
+        "question_250": {
+          "type": "question",
+          "settings": {
+            "question": "How does subscribe & save work?",
+            "answer": "<p>Your tub ships every month at 15% off ($42.49). Skip, pause or cancel anytime from your account. [CONFIRM SUBSCRIPTION TERMS]</p>"
+          }
+        },
+        "question_251": {
+          "type": "question",
+          "settings": {
+            "question": "How do I get the free bottle?",
+            "answer": "<p>Add any tub to your cart and the HYPR bottle ($14.99 value) is added free. One bottle per order.</p>"
+          }
+        },
+        "question_252": {
+          "type": "question",
+          "settings": {
+            "question": "How fast does it ship?",
+            "answer": "<p>[CONFIRM SHIPPING TIMES] You get tracking by email as soon as it ships.</p>"
+          }
+        },
+        "question_253": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don’t love it?",
+            "answer": "<p>[CONFIRM RETURN WINDOW] See our <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
+          }
+        },
+        "question_254": {
+          "type": "question",
+          "settings": {
+            "question": "Is it third-party tested?",
+            "answer": "<p>[ADD TESTING / CERTIFICATION DETAILS]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_250",
+        "question_251",
+        "question_252",
+        "question_253",
+        "question_254"
+      ]
+    },
+    "callout_4": {
+      "type": "hypr-callout",
+      "settings": {
+        "script": "Still stuck?",
+        "heading": "Talk to a real person.",
+        "text": "<p>Questions about your order, your subscription or what’s in the scoop? We answer every message.</p>",
+        "button_label": "Contact us",
+        "button_link": "/pages/contact-us",
+        "spacing": "pb"
+      }
+    }
+  },
+  "order": [
+    "page-head_0",
+    "faq_1",
+    "faq_2",
+    "faq_3",
+    "callout_4"
+  ]
+}

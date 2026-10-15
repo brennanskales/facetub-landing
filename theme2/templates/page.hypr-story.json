@@ -1,0 +1,286 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "page-head_0": {
+      "type": "hypr-page-head",
+      "settings": {
+        "crumb": "Our Story",
+        "script": "We wanted simple, too.",
+        "heading": "Built by two D1 ballplayers.",
+        "text": "TJ Werner and Caleb Walker played Division I baseball. They believed in creatine, electrolytes and collagen. They just hated managing three tubs to get them.",
+        "image": "shopify://shop_images/hypr-founder.jpg",
+        "position": "55% 40%",
+        "button_label": "Shop HYPR",
+        "button_link": "/products/vitamins-and-supplements-example-product-4",
+        "button2_label": "Why we built it",
+        "button2_link": "#why"
+      }
+    },
+    "intro_1": {
+      "type": "hypr-intro",
+      "settings": {
+        "script": "The problem",
+        "heading": "Your routine shouldn’t feel like another workout.",
+        "statement": "Three containers. Three scoops. Three reorders. <em>The ingredients made sense. Keeping up with them didn’t.</em> So we put all three in one tub.",
+        "button_label": "",
+        "button_link": "",
+        "button2_label": "",
+        "button2_link": "",
+        "spacing": "pb"
+      }
+    },
+    "feature_2": {
+      "type": "hypr-feature",
+      "settings": {
+        "image": "shopify://shop_images/hypr-label-story.jpg",
+        "position": "50% 50%",
+        "fit": "contain",
+        "script": "From the dugout,",
+        "heading": "We built the routine we wanted.",
+        "text": "We wanted our supplements in one simple product that was easy to stock and easy to stick with. Every tub carries our names and our story on the back, because we stand behind what’s inside.",
+        "signature": "— TJ & Caleb",
+        "button_label": "",
+        "button_link": "",
+        "top_space": false,
+        "media_bg": "#0E0E0C"
+      }
+    },
+    "goals_3": {
+      "type": "hypr-goals",
+      "settings": {
+        "script": "Why we created HYPR",
+        "heading": "Make the routine easier to keep.",
+        "anchor": "why"
+      },
+      "blocks": {
+        "goal_223": {
+          "type": "goal",
+          "settings": {
+            "title": "Simplify the daily routine.",
+            "text": "One product instead of three. Fewer things to buy, track and remember."
+          }
+        },
+        "goal_224": {
+          "type": "goal",
+          "settings": {
+            "title": "Bring three essentials together.",
+            "text": "Electrolytes, creatine and collagen, each doing its own job."
+          }
+        },
+        "goal_225": {
+          "type": "goal",
+          "settings": {
+            "title": "Make every amount clear.",
+            "text": "Every dose is on the label. No secret blends."
+          }
+        },
+        "goal_226": {
+          "type": "goal",
+          "settings": {
+            "title": "Keep prep simple.",
+            "text": "Scoop, water, shake. That’s it."
+          }
+        },
+        "goal_227": {
+          "type": "goal",
+          "settings": {
+            "title": "Make consistency easy.",
+            "text": "Creatine works when you take it every day. One scoop makes that easier."
+          }
+        }
+      },
+      "block_order": [
+        "goal_223",
+        "goal_224",
+        "goal_225",
+        "goal_226",
+        "goal_227"
+      ]
+    },
+    "vs_4": {
+      "type": "hypr-vs",
+      "settings": {
+        "script": "The HYPR difference",
+        "heading": "Same three. Less to manage.",
+        "col1": "HYPR",
+        "col2": "Three separate tubs",
+        "note": "Combining the ingredients doesn’t make them absorb or work better. It makes them easier to take. Separate prices supplied by HYPR."
+      },
+      "blocks": {
+        "row_228": {
+          "type": "row",
+          "settings": {
+            "label": "Containers",
+            "v1": "1",
+            "v2": "3"
+          }
+        },
+        "row_229": {
+          "type": "row",
+          "settings": {
+            "label": "Scoops a day",
+            "v1": "1",
+            "v2": "3, each measured"
+          }
+        },
+        "row_230": {
+          "type": "row",
+          "settings": {
+            "label": "Reorders",
+            "v1": "1, or auto with subscribe",
+            "v2": "3 to keep track of"
+          }
+        },
+        "row_231": {
+          "type": "row",
+          "settings": {
+            "label": "Price",
+            "v1": "$49.99 · $42.49 subscribed",
+            "v2": "About $115"
+          }
+        }
+      },
+      "block_order": [
+        "row_228",
+        "row_229",
+        "row_230",
+        "row_231"
+      ]
+    },
+    "uses_5": {
+      "type": "hypr-uses",
+      "settings": {
+        "script": "Made for your daily grind",
+        "heading": "An athlete’s background. An everyday mindset.",
+        "bg": "#FFFFFF"
+      },
+      "blocks": {
+        "use_232": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-weightroom.jpg",
+            "position": "35% 50%",
+            "title": "The early lift",
+            "text": "Shake it before the sun’s up."
+          }
+        },
+        "use_233": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-basketball.jpg",
+            "position": "40% 35%",
+            "title": "The rec league",
+            "text": "Back on the court after work."
+          }
+        },
+        "use_234": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-track.jpg",
+            "position": "50% 40%",
+            "title": "The training habit",
+            "text": "Every day, rest days too."
+          }
+        },
+        "use_235": {
+          "type": "use",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-mom-kitchen.jpg",
+            "position": "40% 40%",
+            "title": "The busy schedule",
+            "text": "One scoop, out the door."
+          }
+        }
+      },
+      "block_order": [
+        "use_232",
+        "use_233",
+        "use_234",
+        "use_235"
+      ]
+    },
+    "ugc_6": {
+      "type": "hypr-ugc",
+      "settings": {
+        "script": "#FUELTHEGRIND",
+        "heading": "See HYPR in real life",
+        "button_label": "Instagram ↗",
+        "button_link": "https://www.instagram.com/tryhypr",
+        "style": "light"
+      },
+      "blocks": {
+        "video_236": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-1.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-1-poster.jpg",
+            "tag": "College ballplayer",
+            "caption": "Why one scoop replaced his three tubs."
+          }
+        },
+        "video_237": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-2.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-2-poster.jpg",
+            "tag": "Taste test",
+            "caption": "First sip at the ballpark."
+          }
+        },
+        "photo_238": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-dugout.jpg",
+            "tag": "Under the lights",
+            "caption": "Between innings, not after."
+          }
+        },
+        "video_239": {
+          "type": "video",
+          "settings": {
+            "video": "hypr-ugc-3.mp4",
+            "poster": "shopify://shop_images/hypr-ugc-3-poster.jpg",
+            "tag": "After practice",
+            "caption": "The post-practice refill."
+          }
+        },
+        "photo_240": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/hypr-ls-track.jpg",
+            "tag": "Track day",
+            "caption": "One scoop before the workout."
+          }
+        }
+      },
+      "block_order": [
+        "video_236",
+        "video_237",
+        "photo_238",
+        "video_239",
+        "photo_240"
+      ]
+    },
+    "cta_7": {
+      "type": "hypr-cta",
+      "settings": {
+        "script": "Join the team,",
+        "heading": "Less to manage. More grind.",
+        "text": "Three essentials in one scoop. A free HYPR bottle with your tub.",
+        "button_label": "Shop HYPR · $49.99",
+        "button_link": "/products/vitamins-and-supplements-example-product-4",
+        "image": "shopify://shop_images/hypr-tub.png"
+      }
+    }
+  },
+  "order": [
+    "page-head_0",
+    "intro_1",
+    "feature_2",
+    "goals_3",
+    "vs_4",
+    "uses_5",
+    "ugc_6",
+    "cta_7"
+  ]
+}

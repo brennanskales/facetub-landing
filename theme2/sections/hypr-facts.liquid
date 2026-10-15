@@ -1,0 +1,148 @@
+{%- liquid
+  assign s = section.settings
+  assign center = false
+-%}
+<section{% if s.anchor != blank %} id="{{ s.anchor }}"{% endif %} class="wrap" style="padding-bottom: 96px">{%- if s.script != blank or s.heading != blank -%}<div class="stitle{% if center %} center{% endif %}">{% if s.script != blank %}<span class="script">{{ s.script }}</span>{% endif %}{% if s.heading != blank %}<h2 class="disp h2">{{ s.heading }}</h2>{% endif %}{% if s.text != blank %}<p class="lede">{{ s.text }}</p>{% endif %}</div>{%- endif -%}
+<div class="formula">
+<div class="facts">
+<h3>{{ s.facts_title }}</h3>
+<div class="row" style="border-bottom: 8px solid #0E0E0C"><span>{{ s.serving }}</span><span>{{ s.servings }}</span></div>
+{%- for block in section.blocks -%}{%- if block.type == 'fact' -%}<div class="row" {{ block.shopify_attributes }}><span><b>{{ block.settings.name }}</b> {{ block.settings.form }}</span><span class="mono">{{ block.settings.amount }}</span></div>{%- endif -%}{%- endfor -%}
+{%- if s.footnote != blank -%}<p style="margin: 10px 0 0; font-size: 12px; color: #5E5C55; line-height: 1.5">{{ s.footnote }}</p>{%- endif -%}
+</div>
+<div class="works">
+{%- for block in section.blocks -%}{%- if block.type == 'card' -%}{%- assign b = block.settings -%}<div class="work" {{ block.shopify_attributes }}>{% if b.image != blank %}{{ b.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: b.image.alt }}{% endif %}<div><p class="eyebrow">{{ b.eyebrow }}</p><h3>{{ b.title }}</h3><p>{{ b.text }}</p>{% if b.ref != blank %}<span class="ref mono">{{ b.ref }}</span>{% endif %}</div></div>{%- endif -%}{%- endfor -%}
+{%- if s.button_label != blank -%}<a href="{{ s.button_link }}" class="btn btn-line" style="align-self: flex-start">{{ s.button_label }}</a>{%- endif -%}
+</div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "HYPR supplement facts",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script",
+      "label": "Script accent",
+      "default": "The formula"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What each one does."
+    },
+    {
+      "type": "text",
+      "id": "facts_title",
+      "label": "Panel title",
+      "default": "Supplement Facts"
+    },
+    {
+      "type": "text",
+      "id": "serving",
+      "label": "Serving size",
+      "default": "Serving size 16.7 g (1 scoop)"
+    },
+    {
+      "type": "text",
+      "id": "servings",
+      "label": "Servings",
+      "default": "30 servings"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "**Daily Value not established. Percent Daily Values are based on a 2,000 calorie diet."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (for links like #buy)",
+      "default": "formula"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Facts row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sodium"
+        },
+        {
+          "type": "text",
+          "id": "form",
+          "label": "Form",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Amount",
+          "default": "810 mg · 35%"
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "name": "Ingredient card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "01 · Hydrate"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Electrolytes"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "ref",
+          "label": "Reference",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "HYPR supplement facts"
+    }
+  ]
+}
+{% endschema %}

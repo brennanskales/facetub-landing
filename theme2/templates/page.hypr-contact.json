@@ -1,0 +1,68 @@
+{
+  "layout": "hypr",
+  "sections": {
+    "page-head_0": {
+      "type": "hypr-page-head",
+      "settings": {
+        "crumb": "Contact",
+        "script": "We’re here,",
+        "heading": "Get in touch.",
+        "text": "Send us a note and a real person on the HYPR team will get back to you within [RESPONSE TIME]."
+      }
+    },
+    "contact_1": {
+      "type": "hypr-contact",
+      "settings": {
+        "email": "[SUPPORT EMAIL]"
+      },
+      "blocks": {
+        "link_255": {
+          "type": "link",
+          "settings": {
+            "icon": "↻",
+            "title": "Manage your subscription",
+            "text": "Skip, pause or change your box",
+            "link": "/account"
+          }
+        },
+        "link_256": {
+          "type": "link",
+          "settings": {
+            "icon": "📦",
+            "title": "Track an order",
+            "text": "Your tracking link is in your email",
+            "link": "/account"
+          }
+        },
+        "link_257": {
+          "type": "link",
+          "settings": {
+            "icon": "↩",
+            "title": "Returns & refunds",
+            "text": "Read our refund policy",
+            "link": "/policies/refund-policy"
+          }
+        },
+        "link_258": {
+          "type": "link",
+          "settings": {
+            "icon": "?",
+            "title": "FAQ",
+            "text": "Quick answers to common questions",
+            "link": "/pages/questions"
+          }
+        }
+      },
+      "block_order": [
+        "link_255",
+        "link_256",
+        "link_257",
+        "link_258"
+      ]
+    }
+  },
+  "order": [
+    "page-head_0",
+    "contact_1"
+  ]
+}
