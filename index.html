@@ -647,7 +647,7 @@ footer p { max-width: 820px; }
 
   <section class="section wrap shop" id="shop" aria-labelledby="shop-h">
     <div class="gallery">
-      <div class="main" id="gMain"><img id="gImg" class="cover" src="img/real_ps1_front.jpg" alt="The FaceTub, front view with the breathing attachment">
+      <div class="main" id="gMain"><img id="gImg" class="cover" src="img/pdp1_front_ice.jpg" alt="The FaceTub filled with ice, front view">
         <button class="gnav prev" type="button" id="gPrev" aria-label="Previous image">←</button>
         <button class="gnav next" type="button" id="gNext" aria-label="Next image">→</button>
       </div>
@@ -709,7 +709,7 @@ footer p { max-width: 820px; }
           <li>Free US shipping</li><li>Lifetime warranty</li><li>Made in the USA</li>
         </ul>
       </div>
-      <div class="final-media"><img src="img/real_ps3_water.jpg" alt="The FaceTub filled with water and ice" loading="lazy"></div>
+      <div class="final-media"><img src="img/pdp3_angle_ice.jpg" alt="The FaceTub filled with ice" loading="lazy"></div>
     </div>
   </section>
 </main>
@@ -724,7 +724,7 @@ footer p { max-width: 820px; }
 
 <div class="sticky show" id="sticky" aria-hidden="false">
   <div class="wrap">
-    <img src="img/real_ps1_front.jpg" alt="">
+    <img src="img/pdp1_front_ice.jpg" alt="">
     <div class="txt"><b id="stickyName"><span class="s-long">The FaceTub — Full Kit</span><span class="s-short">The FaceTub</span></b><span><span class="stars">★★★★★</span> 4.9<span class="s-long"> (2,300) · Free shipping · Lifetime warranty</span><span class="s-short"> (2,300)</span></span></div>
     <a class="btn btn-dark" id="stickyCta" href="https://thefacetub.com/products/the-facetub-full-kit" target="_blank" rel="noopener" >Buy now · $119</a>
   </div>
@@ -940,14 +940,18 @@ function ftCreateTub(THREE, canvas, opts) {
   var ct = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.04, 0.34), connectorMat); ct.renderOrder = 21; ct.position.set(0, H + 0.03, -D / 2 + 0.06); clip.add(ct);
   var cl = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.26, 0.04), connectorMat); cl.renderOrder = 21; cl.position.set(0, H - 0.1, -D / 2 - 0.1); clip.add(cl);
   sleeve(ovalPt(0.0), ovalPt(0.08).sub(ovalPt(-0.08)), 0.36, 0.072);
-  // bottom clip (matches the top one) carrying the mouthpiece flange
+  // mouthpiece (real part): flat oval clear pad threaded on the tube, oval bite slot facing the user
   var mid = ovalPt(Math.PI);
-  clearPiece(new THREE.BoxGeometry(0.26, 0.2, 0.2), mid, partQ);
-  sleeve(mid, ovalPt(Math.PI + 0.08).sub(ovalPt(Math.PI - 0.08)), 0.36, 0.072);
   var inward = C.clone().sub(mid).normalize();
-  var stemQ = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), inward);
-  clearPiece(new THREE.BoxGeometry(0.1, 0.16, 0.075), mid.clone().add(inward.clone().multiplyScalar(0.16)), stemQ);
-  clearPiece(new THREE.BoxGeometry(0.32, 0.025, 0.14), mid.clone().add(inward.clone().multiplyScalar(0.13)), stemQ);
+  var mq = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(vb, nrm, ua));
+  var pad = new THREE.Mesh(new THREE.CapsuleGeometry(0.11, 0.2, 8, 24), connectorMat); pad.renderOrder = 21;
+  pad.position.copy(mid); pad.quaternion.copy(mq);
+  pad.rotateZ(Math.PI / 2); pad.scale.set(0.42, 1, 1.0); ringGroup.add(pad);
+  var slot = new THREE.Mesh(new THREE.TorusGeometry(0.055, 0.016, 10, 28), connectorMat); slot.renderOrder = 22;
+  slot.position.copy(mid).add(nrm.clone().multiplyScalar(0.05)); slot.quaternion.copy(mq); slot.rotateX(Math.PI / 2); slot.scale.set(1.7, 0.7, 1); ringGroup.add(slot);
+  var slotIn = new THREE.Mesh(new THREE.CircleGeometry(0.05, 24), new THREE.MeshBasicMaterial({ color: 0x9fb2c4, transparent: true, opacity: 0.6, depthWrite: false }));
+  slotIn.renderOrder = 22; slotIn.position.copy(mid).add(nrm.clone().multiplyScalar(0.052)); slotIn.quaternion.copy(mq); slotIn.rotateX(-Math.PI / 2); slotIn.scale.set(1.6, 0.55, 1); ringGroup.add(slotIn);
+  sleeve(mid, ovalPt(Math.PI + 0.08).sub(ovalPt(Math.PI - 0.08)), 0.44, 0.068);
   var mouth = new THREE.Group(); // kept for API parity
   var P2 = mid;
 
@@ -995,7 +999,7 @@ function ftCreateTub(THREE, canvas, opts) {
   marker.renderOrder = 10; marker.scale.set(0.34, 0.34, 1); tub.add(marker);
 
   // ---------- views / steps ----------
-  var anchors = [V(0.4, 0.95, 0.05), ringCurve.getPointAt(0.25), mid.clone().add(inward.clone().multiplyScalar(0.24)), V(0, 0.42, D / 2)];
+  var anchors = [V(0.4, 0.95, 0.05), ringCurve.getPointAt(0.25), mid.clone(), V(0, 0.42, D / 2)];
   var views = [
     { yaw: 0.45, pitch: 0.42 },
     { yaw: -0.7, pitch: 0.3 },
@@ -1154,12 +1158,12 @@ function ftCreateTub(THREE, canvas, opts) {
 
   // gallery
   var G = [
-    { src: 'img/real_ps1_front.jpg', alt: 'The FaceTub, front view with the breathing attachment', cover: true },
-    { src: 'img/real_ps2_34.jpg', alt: 'The FaceTub, three-quarter view', cover: true },
-    { src: 'img/gen_ice.jpg', alt: 'The FaceTub filled with ice water', cover: true },
-    { src: 'img/real_ps3_water.jpg', alt: 'The FaceTub filled with water and ice', cover: true },
-    { src: 'img/gen_mouthpiece.jpg', alt: 'Close-up of the breathing attachment and mouthpiece', cover: true },
-    { src: 'img/gen_kit.jpg', alt: 'The FaceTub Full Kit: tub, breathing attachment and nose clip', cover: true }
+    { src: 'img/pdp1_front_ice.jpg', alt: 'The FaceTub filled with ice, front view', cover: true },
+    { src: 'img/pdp2_34.jpg', alt: 'The FaceTub, three-quarter view with the breathing attachment', cover: true },
+    { src: 'img/pdp3_angle_ice.jpg', alt: 'The FaceTub filled with ice, angled view', cover: true },
+    { src: 'img/pdp4_top_ice.jpg', alt: 'The FaceTub from above, filled with ice', cover: true },
+    { src: 'img/pdp5_tub_attach.jpg', alt: 'The FaceTub with its breathing attachment', cover: true },
+    { src: 'img/pdp6_attach2.jpg', alt: 'Breathing Attachment 2-Pack', cover: true }
   ];
   var gi = 0, gImg = document.getElementById('gImg'), gThumbs = document.getElementById('gThumbs');
   G.forEach(function (g, i) {
