@@ -68,7 +68,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Oswald:wght@700&display=swap">
 <style>
 /* Layout: conversion PDP — hero split, ritual reel, benefits, dark 3D how-it-works, compare, review reel, buy box, FAQ, sticky cart. Single light brand world with deliberate dark bands. */
 :root {
@@ -149,15 +149,21 @@ p { margin: 0; }
 .press { background: var(--surface); border-block: 1px solid var(--line); padding-block: 18px 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; overflow: hidden; }
 .press .label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 .press .ticker { width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.press .track { display: flex; width: max-content; animation: press-scroll 28s linear infinite; }
+.press .track { display: flex; width: max-content; animation: press-scroll 40s linear infinite; }
 .press .ticker:hover .track { animation-play-state: paused; }
 .press .set { display: flex; align-items: center; gap: clamp(44px, 6vw, 80px); padding-right: clamp(44px, 6vw, 80px); flex: none; }
 .press .set a { display: flex; align-items: center; text-decoration: none; }
 .press .set img { width: auto; flex: none; opacity: 0.9; }
 .press .pl-gma { height: 42px; } .press .pl-enews { height: 32px; } .press .pl-pagesix { height: 25px; }
+.press .pw { flex: none; color: #111; line-height: 1; white-space: nowrap; opacity: 0.9; }
+.press .pw-vogue { font-family: 'Bodoni Moda', 'Didot', serif; font-weight: 700; font-size: 34px; letter-spacing: 0.06em; }
+.press .pw-allure { font-family: 'Bodoni Moda', 'Didot', serif; font-weight: 500; font-size: 36px; letter-spacing: -0.01em; }
+.press .pw-mh, .press .pw-wh { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.01em; text-transform: none; }
+.press .pw-mh b, .press .pw-wh b { font-weight: 700; margin-left: 2px; }
+@media (max-width: 640px) { .press .pw-vogue { font-size: 26px; } .press .pw-allure { font-size: 27px; } .press .pw-mh, .press .pw-wh { font-size: 23px; } }
 @keyframes press-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .press .track { animation: none; } }
-@media (max-width: 640px) { .press .pl-gma { height: 32px; } .press .pl-enews { height: 24px; } .press .pl-pagesix { height: 18px; } .press .track { animation-duration: 20s; } }
+@media (max-width: 640px) { .press .pl-gma { height: 32px; } .press .pl-enews { height: 24px; } .press .pl-pagesix { height: 18px; } .press .track { animation-duration: 30s; } }
 
 /* reels (ritual + reviews) */
 .reel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 28px; }
@@ -507,21 +513,37 @@ footer p { max-width: 820px; }
           <a href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/gma.png" alt="Good Morning America" class="pl-gma"></a>
           <img src="img/press/enews.png" alt="E! News" class="pl-enews">
           <img src="img/press/pagesix.png" alt="Page Six" class="pl-pagesix">
+          <span class="pw pw-vogue" role="img" aria-label="Vogue">VOGUE</span>
+          <span class="pw pw-allure" role="img" aria-label="Allure">allure</span>
+          <span class="pw pw-mh" role="img" aria-label="Men's Health">Men’s<b>Health</b></span>
+          <span class="pw pw-wh" role="img" aria-label="Women's Health">Women’s<b>Health</b></span>
         </div>
         <div class="set" aria-hidden="true">
           <a tabindex="-1" href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/gma.png" alt="" class="pl-gma"></a>
           <img src="img/press/enews.png" alt="" class="pl-enews">
           <img src="img/press/pagesix.png" alt="" class="pl-pagesix">
+          <span class="pw pw-vogue">VOGUE</span>
+          <span class="pw pw-allure">allure</span>
+          <span class="pw pw-mh">Men’s<b>Health</b></span>
+          <span class="pw pw-wh">Women’s<b>Health</b></span>
         </div>
         <div class="set" aria-hidden="true">
           <a tabindex="-1" href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/gma.png" alt="" class="pl-gma"></a>
           <img src="img/press/enews.png" alt="" class="pl-enews">
           <img src="img/press/pagesix.png" alt="" class="pl-pagesix">
+          <span class="pw pw-vogue">VOGUE</span>
+          <span class="pw pw-allure">allure</span>
+          <span class="pw pw-mh">Men’s<b>Health</b></span>
+          <span class="pw pw-wh">Women’s<b>Health</b></span>
         </div>
         <div class="set" aria-hidden="true">
           <a tabindex="-1" href="https://abcnews.com/GMA/Shop/shop-editor-picks-oprah-daily-care-wards/story?id=129449370" target="_blank" rel="noopener"><img src="img/press/gma.png" alt="" class="pl-gma"></a>
           <img src="img/press/enews.png" alt="" class="pl-enews">
           <img src="img/press/pagesix.png" alt="" class="pl-pagesix">
+          <span class="pw pw-vogue">VOGUE</span>
+          <span class="pw pw-allure">allure</span>
+          <span class="pw pw-mh">Men’s<b>Health</b></span>
+          <span class="pw pw-wh">Women’s<b>Health</b></span>
         </div>
       </div>
     </div>
